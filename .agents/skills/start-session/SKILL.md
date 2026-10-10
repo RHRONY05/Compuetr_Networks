@@ -2,7 +2,7 @@
 name: start-session
 description: >
   Start a CN study session. Reads progress from the tracker, determines
-  what day/week the student is on, and presents today's plan: which Kurose
+  what day/week the student is on, and presents today's plan: which chai aur code's computer network
   lecture to watch, which Wireshark lab to do, and what hands-on practice
   to complete. Use at the beginning of every session in this workspace.
 ---
@@ -31,32 +31,47 @@ Read these files in order:
 2. Look at the completion checkboxes for that day. If all items are checked, advance to the next day.
 3. If the student is between days (e.g., finished yesterday, hasn't started today), suggest the next day's plan.
 
-### Step 3: Present the Session Briefing
+### Step 2.5: Auto-Fetch Transcripts for Today's Videos
+
+For each video assigned to today in `tracker.md`:
+1. Look up the video title and URL in `course-memory/video_index.md`.
+2. Automatically run `python scripts/get_transcript.py "<VIDEO_URL>"` in the background to retrieve the English transcript.
+3. Synthesize the transcript into a high-yield pre-flight breakdown.
+
+### Step 3: Present the Session Briefing & Pre-Flight Explanations
 
 Output a concise briefing in this format:
 
 ```
 ## 📍 Session Briefing — Week X, Day Y
 
-**Status:** [X of 36 days completed] | [X of 6 weeks done]
+**Status:** [X of 29 days completed] | [X of 5 weeks done]
 
-### Today's Plan
+---
 
-🎬 **Watch:** [Kurose lecture section — e.g., "Ch1: 1.1–1.3 (Internet, network edge, network core)"]
-- Lecture URL: [direct link to Kurose chapter videos page]
+### Today's Topic: [Topic Title]
 
-🔬 **Hands-on:** [What to practice — e.g., "Wireshark Getting Started lab" or "Run tracert google.com"]
-- Lab PDF: [direct link if applicable]
+For each assigned video:
 
-🛠️ **Mini-project:** [If one is assigned for today/this week]
+#### 🎬 Video [N]: [Video Title]
+- **Direct Link:** [YouTube URL]
+- 🟢 **Core Concepts:** High-yield mental model and technical mechanics.
+- 🟡 **Nuance & Simplification Alert:** What Hitesh simplified vs production / CUET syllabus.
+- 🔵 **Deferred Concepts:** Terms mentioned in passing to ignore for now (saving time).
 
-### When You're Done Watching
+---
 
-Come back and:
-1. Ask me about anything that confused you
-2. Say "create note about [topic]" for revision notes
-3. Say "quiz me" for active recall check
-4. Say "done for today" and I'll update the tracker
+### 🔬 Hands-on Practice
+[What terminal command or Wireshark inspection to run today]
+
+---
+
+### Next Steps
+1. Read the breakdown above. If anything is unclear, watch the video (or target specific timestamps).
+2. Ask any doubts.
+3. Say "create note about [topic]" to generate notes.
+4. Say "quiz me" for active recall.
+5. Say "done for today" to mark progress in tracker.md.
 ```
 
 ### Step 4: Check for Overdue Items
@@ -87,7 +102,7 @@ If the student asks to skip a topic or compress multiple days:
 
 ## Important Rules
 
-- Never start teaching a topic unprompted. The student watches Kurose lectures first, then comes to you.
-- Your role is: doubt-resolver, note-taker, developer-angle explainer, quiz-giver.
-- If the student asks a question about a topic, answer it deeply with developer context — but don't lecture ahead of where they are in the videos.
+- Deliver the pre-flight tiered breakdown for today's assigned videos so the student grasps the big picture before or alongside watching.
+- Your role is: synthesizer, doubt-resolver, note-taker, developer-angle explainer, quiz-giver.
+- If the student asks a question about a topic, answer it deeply with developer context — but keep them focused without lecturing too far ahead of today's scope.
 - Always check if Wireshark is installed before assigning a Wireshark lab for the first time.

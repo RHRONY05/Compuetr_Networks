@@ -1,0 +1,53 @@
+# Chai aur Computer Network — Video Index
+
+| # | Title | URL |
+|---|---|---|
+| 01 | Introduction to Computer Network Series | https://www.youtube.com/watch?v=CltcZTyF5nM |
+| 02 | What Really Happens When You Make an HTTP Request? | https://www.youtube.com/watch?v=_dCmQCiQmPE |
+| 03 | Mastering IP Address Structure: From Octets to Binary Representation | https://www.youtube.com/watch?v=mM9-9KAP0E8 |
+| 04 | Master Networking Basics: Network, Host, and CIDR Demystified | https://www.youtube.com/watch?v=8QJ8k7jd-K0 |
+| 05 | How Subnet Masks Reveal Network Secrets: A Deep Dive | https://www.youtube.com/watch?v=KVujI1fsQQo |
+| 06 | Understanding Default Gateway: The Key to Network Communication | https://www.youtube.com/watch?v=Ik-buVzjW3s |
+| 07 | How Default Gateways Facilitate Network Communication | https://www.youtube.com/watch?v=PqdrgoYb3Vc |
+| 08 | What is a MAC Address? Understanding Its Structure and Purpose | https://www.youtube.com/watch?v=jKWlJPpkp9o |
+| 09 | Curious About IP vs MAC Addresses? Here's What You Need to Know! | https://www.youtube.com/watch?v=sMDYh-II22Q |
+| 10 | How Does ARP Work in Your Network? | https://www.youtube.com/watch?v=kDAnEyg9nCg |
+| 11 | What Makes OSI and TCP/IP Models Different? Discover the Key Layers | https://www.youtube.com/watch?v=ZOLkWBVMcwU |
+| 12 | How Routing Determines Your Data's Journey Across Networks | https://www.youtube.com/watch?v=GBhaNXK-ows |
+| 13 | What Happens When You PING Google? Discover the Secrets of ICMP | https://www.youtube.com/watch?v=VzPFY40qAhQ |
+| 14 | Why UDP is the Unsung Hero of Fast Internet Protocols | https://www.youtube.com/watch?v=SjMw3nwAhuI |
+| 15 | Unveiling the UDP Datagram: A Deep Dive into Its Structure | https://www.youtube.com/watch?v=1mTI5X0pN6M |
+| 16 | How to Inspect UDP Traffic Using Wireshark: A Step-by-Step Guide | https://www.youtube.com/watch?v=_JeDNQ22Wxk |
+| 17 | Understanding TCP: The Backbone of Reliable Internet Communication | https://www.youtube.com/watch?v=v4gKJv4C1wo |
+| 18 | Unveiling TCP 3-Way Handshake: The Backbone of Reliable Connections | https://www.youtube.com/watch?v=xkP8iBAdgck |
+| 19 | How TCP Connections End: Understanding the 4-Way Termination | https://www.youtube.com/watch?v=ly6ixTfKpjM |
+| 20 | TCP Sequence & Acknowledgment Numbers (Complete Guide) | https://www.youtube.com/watch?v=YryEKDfMXQw |
+| 21 | Anatomy of a TCP Segment | https://www.youtube.com/watch?v=_d4_vkSQIEk |
+| 22 | MTU MSS PMTUD in computer networks | https://www.youtube.com/watch?v=18-nbrEEU9o |
+| 23 | TCP Flow Control | https://www.youtube.com/watch?v=PL_6aNL_KqY |
+| 24 | TCP Congestion Control | https://www.youtube.com/watch?v=B3JwzcPTZDw |
+| 25 | Inspect TCP with Wireshark | https://www.youtube.com/watch?v=EbdEqHTYZFA |
+| 26 | How DNS works | https://www.youtube.com/watch?v=pNfNTgEVvQg |
+| 27 | Major DNS records explained | https://www.youtube.com/watch?v=_PugVKzp3ig |
+| 28 | DNS and Wireshark | https://www.youtube.com/watch?v=P31T7461kfs |
+| 29 | HTTP overview | https://www.youtube.com/watch?v=5n5_IRlYr64 |
+| 30 | http 1.0 vs http 1.1 | https://www.youtube.com/watch?v=tNulpc4RLWU |
+| 31 | HTTP Request Response structure | https://www.youtube.com/watch?v=rZNdo9UjF94 |
+| 32 | HTTP 1.1 in action | https://www.youtube.com/watch?v=bIPvH42Jesk |
+| 33 | HTTP 1.1 head of line blocking in action | https://www.youtube.com/watch?v=zoKBDaihBlU |
+| 34 | HTTP 2 overview how it works | https://www.youtube.com/watch?v=yqVkmfAO1Dw |
+| 35 | HTTP 2 frames in depth | https://www.youtube.com/watch?v=dX0DK0zt6WU |
+| 36 | why http 2 is binary protocol | https://www.youtube.com/watch?v=9M-i2QIBZ9c |
+| 37 | HPACK explained in depth | https://www.youtube.com/watch?v=M5ecS9oPRtk |
+| 38 | HTTP2 Head of Line Blocking | https://www.youtube.com/watch?v=75UeaBsdbF0 |
+| 39 | QUIC protocol overview | https://www.youtube.com/watch?v=ZAJVKmZ-dh4 |
+| 40 | HTTP3 how it uses quic in depth | https://www.youtube.com/watch?v=CI7Dx-m1eQ4 |
+| 41 | TLS overview | https://www.youtube.com/watch?v=iM8Dx61uNRc |
+| 42 | Math behind RSA algo | https://www.youtube.com/watch?v=a6LG-fUiuK0 |
+| 43 | TLS certificates explained in depth | https://www.youtube.com/watch?v=Q1xFSzr9biI |
+| 44 | mathematics behind diffie hellman | https://www.youtube.com/watch?v=5pfM-fD42eY |
+| 45 | TLS 1.2 handshake in depth | https://www.youtube.com/watch?v=x1AY140_JXE |
+| 46 | TLS 1.3 handshake fwd sec in depth | https://www.youtube.com/watch?v=kFl9UttIlZI |
+| 47 | NAT explained | https://www.youtube.com/watch?v=VdfL9H2vEkU |
+| 48 | IP packet anatomy | https://www.youtube.com/watch?v=UzWpKcMlaMg |
+| 49 | ip4 wireshark | https://www.youtube.com/watch?v=QlKwKssPYWI |

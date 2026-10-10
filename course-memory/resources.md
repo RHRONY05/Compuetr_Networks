@@ -2,49 +2,32 @@
 
 ## Rule: Do NOT Add New Resources
 
-These are the only resources for this course. Do not browse for alternatives. If a topic doesn't click from the primary lecture, watch ONE short YouTube video on that exact sub-topic, then return.
+This course is locked in with **Chai aur Computer Network** for developer-focused understanding. Do not browse for alternatives. If a sub-topic doesn't click, ask the AI tutor or watch ONE short video on that exact sub-topic, then return.
 
 ## Primary Video Spine
 
-**Kurose & Ross Official Video Lectures**
-- Home: https://gaia.cs.umass.edu/kurose_ross/lectures.php
-- Chapter 1: https://gaia.cs.umass.edu/kurose_ross/videos/1
-- Chapter 2: https://gaia.cs.umass.edu/kurose_ross/videos/2
-- Chapter 3: https://gaia.cs.umass.edu/kurose_ross/videos/3
-- Chapter 4: https://gaia.cs.umass.edu/kurose_ross/videos/4
-- Chapter 5: https://gaia.cs.umass.edu/kurose_ross/videos/5
-- Chapter 6: https://gaia.cs.umass.edu/kurose_ross/videos/6
-- Chapter 7: https://gaia.cs.umass.edu/kurose_ross/videos/7
-- Chapter 8: (Security — check site for availability)
+**Chai aur Computer Network (Chai aur Code — Hitesh Choudhary)**
+- Platform: YouTube (49 bite-sized videos, ~17 hrs 49 mins total)
+- Official Channel: https://www.youtube.com/@chaiaurcode
+- Playlist Link: https://youtube.com/playlist?list=PLd1s-PEC5Pio&si=R6xQAoPXt29Fm_Ji
+- Automated Transcription: Built-in via `scripts/get_transcript.py` (powered by local `yt-dlp`)
+- Companion Platform: https://chaicode.com/
 
-**Companion Materials** (same site):
-- Slides: https://gaia.cs.umass.edu/kurose_ross/ppt.php
-- Knowledge Checks: https://gaia.cs.umass.edu/kurose_ross/knowledgechecks/
-- Interactive Problems: https://gaia.cs.umass.edu/kurose_ross/interactive/
-- Animations: https://gaia.cs.umass.edu/kurose_ross/animations.php
+## Hands-on & Wireshark Labs
 
-## Wireshark Labs
+**Wireshark Labs (Kurose & Ross Lab Sheets):**
+- Lab PDFs: https://gaia.cs.umass.edu/kurose_ross/wireshark.php
+- Trace Files: https://www-net.cs.umass.edu/wireshark-labs/wireshark-traces-9e.zip
 
-**Lab PDFs:** https://gaia.cs.umass.edu/kurose_ross/wireshark.php
-**Trace Files:** https://www-net.cs.umass.edu/wireshark-labs/wireshark-traces-9e.zip
+## Terminal & Developer Tools
 
-Each lab PDF is self-contained with step-by-step instructions. The "Getting Started" lab teaches Wireshark from scratch.
+- `curl -v` — Inspect HTTP requests, headers, and TLS handshake
+- `nslookup` / `dig` — DNS resolution queries
+- `ping` / `tracert` — Reachability, latency, and router hops (ICMP)
+- `netstat -ano` / `ss` — Active sockets, ports, and TCP connection states
+- `ipconfig` — Local IP, MAC (Physical Address), Default Gateway, Subnet mask
+- Wireshark — Deep packet inspection and protocol header analysis
 
-## Terminal Tools
+## Exam Gap-Fill (During Exam / Deadline Cram)
 
-- `nslookup` / `dig` — DNS queries
-- `ping` / `tracert` — reachability and path
-- `curl -v` — HTTP headers, TLS handshake
-- `netstat -ano` — open ports and connections
-- `ipconfig` / `ip addr` — local network config
-- Wireshark — packet capture and deep inspection
-
-## Quick Reference (Read Only When Needed)
-
-- Cloudflare Learning Center: https://www.cloudflare.com/learning/ (for CDN, DNS, TLS explainers)
-- MDN HTTP docs: https://developer.mozilla.org/en-US/docs/Web/HTTP (for HTTP reference)
-
-## After the Course (Not Now)
-
-- *High Performance Browser Networking* by Ilya Grigorik (free online) — TCP, TLS, HTTP/2, HTTP/3 from a web developer angle
-- Stanford CS144 — deeper TCP/IP systems understanding
+- Mathematical numericals (CRC, ALOHA, Subnetting math, Distance Vector/Link State algorithms) will be reviewed directly with the AI tutor.

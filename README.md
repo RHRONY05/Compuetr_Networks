@@ -15,6 +15,6 @@ This workspace is the persistent self-study base for CSE-311 Computer Networks.
 ## How to Study
 
 1. At the start of a session, ask the agent to start or continue the session (or invoke `/start-session`).
-2. Watch the assigned Kurose & Ross video lecture section.
+2. Watch the assigned chai aur code's computer networks video lecture section.
 3. Return to chat to resolve doubts, create revision notes, and take active recall quizzes.
 4. Mark today's checklist items complete in `course-memory/tracker.md`.
