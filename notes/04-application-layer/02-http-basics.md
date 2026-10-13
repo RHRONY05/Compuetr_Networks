@@ -21,7 +21,10 @@
 | **Cookie** | A small named value the server asks the browser to store and send back automatically |
 
 ---
-
+**What Does "HTTP" Literally Mean?**
+`HyperText(hypertext is text with functionalities)`: In the 1980s, computer files were isolated islands on disks. "Hypertext" was the revolutionary concept of text containing hyperlinks to other documents. It allowed a reader to click a link in a document hosted on a server in Geneva and jump directly to a document hosted at Stanford.
+`Transfer`: Moving those documents from the machine that stores them (the server) to the machine that wants to read them (the client).
+`Protocol`: A strict, agreed-upon set of rules and grammar. Just like human diplomats follow protocol so both sides know who speaks first and what greetings mean, two programs need an unambiguous grammar so they don't misunderstand each other over a wire.
 ## 1. The Story So Far
 
 The [anchor](../00-foundations/02-request-lifecycle.md) says step 1 is "the browser writes the message as text and turns it into bytes." This chapter opens that box. The message is ready at the end, but it holds only a **name** (`api.example.com`). Turning that name into an address is step 2, DNS.
