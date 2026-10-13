@@ -1,213 +1,157 @@
-# CSE-311 Computer Networks Progress Tracker
+# Computer Networks Progress Tracker
 
-Last updated: 2026-10-10
+Last updated: 2026-10-13 (Session 1.1 HTTP done) · Plan: [roadmap.md](roadmap.md) (story-based, 9 acts, no end date)
 
 ## Current Position
 
-- **Week:** 1
-- **Day:** 3
-- **Focus:** Default Gateways & Outer Network Access
-- **Next action:** Videos 6 & 7 (Understanding Default Gateway, How Gateways Facilitate Communication)
+- **Act:** 1: Name → Address (lifecycle steps 1, 2)
+- **Session:** 1.2: DNS, the phone book
+- **Last session:** 1.1 HTTP (2026-10-13). Lesson in `lessons/act1-1.1-http.md`, note `notes/04-application-layer/02-http-basics.md`. Covered: request/response format, text → bytes, headers, statelessness with cookies vs bearer tokens, HTTP vs HTTPS. **Start 1.2 with the 1.1 recall questions as the warm-up.**
+- **Next action:** Start session 1.2. Write the lesson into `playground.md` (Lesson Writing Standard) and rewrite the DNS note.
+- **Already learned, waiting in its slot (not lost):** IP address & CIDR (videos 3, 4) → Session **1.3**; subnet mask (video 5) → Session **2.0**. Their notes exist and get reworked into the new format when we reach them. Default Gateway videos 6 & 7 → Session 2.1.
+
+> Status values: `Not Started` · `In Progress` · `Completed`. Mark an **act** Completed only with the student's explicit approval.
+> Session checkboxes: `[x]` done, `[ ]` pending. Each session = Learn · Hands-on · Build/Note · Recall check.
 
 ---
 
-## Week 1: Foundations, IP Addressing & Core Protocols (Oct 10–16)
+## Act 0: The Trigger — Completed ✅
 
-**Video Spine:** Chai aur Computer Network (Videos 1–13) | **Status:** In Progress
+### Session 0.1: Series intro & the request journey
+- [x] C1, C2 · [x] Notes (`01-internet-basics`, `02-request-lifecycle`, both rebuilt in the new format) · [x] `ping` latency lab · [x] Anchor read
 
-### Day 1 (Oct 10) — Series Intro & The Request Journey
-- **Videos:** Video 1 (Intro) + Video 2 (What Really Happens When You Make an HTTP Request?)
-- [x] Watched Videos 1 & 2
-- [x] Hands-on: Run `curl -v https://httpbin.org/get`, inspect request/response headers
-- [x] Notes created (`notes/00-foundations/02-request-lifecycle.md`)
-- [x] Quiz/check done
-
-### Day 2 (Oct 11) — IP Addressing, CIDR & Subnet Masks
-- **Videos:** Videos 3, 4, 5 (IP Address Structure, Network/Host/CIDR, Subnet Masks Deep Dive)
-- [x] Watched Videos 3, 4, 5
-- [x] Hands-on: Run `ipconfig`/PowerShell, identify IP address, subnet mask, prefix length
-- [x] Notes created (`01-ip-and-cidr.md`, `02-subnet-masks-and-switches.md`)
-- [x] Quiz/check done
-
-### Day 3 (Oct 12) — Default Gateways & Outer Network Access
-- **Videos:** Videos 6 & 7 (Understanding Default Gateway, How Gateways Facilitate Communication)
-- [ ] Watched Videos 6 & 7
-- [ ] Hands-on: Identify Default Gateway in `ipconfig`, run `tracert 8.8.8.8` to see first hop
-- [ ] Notes created
-- [ ] Quiz/check done
-
-### Day 4 (Oct 13) — MAC Addresses & ARP
-- **Videos:** Videos 8, 9, 10 (What is a MAC Address, IP vs MAC, How Does ARP Work)
-- [ ] Watched Videos 8, 9, 10
-- [ ] Hands-on: Run `getmac` and `arp -a` in terminal to see local ARP cache
-- [ ] Notes created
-- [ ] Quiz/check done
-
-### Day 5 (Oct 14) — OSI vs TCP/IP Models, Routing & ICMP (Ping)
-- **Videos:** Videos 11, 12, 13 (OSI vs TCP/IP, How Routing Works, What Happens When You PING Google)
-- [ ] Watched Videos 11, 12, 13
-- [ ] Hands-on: Run `ping google.com` and `ping 127.0.0.1`, examine TTL and RTT
-- [ ] Notes created
-- [ ] Quiz/check done
-
-### Day 6 (Oct 15) — Week 1 Review & Wireshark Getting Started
-- [ ] Created notes for all Week 1 topics
-- [ ] Wireshark: Getting Started lab (capture a ping and curl request)
-- [ ] Took active recall quiz with AI tutor
+> The old "Day 2" (IP, CIDR, subnet masks) has been **moved into its story slots**: 1.3 and 2.0 below. It is no longer part of Act 0.
 
 ---
 
-## Week 2: Transport Layer & TCP/UDP Deep Dive (Oct 17–23)
+## Act 1: Name → Address (steps 1, 2) — In Progress
 
-**Video Spine:** Chai aur Computer Network (Videos 14–25) | **Status:** Not Started
+### Session 1.1: HTTP, the text protocol
+- [x] Lesson read (`lessons/act1-1.1-http.md`) · [ ] Videos C29, C31 *(optional now; watch any time)*
+- [x] Hands-on: `curl -v`, cookie experiment, DevTools
+- [x] ⭐ A1: raw HTTP request over a socket (`hands-on-lab/act1-1.1-raw-http.py`)
+- [x] Note: `02-http-basics.md` · [x] Revisit Log · [ ] Recall check *(warm-up of 1.2)*
 
-### Day 7 (Oct 17) — Transport Layer, Ports & Sockets
-- **Videos:** Videos 14, 15, 16 (Transport layer services, Port numbers & Sockets, UDP vs TCP)
-- [ ] Watched Videos 14, 15, 16
-- [ ] Wireshark: UDP lab
-- [ ] Notes created
+### Session 1.2: DNS, the phone book
+- [ ] Pre-flight briefing + C26, C27, C28, K2.4
+- [ ] Hands-on: `nslookup`, record types, Wireshark DNS
+- [ ] ⭐ A2 *(stretch)*: hand-built DNS query
+- [ ] Note: rewrite `04-application-layer/01-dns-resolution.md` into handbook format · [ ] Revisit Log · [ ] Recall check
 
-### Day 8 (Oct 18) — TCP 3-Way Handshake & Sequence Numbers
-- **Videos:** Videos 17, 18, 19 (TCP Handshake, Sequence & Ack Numbers, Connection Teardown)
-- [ ] Watched Videos 17, 18, 19
-- [ ] Wireshark: TCP lab (identify SYN, SYN-ACK, ACK packets)
-- [ ] Notes created
-
-### Day 9 (Oct 19) — TCP Connection States
-- **Videos:** Videos 20, 21, 22 (TCP States: ESTABLISHED, TIME_WAIT, CLOSE_WAIT)
-- [ ] Watched Videos 20, 21, 22
-- [ ] Hands-on: Run `netstat -ano` in terminal, filter for ESTABLISHED vs TIME_WAIT
-- [ ] Notes created
-
-### Day 10 (Oct 20) — TCP Flow Control & Congestion Control
-- **Videos:** Videos 23, 24, 25 (Flow control, Sliding Window, Congestion control basics)
-- [ ] Watched Videos 23, 24, 25
-- [ ] Discussion with AI: How TCP congestion control impacts API latency and web apps
-- [ ] Notes created
-
-### Day 11 (Oct 21) — DNS (Domain Name System) Deep Dive
-- **Videos:** Videos 26 & 27 (How DNS resolves names, Root/TLD servers, DNS record types)
-- [ ] Watched Videos 26 & 27
-- [ ] Hands-on: `nslookup google.com` and `nslookup -type=MX google.com`, Wireshark DNS lab
-- [ ] Notes created
-
-### Day 12 (Oct 22) — Week 2 Review & Socket Mini-Project
-- [ ] Created notes for transport layer
-- [ ] Mini-project: Build a simple TCP Echo Server in Node.js or Python
-- [ ] Took active recall quiz with AI tutor
+### Session 1.3: The number DNS gave us (IP address & CIDR) — *videos already watched*
+- [x] Watched C3, C4 *(earlier)* · [x] `ipconfig`: IP and prefix *(earlier)*
+- [ ] Re-read with the story: DNS just returned `203.0.113.10`, so what is this number?
+- [ ] Adapt note `02-network-layer/01-ip-and-cidr.md` (Keywords block, zoom banner, story-so-far from DNS)
+- [ ] Revisit Log · [ ] Recall check
 
 ---
 
-## Week 3: Application Protocols, WebSockets & Security (Oct 24–30)
+## Act 2: Local or Remote? (step 4) — Not Started
 
-**Video Spine:** Chai aur Computer Network (Videos 28–40) | **Status:** Not Started
+### Session 2.0: The subnet mask — *video already watched*
+- [x] Watched C5 *(earlier)*
+- [ ] Re-read with the story: we have a destination IP, is it ours?
+- [ ] Adapt note `02-network-layer/02-subnet-masks-and-switches.md` (Keywords block, zoom banner, open from the decision step)
+- [ ] Revisit Log · [ ] Recall check
 
-### Day 13 (Oct 24) — DHCP (Dynamic Host Configuration)
-- **Videos:** Videos 28, 29, 30 (DHCP DORA process, IP leasing, Static vs Dynamic)
-- [ ] Watched Videos 28, 29, 30
-- [ ] Hands-on: `ipconfig /all`, identify DHCP lease, Wireshark DHCP lab
-- [ ] Notes created
+### Session 2.1: The Default Gateway
+- [ ] C6, C7 · [ ] `route print`, `tracert 8.8.8.8` · [ ] ⭐ A3 `is_local()` + CIDR calculator
+- [ ] Note: Default Gateway · [ ] Revisit Log · [ ] Recall check
 
-### Day 14 (Oct 25) — HTTP Evolution (HTTP/1.1 vs HTTP/2 vs HTTP/3)
-- **Videos:** Videos 31, 32, 33 (HTTP/1.1 pipelining, HTTP/2 multiplexing, HTTP/3 QUIC)
-- [ ] Watched Videos 31, 32, 33
-- [ ] Hands-on: Inspect HTTP/2 & HTTP/3 multiplexing in browser DevTools Network tab
-- [ ] Notes created
-
-### Day 15 (Oct 26) — WebSockets & Real-Time Communication
-- **Videos:** Videos 34, 35, 36 (WebSockets vs HTTP Polling vs SSE)
-- [ ] Watched Videos 34, 35, 36
-- [ ] Hands-on: Inspect WebSocket frames in Chrome DevTools on a live chat app
-- [ ] Notes created
-
-### Day 16 (Oct 27) — HTTPS, SSL/TLS Handshake
-- **Videos:** Videos 37, 38, 39 (Symmetric vs Asymmetric encryption, TLS Handshake, Certificates)
-- [ ] Watched Videos 37, 38, 39
-- [ ] Hands-on: Click padlock in browser to inspect certificate chain, Wireshark TLS lab
-- [ ] Notes created
-
-### Day 17 (Oct 28) — Cookies, Sessions, JWTs & CORS
-- **Videos:** Video 40 + Developer Security Deep Dive
-- [ ] Watched Video 40
-- [ ] Hands-on: Inspect CORS preflight `OPTIONS` request in DevTools
-- [ ] Notes created
-
-### Day 18 (Oct 29) — Week 3 Review
-- [ ] Consolidated notes on Application Layer & Security
-- [ ] Took active recall quiz with AI tutor
+### Session 2.2: DHCP, who gave me these numbers?
+- [ ] AI + K4.3 · [ ] `ipconfig /all`, Wireshark DHCP
+- [ ] Note: DHCP · [ ] Revisit Log · [ ] Recall check
 
 ---
 
-## Week 4: Cloud Networking, Proxies, CDNs & VPNs (Oct 31–Nov 6)
+## Act 3: The Next Physical Hop (step 5) — Not Started
 
-**Video Spine:** Chai aur Computer Network (Videos 41–49) | **Status:** Not Started
+### Session 3.1: MAC and ARP
+- [ ] C8, C9, C10, K6.1 · [ ] `getmac`, `arp -a`, Wireshark ARP · [ ] ⭐ A4
+- [ ] Note: MAC & ARP · [ ] Revisit Log · [ ] Recall check
 
-### Day 19 (Oct 31) — NAT (Network Address Translation)
-- **Videos:** Videos 41, 42, 43 (NAT types, PAT, Private vs Public IPs, Port Forwarding)
-- [ ] Watched Videos 41, 42, 43
-- [ ] Hands-on: Wireshark NAT lab, map internal IP to router public IP
-- [ ] Notes created
-
-### Day 20 (Nov 1) — Proxies & Load Balancers
-- **Videos:** Videos 44, 45, 46 (Forward Proxy vs Reverse Proxy, L4 vs L7 Load Balancing)
-- [ ] Watched Videos 44, 45, 46
-- [ ] Hands-on: Trace Nginx reverse proxy headers (`X-Forwarded-For`, `X-Forwarded-Proto`)
-- [ ] Notes created
-
-### Day 21 (Nov 2) — CDNs, Edge Caching & VPNs
-- **Videos:** Videos 47, 48, 49 (CDNs, Cloudflare edge caching, VPN tunnels, Series recap)
-- [ ] Watched Videos 47, 48, 49
-- [ ] Hands-on: Run `curl -I` against Cloudflare-backed site, check `cf-cache-status: HIT`
-- [ ] Notes created
-
-### Day 22 (Nov 3) — Full Capstone: End-to-End Packet Trace
-- [ ] Trace an end-to-end user journey: URL typed $\rightarrow$ DNS $\rightarrow$ TCP $\rightarrow$ TLS $\rightarrow$ Reverse Proxy $\rightarrow$ App
-- [ ] Wrote complete developer architecture summary
-- [ ] Took comprehensive full-course quiz with AI tutor
+### Session 3.2: Switch, hub, Ethernet
+- [ ] AI explanation · [ ] Packet Tracer: switch MAC table
+- [ ] Note: Ethernet & Switches · [ ] Revisit Log · [ ] Recall check
 
 ---
 
-## Week 5: CUET Exam Numerical & Syllabus Gap-Fill Cram (Nov 7–13)
+## Act 4: The Reliable Pipe (step 3) — Not Started
 
-**Focus:** Exam Formulas, Numericals & Academic Syllabus Items | **Status:** Not Started
+- [ ] **4.1** Ports & UDP (C14–16, K3.1–3.3) · protocol landscape exercise
+- [ ] **4.2** TCP connection: handshake, teardown, states (C17–19, K3.5-1)
+- [ ] **4.3** TCP bytes & numbers (C20, C21)
+- [ ] **4.4** Why TCP is built this way; MTU/MSS (K3.4, C22)
+- [ ] **4.5** Flow & congestion control (C23, C24, K3.5-2, K3.6, K3.7)
+- [ ] **4.6** Sockets: build it (C25, K2.7) · ⭐ A5 echo server → HTTP server
 
-### Day 23 (Nov 7) — Subnetting & VLSM Speed Drills
-- [ ] Mastered Classless / CIDR subnetting calculations by hand
-- [ ] Solved 5 previous year CUET subnetting numericals
+---
 
-### Day 24 (Nov 8) — Error Detection: CRC & Hamming Code
-- [ ] CRC polynomial division by hand
-- [ ] Hamming Code error detection and correction
+## Act 5: Across the Planet (step 6) — Not Started
 
-### Day 25 (Nov 9) — Flow Control Formulas & Window Calculations
-- [ ] Stop-and-Wait efficiency ($a = T_{prop}/T_{trans}$)
-- [ ] Go-Back-N and Selective Repeat window size formulas
+- [ ] **5.1** The IP packet, packet vs. circuit switching & latency (C48, C49, K1.3, K4.3, K1.4)
+- [ ] **5.2** Routing & ICMP (C12, C13, K4.1, K4.2, K5.1, K5.6) · ⭐ A6 *(stretch)*
+- [ ] **5.3** How routers learn routes: link state, DV, OSPF, BGP (K5.2–K5.4)
+- [ ] **5.4** NAT (C47, K4.3)
 
-### Day 26 (Nov 10) — Routing Algorithms: Dijkstra & Bellman-Ford
-- [ ] Solved Dijkstra step-by-step routing table on paper
-- [ ] Bellman-Ford distance vector iterations & count-to-infinity
+---
 
-### Day 27 (Nov 11) — Multiple Access Formulas (ALOHA & CSMA)
-- [ ] Pure ALOHA ($S = G e^{-2G}$) vs Slotted ALOHA ($S = G e^{-G}$) throughput
-- [ ] CSMA/CD minimum frame length calculation ($L \ge 2 \times R \times T_{prop}$)
+## Act 6: Make It Private (step 7) — Not Started
 
-### Day 28 (Nov 12) — Legacy Syllabus Quick-Fire
-- [ ] ATM, Frame Relay, Token Ring, FDDI, HDLC, PPP, STP
-- [ ] Classical Ciphers & Cryptography (DES, RSA mathematical steps)
+- [ ] **6.1** Crypto toolbox (AI, K1.6)
+- [ ] **6.2** TLS overview & certificates (C41, C43)
+- [ ] **6.3** The handshake: TLS 1.2 vs 1.3, Diffie-Hellman (C45, C46, C44)
+- [ ] **6.4** TLS in your server · ⭐ A7
 
-### Day 29 (Nov 13) — Timed Mock Exam
-- [ ] 30-question mixed theory & numerical exam with AI tutor
-- [ ] Addressed all weak points
+---
+
+## Act 7: The Conversation Evolves (step 8) — Not Started
+
+- [ ] **7.1** HTTP/1.1 limits (C30, C32, C33)
+- [ ] **7.2** HTTP/2 (C34–C38)
+- [ ] **7.3** QUIC & HTTP/3 (C39, C40, K3.8) · ⭐ A8
+
+---
+
+## Act 8: What Sits on the Path — Not Started
+
+- [ ] **8.1** Proxies & reverse proxies
+- [ ] **8.2** Load balancers & CDNs (K2.6, K4.5)
+- [ ] **8.3** Firewalls, VPNs, SSH
+- [ ] **8.4** Real-time (WebSockets) & email (K2.3)
+- [ ] **8.5** LAN & wireless depth: CRC, CSMA, Wi-Fi (K6.2, K6.3)
+- [ ] ⭐ A9: Docker Compose, Nginx reverse proxy, 2 backends, TLS
+
+---
+
+## Act 9: Close the Circle — Not Started
+
+- [ ] Wireshark end-to-end trace of the A9 stack, annotated
+- [ ] Lifecycle story rewritten in own words, then compared with the anchor
+- [ ] Revisit Log filled; "You Are Here" map fully ✅
+- [ ] "Break it" diagnosis challenge
+- [ ] File the story into the layer models (C11 OSI vs TCP/IP, K1.5)
+
+---
+
+## Epilogue: Other Roads — Optional, for curiosity
+
+Pick any, in any order, after the journey (see roadmap): WebRTC/RTP, game UDP, SSH, email, database wire protocols, Kafka/AMQP, NTP, BitTorrent, gRPC. Ask of each: what language, TCP or UDP, which port, why?
 
 ---
 
 ## Progress Summary
 
-| Module | Status |
-|---|---|
-| Week 1: Foundations & IP | 2 / 6 days |
-| Week 2: Transport & TCP | 0 / 6 days |
-| Week 3: Web Protocols & Security | 0 / 6 days |
-| Week 4: Proxies, CDNs & Cloud | 0 / 4 days |
-| Week 5: CUET Exam Cram & Numericals | 0 / 7 days |
-| **Total** | **2 / 29 days** |
+| Act | Status | Sessions |
+|---|---|---|
+| 0 The Trigger | Completed | 1 / 1 |
+| 1 Name → Address | In Progress | 1 / 3 *(1.3 videos already watched, note to adapt)* |
+| 2 Local or Remote? | Not Started | 0 / 3 *(2.0 video already watched, note to adapt)* |
+| 3 Next Physical Hop | Not Started | 0 / 2 |
+| 4 The Reliable Pipe | Not Started | 0 / 6 |
+| 5 Across the Planet | Not Started | 0 / 4 |
+| 6 Make It Private | Not Started | 0 / 4 |
+| 7 Conversation Evolves | Not Started | 0 / 3 |
+| 8 What Sits on the Path | Not Started | 0 / 5 |
+| 9 Close the Circle | Not Started | 0 / 2 |
+| **Total** | | **2 / 33** |

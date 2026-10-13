@@ -19,7 +19,7 @@ def get_transcript(video_url_or_id):
             "yt-dlp",
             "--skip-download",
             "--write-auto-sub",
-            "--sub-lang", "en-US-orig,en",
+            "--sub-lang", "en-orig,en-US-orig,en",
             "--output", out_pattern,
             url
         ]
@@ -54,4 +54,4 @@ def get_transcript(video_url_or_id):
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         text = get_transcript(sys.argv[1])
-        print(text[:3000]) # Print first 3000 chars for verification
+        print(text)

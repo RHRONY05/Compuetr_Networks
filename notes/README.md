@@ -1,56 +1,77 @@
 # Computer Networks: A Developer's Handbook
 
-Welcome to the **Computer Networks Tutorial Handbook**. This repository is structured as a comprehensive, sequential learning series designed for **software developers, DevOps engineers, and students preparing for the CUET Computer Networks exam**.
+A story-based handbook for **software developers**. Every chapter is a zoom-in on one step of the life of an HTTP request. Read in the order below (the order of the study plan), not by folder.
 
-Instead of isolated lecture summaries, each document here is written as a **self-contained tutorial chapter** that connects to the previous and next topics, building an unbroken mental model from raw silicon bits up to cloud architectures.
+**Look up a word:** [Glossary](GLOSSARY.md). Each term is introduced at the top of the lesson that needs it.
 
----
+**Start here:** [The Request Lifecycle: Master Map](00-foundations/02-request-lifecycle.md). It holds the "You Are Here" map and the Revisit Log. Study plan: [roadmap](../course-memory/roadmap.md). Progress: [tracker](../course-memory/tracker.md).
 
-## 📖 How to Read This Handbook
-
-If you are new to Computer Networks, **read the chapters sequentially from Part 0 through Part 6**. Each chapter builds upon the terminology and mechanics introduced in the preceding one.
+Legend: ✅ written · 🔧 exists but needs rewrite · ⏳ not written yet
 
 ---
 
-## 🗺️ Table of Contents
+## Act 0: The Trigger
+* ✅ [Internet Basics & Network Models](00-foundations/01-internet-basics.md)
+* ✅ [Request Lifecycle: Master Map](00-foundations/02-request-lifecycle.md) *(anchor)*
 
-### Part 0: Foundations & The Request Journey
-* 📄 **Chapter 01:** [Internet Basics & Network Models](00-foundations/01-internet-basics.md) — What the Internet actually is, Client-Server vs. P2P, and Packet Switching.
-* 📄 **Chapter 02:** [Request Lifecycle & Encapsulation](00-foundations/02-request-lifecycle.md) — What really happens when you make a `fetch()` call: The Russian nesting dolls of Frames, Packets, Segments, and Signals.
+## Act 1: Name → Address *(steps 1, 2)*
+* ✅ [HTTP Basics](04-application-layer/02-http-basics.md)
+* 🔧 [DNS Resolution](04-application-layer/01-dns-resolution.md)
+* 🔧 [IP Addressing & CIDR](02-network-layer/01-ip-and-cidr.md) *(learned; adapt to follow DNS: "what is the number we got?")*
 
-### Part 1: The Network Layer (Global Addressing & Subnets)
-* 📄 **Chapter 03:** [IP Addressing, CIDR & Global Architecture](02-network-layer/01-ip-and-cidr.md) — Dotted quad notation, 32-bit math, CIDR prefix slicing, Private vs. Public IPs, and the Global Postal Analogy.
-* 📄 **Chapter 04:** [Subnet Masks and Switches](02-network-layer/02-subnet-masks-and-switches.md) — How devices decide local vs. remote via Bitwise AND, why subnet masks must be uniform, and demystifying the living room "Wi-Fi Box" (AP vs. Switch vs. Router).
-* 📄 **Chapter 05:** `Default Gateways & Outer Network Access` *(Coming up in Day 3)* — The bridge between your living room and the ISP.
-* 📄 **Chapter 06:** `Routing Decisions & ICMP (Ping)` *(Coming up in Day 5)* — How routers navigate packets across global internet hops.
+## Act 2: Local or Remote? *(step 4)*
+* 🔧 [Subnet Masks & Switches](02-network-layer/02-subnet-masks-and-switches.md) *(learned; adapt to open from the decision step)*
+* ⏳ Default Gateway
+* ⏳ DHCP
 
-### Part 2: The Data Link Layer (Local Hop-to-Hop)
-* 📄 **Chapter 07:** `MAC Addresses, NICs & ARP` *(Coming up in Day 4)* — Physical hardware addressing and resolving IPs to local network cards.
+## Act 3: The Next Physical Hop *(step 5)*
+* ⏳ MAC Addresses & ARP
+* ⏳ Ethernet & Switches
 
-### Part 3: The Transport Layer (Process-to-Process Reliability)
-* 📄 **Chapter 08:** `Ports, Sockets & UDP` *(Week 2)* — Reaching specific application processes (Node.js vs. Python) and lightweight datagrams.
-* 📄 **Chapter 09:** `TCP Handshake & Sequence Numbers` *(Week 2)* — Creating reliable pipes and reassembling out-of-order data chunks.
-* 📄 **Chapter 10:** `TCP States & Connection Teardown` *(Week 2)* — ESTABLISHED, TIME_WAIT, CLOSE_WAIT, and the 4-way FIN handshake.
-* 📄 **Chapter 11:** `Flow Control, MTU/MSS & Congestion` *(Week 2)* — Sliding window mechanics and avoiding network collapse.
+## Act 4: The Reliable Pipe *(step 3)*
+* ⏳ Ports & UDP
+* ⏳ TCP Handshake & Teardown
+* ⏳ Sequence Numbers & TCP Segments
+* ⏳ MTU, MSS & Why TCP Is Built This Way
+* ⏳ Flow & Congestion Control
+* ⏳ Sockets: Building a Server
 
-### Part 4: The Application Layer (Web & Cloud Protocols)
-* 📄 **Chapter 12:** [DNS Resolution Architecture](04-application-layer/01-dns-resolution.md) — How human-friendly domain names turn into IP addresses via distributed recursive resolvers and authoritative servers.
-* 📄 **Chapter 13:** `HTTP Evolution (HTTP/1.1 to HTTP/3 QUIC)` *(Week 3)* — Pipelining, binary framing, multiplexing, and UDP-based QUIC.
-* 📄 **Chapter 14:** `WebSockets & Real-Time Communication` *(Week 3)* — Persistent bi-directional sockets vs. HTTP polling.
+## Act 5: Across the Planet *(step 6)*
+* ⏳ The IP Packet, TTL & Latency
+* ⏳ Routing Basics & ICMP
+* ⏳ How Routers Learn Routes (Link State, Distance Vector, OSPF, BGP)
+* ⏳ NAT
 
-### Part 5: Security & Cryptography
-* 📄 **Chapter 15:** `TLS Handshake, Certificates & HTTPS` *(Week 3)* — Symmetric vs. Asymmetric encryption, RSA/Diffie-Hellman math, and certificate chains.
+## Act 6: Make It Private *(step 7)*
+* ⏳ Crypto Toolbox
+* ⏳ TLS & Certificates
+* ⏳ The TLS Handshake (1.2 vs 1.3)
 
-### Part 6: Cloud Networking & Exam Cram
-* 📄 **Chapter 16:** `NAT (Network Address Translation)` *(Week 4)* — Port Address Translation (PAT) and how multiple devices share a single public IP.
-* 📄 **Chapter 17:** `Reverse Proxies, Load Balancers & CDNs` *(Week 4)* — Nginx routing headers, L4 vs. L7 load balancing, and Cloudflare edge caching.
-* 📄 **Chapter 18:** `CUET Exam Numerical Speed Drills` *(Week 5)* — Step-by-step formulas for CRC polynomial division, Hamming codes, Subnetting math, and ALOHA throughput.
+## Act 7: The Conversation Evolves *(step 8)*
+* ⏳ HTTP/1.1 Limits
+* ⏳ HTTP/2
+* ⏳ QUIC & HTTP/3
+
+## Act 8: What Sits on the Path
+* ⏳ Proxies & Reverse Proxies
+* ⏳ Load Balancers & CDNs
+* ⏳ Firewalls, VPNs & SSH
+* ⏳ WebSockets & Real-Time; Email
+* ⏳ Error Detection, Multiple Access & Wi-Fi
+
+## Act 9: Close the Circle
+* ⏳ Capstone: End-to-End Trace
+
+## Epilogue: Other Roads *(optional, for curiosity)*
+* ⏳ Beyond HTTP: other protocols on the same road (WebRTC, SSH, email, database protocols, NTP, BitTorrent, gRPC)
 
 ---
 
-## 🛠️ Contribution & Style Guidelines
-Every chapter in this series follows the strict standard in [`NOTE_TEMPLATE.md`](NOTE_TEMPLATE.md):
-1. **Zero prior assumptions** — start with an intuitive real-world scenario.
-2. **ASCII diagrams** — visually map every packet and data flow.
-3. **Developer-grounded** — explain how concepts directly impact API latency, cloud deployment, and debugging logs.
-4. **No raw LaTeX markup** — formatted for universal markdown rendering.
+## Style Guidelines
+Every chapter follows [NOTE_TEMPLATE.md](NOTE_TEMPLATE.md) (Full or Compact):
+1. A **zoom-in banner** pointing to its lifecycle step.
+2. Start from a real-world problem; **no prior assumptions**.
+3. ASCII diagrams for packets and flows.
+4. **Developer-grounded**: hands-on commands and how it fails in production.
+5. **No LaTeX**; plain Unicode and code blocks so any Markdown viewer renders it.
+6. Close with a Revisit Log line added to the anchor note.

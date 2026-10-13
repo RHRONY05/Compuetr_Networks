@@ -1,80 +1,82 @@
-# Chapter [Number]: [Topic Title]
+# Note Templates
 
-> **Prerequisites:** [Link to previous chapter or background needed]  
-> **Estimated Reading Time:** [X] minutes  
-> **Key Goal:** [One clear sentence describing what the reader will understand by the end]
+Two sizes. Use **Full** for core topics a developer must truly understand. Use **Compact** for supporting topics. No LaTeX (`$...$`); use Unicode and code blocks.
 
 ---
 
-## 1. The Story So Far (Connecting the Dots)
+# FULL CHAPTER TEMPLATE
 
-Briefly bridge from the previous chapter. Where are we in the journey of a packet or the network stack? Why is this next step necessary?
+```markdown
+# [Topic Title]
+
+> **Zooming into:** Step [N] of the [lifecycle](../00-foundations/02-request-lifecycle.md) · Act [X]
+> **Prerequisites:** [previous chapter]
+> **Key Goal:** [One sentence: what you can do/explain after this]
+
+## 🔑 Keywords in This Lesson
+Introduce every new word **here, at the top**, in plain language. A word is defined in the lesson that first needs it, never earlier. Add each word to [GLOSSARY.md](../GLOSSARY.md).
+
+| Word | Plain meaning |
+|---|---|
+| [term] | [one-line meaning] |
 
 ---
 
-## 2. The Real-World Mystery / Problem to Solve
+## 1. The Story So Far
+Where did the journey leave off, and why is this the next step? One short paragraph.
 
-State the practical problem in everyday terms before introducing any jargon. Why did computer scientists and engineers need to invent this mechanism? What breaks without it?
+## 2. The Real-World Problem
+The everyday problem, before any jargon. What breaks without this mechanism?
 
----
+## 3. The Mental Model
+A rich analogy (post office, apartment building, roads) that anchors the concept.
 
-## 3. The Mental Model (Intuitive Analogy)
+## 4. Deep Dive & Mechanics
+Step-by-step flow, ASCII diagrams, bit/packet-level detail, worked example.
 
-Provide a rich, relatable real-world analogy (e.g., postal systems, apartment buildings, roads vs. vehicles) that anchors the concept before going into raw technical detail.
+## 5. Hands-On & Developer Lab
+* A concrete command or tool task (terminal, Wireshark, DevTools, code) and **what to look for** in the output.
+* Developer impact: APIs, DB connections, Docker, cloud VPCs, performance, security.
+* Project milestone link (A#), if any.
 
----
+## 6. Pitfalls & Production Reality
+* What videos simplified vs. reality.
+* How this shows up as bugs/errors (`ECONNREFUSED`, `ETIMEDOUT`, 502, cert errors).
 
-## 4. Deep Dive & Technical Mechanics
+## 7. Active Recall
+3–4 questions that test understanding, not memory. Answers in a collapsible `<details>` block.
 
-Explain how the system works at the bit, packet, and protocol level:
-* Step-by-step flow.
-* ASCII diagrams of packet structures, data paths, and state transitions.
-* Binary / mathematical walkthroughs (using clean Unicode characters, never LaTeX `$` syntax).
-
-```text
-[ASCII Flow Diagram of the Mechanism]
+## 8. Close the Loop
+* **Revisit Log line** (also paste into the anchor note): "[date] | [this chapter] | what step N now means."
+* **Bridge Forward:** what question this leaves open, and the next chapter link.
 ```
 
 ---
 
-## 5. Under the Hood: Hardware & Developer Lab
+# COMPACT NOTE TEMPLATE
 
-Connect the theory to real systems and software engineering:
-* **The Physical Reality:** How does this look on real network cards, cables, switches, or routers?
-* **Developer Context:** How does this impact backend APIs, database connections, Docker containers, or cloud VPCs?
-* **Hands-on Terminal Check:** A concrete command (`powershell`, `curl`, `netstat`, `ipconfig`, etc.) the reader can run immediately to observe this on their own computer.
+```markdown
+# [Topic Title]
 
----
+> **Zooming into:** Step [N] · Act [X] · [Back to anchor](../00-foundations/02-request-lifecycle.md)
 
-## 6. Common Pitfalls, Video Simplifications & Exam Traps
+**🔑 Keywords:** [term] = [meaning]; [term] = [meaning] *(add to GLOSSARY.md)*
 
-* **Video Simplifications vs. Real-World Reality:** Highlight what intro videos glossed over or simplified.
-* **Classic Exam Traps:** Common numerical and conceptual mistakes students make in university exams (e.g., CUET).
-* **Debugging Gotchas:** How this manifests as software bugs (`ECONNREFUSED`, `ETIMEDOUT`, routing loops).
+## Big Idea
+Two or three sentences.
 
----
+## Where It Sits in the Story
+What step it serves, what comes before and after.
 
-## 7. Active Recall & Self-Check
+## How It Works
+Key mechanics, a small diagram, key terms in a table.
 
-Provide 3–4 thoughtful self-test questions that test true understanding, not just rote memorization:
+## Try It
+One command or tiny code snippet, and what to look for.
 
-1. **Question 1**
-2. **Question 2**
-3. **Question 3**
+## Recall
+3 short questions (answers in `<details>`).
 
-<details>
-<summary><b>Click to reveal answers & explanations</b></summary>
-
-1. **Answer 1:** ...
-2. **Answer 2:** ...
-3. **Answer 3:** ...
-
-</details>
-
----
-
-## 8. What's Next? (The Bridge Forward)
-
-Tease the next chapter. What unanswered question does this chapter leave open, and what will we explore next?
-
-* **Next Chapter:** [Link to next chapter]
+## Revisit Log line
+"[date] | [this note] | what step N now means."
+```

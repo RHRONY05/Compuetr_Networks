@@ -1,361 +1,243 @@
-# CSE-311 Computer Networks: 6-Week Roadmap
+# Computer Networks: Story-Based Roadmap
 
-## Overview
+> **Goal:** Build a strong, durable foundation in computer networks as a **software developer** who wants to become a software engineer. Not exam-centric. Depth where it helps you reason about real systems (APIs, debugging, performance, security, cloud); brevity where it doesn't.
+> **Method:** One story (the life of an HTTP request), nine acts. Every topic is a zoom-in on one step of [the lifecycle map](../notes/00-foundations/02-request-lifecycle.md).
+> **Pace:** 2–3 hours per session, about one session a day. There is **no end date**; the unit of progress is a completed act. Estimated total: ~33 sessions.
 
-- **Duration:** 6 weeks (Oct 5 – Nov 15, 2026)
-- **Pace:** 8–10 hours/week, ~5–6 study days per week
-- **Order:** Kurose top-down (Intro → App → Transport → Network → Link → Security)
-- **Video Spine:** Kurose & Ross official lectures
-- **Labs:** Kurose Wireshark labs (standalone PDFs with step-by-step instructions)
-- **Exam:** Mid-November 2026
+---
 
-## Daily Study Routine (1.5–2 hours)
+## How This Plan Works
 
+### Sources (best tool per topic, not one playlist)
+
+| Tag | Source | Strength | Used for |
+|---|---|---|---|
+| **C##** | Chai aur Computer Network (49 videos) | Developer angle, Wireshark demos, HTTP/2/3, TLS, NAT | App/transport/TLS/IP anatomy topics |
+| **K#.#** | Kurose & Ross lectures (Ch1–6; no videos found for Ch7–8) | Clean top-down structure, deeper principles, animations | Foundations, transport principles, routing, link layer |
+| **AI** | Explanation by your AI tutor | Fills gaps with no video, adapts to you | Missing topics, security/crypto, infrastructure |
+
+Full catalogs: [video_index.md](video_index.md). You never watch a full lecture blind: AI fetches the transcript and gives a pre-flight briefing first, and you watch only the parts worth seeing.
+
+### Vocabulary: introduced just in time
+
+There is no up-front glossary. Every lesson starts with a **🔑 Keywords** block that introduces the words it needs, in plain language, right before they are used. Those words accumulate in [notes/GLOSSARY.md](../notes/GLOSSARY.md). Act 0 is deliberately small: [Internet Basics](../notes/00-foundations/01-internet-basics.md) (what the Internet and Web are) and the lifecycle anchor.
+
+### Depth tags used everywhere
+
+* 🟢 **Core now:** the mental model and mechanics you need today.
+* 🟡 **Nuance:** what videos simplify vs. how production actually works.
+* 🔵 **Deferred:** buzzwords to recognize and park; revisit only when a real need appears.
+* ⭐ **Build:** a hands-on or project step.
+
+### The Session Loop (every session, every act)
+
+```text
+  5 min │ RECALL    Write 3 things from last time, no notes.
+  5 min │ ANCHOR    Open the lifecycle note. Find today's step. Say it out loud.
+ 40 min │ LEARN     AI pre-flight briefing → targeted video sections / reading.
+ 45 min │ HANDS-ON  Run it on your own machine (terminal, Wireshark, DevTools).
+ 30 min │ BUILD     The act's project milestone (small, real code).
+ 15 min │ ASK       Doubts; ask "how does this fail in production?"
+ 15 min │ NOTE      "Create note about this." Update the anchor's Revisit Log.
 ```
- 5 min │ Recall: write 3 things from yesterday, no notes
-35 min │ Watch Kurose video lecture section (take notes)
-30 min │ Hands-on: Wireshark lab, terminal tool, or build
-15 min │ Come to AI: ask doubts, request developer angle
-10 min │ Review: update tracker, "create note about this"
- 5 min │ Preview: skim tomorrow's topic title
-```
 
----
+Sessions shorter than 3 hours trim BUILD or NOTE, never RECALL, ANCHOR or HANDS-ON.
 
-## Week 1: Internet Foundations + Application Layer (Oct 5–11, ~10 hrs)
+### The Project Thread: "Build the Stack"
 
-**Kurose:** Chapter 1 (Internet & protocols) + Chapter 2 (Application Layer)
-**Lectures:** https://gaia.cs.umass.edu/kurose_ross/videos/1 and https://gaia.cs.umass.edu/kurose_ross/videos/2
+One small codebase grows across the course. By the end, you've built the thing the lifecycle describes.
 
-**Syllabus topics covered:**
-- Definition of internet
-- Client-server and peer-to-peer models
-- Network access and physical media (overview)
-- ISPs and internet backbones
-- Packet-switched and circuit-switched networks
-- Protocol hierarchies and service models
-- Principles of application layer protocols
-- Web and HTTP
-- DNS
-- Electronic mail, SMTP, POP3, IMAP
-- File Transfer Protocol
-
-### Day 1 (Oct 5, Sun)
-- **Watch:** Kurose Ch1 sections 1.1–1.3 (Internet, network edge, network core)
-- **Hands-on:** Run `ipconfig`, identify default gateway, run `tracert google.com` and annotate hops
-- **Outcome:** Explain packet switching vs circuit switching; draw the path from laptop to server
-
-### Day 2 (Oct 6, Mon)
-- **Watch:** Kurose Ch1 sections 1.4–1.6 (delay/throughput, protocol layers, security intro)
-- **Hands-on:** Draw the 5-layer model and label one of your HTTP requests through each layer
-- **Outcome:** Calculate propagation + transmission delay for a simple example
-
-### Day 3 (Oct 7, Tue)
-- **Watch:** Kurose Ch2 sections 2.1–2.2 (App layer principles, HTTP)
-- **Hands-on:** Install Wireshark → **Wireshark Getting Started lab** → **HTTP lab**
-- **Lab PDFs:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_Intro_v9.0.pdf and https://www-net.cs.umass.edu/wireshark-labs/Wireshark_HTTP_v9.0.pdf
-- **Outcome:** Capture and read HTTP GET/response in Wireshark
-
-### Day 4 (Oct 8, Wed)
-- **Watch:** Kurose Ch2 sections 2.3–2.4 (Email: SMTP/POP3/IMAP, DNS)
-- **Hands-on:** **Wireshark DNS lab** + `nslookup` with different record types
-- **Lab PDF:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_DNS_v9.pdf
-- **Outcome:** Capture DNS queries in Wireshark; identify A, AAAA, CNAME records
-
-### Day 5 (Oct 9, Thu)
-- **Watch:** Kurose Ch2 sections 2.5–2.7 (P2P, video streaming/CDNs, socket programming intro)
-- **Hands-on:** Read Cloudflare's CDN page (15 min). Run `curl -v https://httpbin.org/get` and annotate every output line
-- **Outcome:** Explain how CDNs work and why P2P scales differently than client-server
-
-### Day 6 (Oct 10, Fri)
-- **Review day:** Come to AI for notes on Ch1 + Ch2 topics, take quiz
-- **Hands-on:** Create notes for all topics covered this week
-- **Mini-project:** Annotate `curl -v https://httpbin.org/get` output: identify DNS, TCP, TLS, HTTP layers
-
----
-
-## Week 2: Transport Layer (Oct 12–18, ~8 hrs)
-
-**Kurose:** Chapter 3 (Transport Layer)
-**Lectures:** https://gaia.cs.umass.edu/kurose_ross/videos/3
-
-**Syllabus topics covered:**
-- Transport layer services
-- Multiplexing and demultiplexing
-- Connectionless and connection-oriented transport
-- UDP
-- Principles of reliable data transfer
-- TCP
-- Connection management
-- Timer management
-- Principles of congestion control
-- Congestion and flow controls with TCP
-
-### Day 7 (Oct 12, Sun)
-- **Watch:** Kurose Ch3 sections 3.1–3.3 (Transport services, mux/demux, UDP)
-- **Hands-on:** **Wireshark UDP lab**
-- **Lab PDF:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_UDP_v9.pdf
-- **Outcome:** Explain multiplexing using port numbers; compare UDP header to TCP header
-
-### Day 8 (Oct 13, Mon)
-- **Watch:** Kurose Ch3 section 3.4 (Reliable data transfer principles — rdt 1.0, 2.0, 3.0)
-- **Hands-on:** Draw the rdt state machines from memory. Use Kurose's interactive animations
-- **Animations:** https://gaia.cs.umass.edu/kurose_ross/animations.php
-- **Outcome:** Explain stop-and-wait, pipelining, and why Go-Back-N and Selective Repeat exist
-
-### Day 9 (Oct 14, Tue)
-- **Watch:** Kurose Ch3 section 3.5 (TCP segment structure, seq/ack numbers, RTT estimation)
-- **Hands-on:** **Wireshark TCP lab** — identify SYN, SYN-ACK, ACK in a real capture
-- **Lab PDF:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_TCP_v9.pdf
-- **Outcome:** Read sequence and acknowledgment numbers from a Wireshark capture
-
-### Day 10 (Oct 15, Wed)
-- **Watch:** Kurose Ch3 section 3.5 continued (TCP connection management: 3-way handshake, teardown)
-- **Hands-on:** Use `netstat -ano` to see TCP connections in different states (ESTABLISHED, TIME_WAIT, etc.)
-- **Outcome:** Draw the TCP state diagram; explain why TIME_WAIT exists
-
-### Day 11 (Oct 16, Thu)
-- **Watch:** Kurose Ch3 sections 3.6–3.7 (Flow control, congestion control, TCP Reno/CUBIC)
-- **Hands-on:** Ask AI: "Explain TCP congestion control like I'm debugging a slow API response"
-- **Outcome:** Explain slow start, congestion avoidance, fast retransmit, fast recovery
-
-### Day 12 (Oct 17, Fri)
-- **Review day:** Notes, quiz, catch-up
-- **Mini-project:** Write a TCP echo server in Python or Node.js using raw sockets. Connect with `telnet`
-
----
-
-## Week 3: Network Layer (Oct 19–25, ~10 hrs)
-
-**Kurose:** Chapter 4 (Data Plane) + Chapter 5 (Control Plane)
-**Lectures:** https://gaia.cs.umass.edu/kurose_ross/videos/4 and https://gaia.cs.umass.edu/kurose_ross/videos/5
-
-**Syllabus topics covered:**
-- Network layer services
-- Internet Protocol, IPv4, IPv6
-- IP addressing, Subnetting, VLSM
-- ICMP
-- DHCP and NAT
-- Fragmentation and reassembly
-- Router architecture
-- Routing principles
-- Distance vector routing
-- Link state routing
-- Hierarchical routing
-- Multicast routing
-- Congestion control (network layer)
-- Mobile IP
-- Internetworking
-- WAN technologies and protocols
-- Introduction to 5G and next generation networks
-
-### Day 13 (Oct 19, Sun)
-- **Watch:** Kurose Ch4 sections 4.1–4.2 (Network layer overview, what's inside a router)
-- **Hands-on:** Conceptual — draw the data plane vs control plane distinction
-- **Outcome:** Explain forwarding vs routing; describe input/output port processing
-
-### Day 14 (Oct 20, Mon)
-- **Watch:** Kurose Ch4 section 4.3 (IPv4, addressing, subnetting, CIDR, NAT)
-- **Hands-on:** **Wireshark IP lab** + **NAT lab**. Practice: subnet 192.168.1.0/24 into 4 subnets by hand
-- **Lab PDFs:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_IP_v9.pdf and https://www-net.cs.umass.edu/wireshark-labs/Wireshark_NAT_v9.pdf
-- **Outcome:** Calculate network address, broadcast, host range for any /prefix
-
-### Day 15 (Oct 21, Tue)
-- **Watch:** Kurose Ch4 sections 4.3 continued (DHCP, IPv6) + 4.4 (Generalized forwarding, SDN)
-- **Hands-on:** **Wireshark DHCP lab**. Run `ipconfig /all` and identify every DHCP-assigned field
-- **Lab PDF:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_DHCP_v9.pdf
-- **Outcome:** Explain DORA (Discover, Offer, Request, Acknowledge); describe IPv6 motivation
-
-### Day 16 (Oct 22, Wed)
-- **Watch:** Kurose Ch5 sections 5.1–5.2 (Routing algorithms: link state, distance vector)
-- **Hands-on:** Work through Dijkstra's algorithm and Bellman-Ford on a 6-node graph by hand
-- **Outcome:** Trace both algorithms step-by-step; explain count-to-infinity problem
-
-### Day 17 (Oct 23, Thu)
-- **Watch:** Kurose Ch5 sections 5.3–5.4 (Intra-AS: OSPF, Inter-AS: BGP)
-- **Hands-on:** Run `tracert` to 3 different sites, identify where AS boundaries likely are
-- **Outcome:** Explain why the internet uses hierarchical routing; distinguish OSPF from BGP
-
-### Day 18 (Oct 24, Fri)
-- **Watch:** Kurose Ch5 sections 5.5–5.7 (SDN control plane, ICMP, network management/SNMP)
-- **Hands-on:** **Wireshark ICMP lab** (using ping and traceroute captures)
-- **Outcome:** Explain ICMP message types; how traceroute uses TTL
-
-### Day 19 (Oct 25, Sat)
-- **Review day:** Notes, quiz. **15-min daily subnetting drills start here (continue through exam)**
-- **Mini-project:** VLSM exercise: allocate IPs for a company with 3 departments needing 30, 60, and 120 hosts
-
----
-
-## Week 4: Link Layer + Wireless (Oct 26–Nov 1, ~10 hrs)
-
-**Kurose:** Chapter 6 (Link Layer) + Chapter 7 (Wireless)
-**Lectures:** https://gaia.cs.umass.edu/kurose_ross/videos/6 and https://gaia.cs.umass.edu/kurose_ross/videos/7
-
-**Syllabus topics covered:**
-- Physical and data link layer services
-- Error detection and correction techniques
-- Flow control
-- Multiple access protocols (CSMA, CSMA/CD, ALOHA, Slotted ALOHA)
-- Network topology
-- Token Ring and FDDI
-- Hub, Bridge and switch, STP
-- LAN protocols and IEEE 802.*
-- PPP, HDLC
-- ARP and RARP
-- Ethernet, Fast Ethernet, Gigabit Ethernet
-- ATM and Frame Relay
-- Wi-Fi and WLAN architecture
-- Bluetooth
-- MPLS
-- Virtualization
-
-### Day 20 (Oct 26, Sun)
-- **Watch:** Kurose Ch6 sections 6.1–6.2 (Link layer intro, error detection: parity, CRC, checksums)
-- **Hands-on:** Work through a CRC calculation by hand with a small example
-- **Outcome:** Explain parity check, internet checksum, and CRC; when each is used
-
-### Day 21 (Oct 27, Mon)
-- **Watch:** Kurose Ch6 section 6.3 (Multiple access: channel partitioning, random access, taking turns)
-- **Hands-on:** Use Kurose's interactive ALOHA/CSMA animations
-- **Outcome:** Compare pure ALOHA, slotted ALOHA, CSMA, CSMA/CD; explain why Ethernet uses CSMA/CD
-
-### Day 22 (Oct 28, Tue)
-- **Watch:** Kurose Ch6 section 6.4 (Switched LANs: MAC addresses, ARP, Ethernet, switches, VLANs)
-- **Hands-on:** **Wireshark Ethernet and ARP lab**
-- **Lab PDF:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_Ethernet_ARP_v9.pdf
-- **Outcome:** Capture ARP request/reply; explain why ARP is needed alongside IP
-
-### Day 23 (Oct 29, Wed)
-- **Watch:** Kurose Ch6 sections 6.5–6.7 (Link virtualization: MPLS, data center networking)
-- **Hands-on:** Ask AI about: PPP, HDLC, ATM, Frame Relay, STP, Token Ring, FDDI (syllabus items Kurose covers briefly)
-- **Outcome:** Brief notes on each; understand STP's purpose in preventing loops
-
-### Day 24 (Oct 30, Thu)
-- **Watch:** Kurose Ch7 sections 7.1–7.3 (Wireless links, WiFi 802.11, cellular architecture)
-- **Hands-on:** **Wireshark 802.11 WiFi lab**
-- **Lab PDF:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_802.11_v9.pdf
-- **Outcome:** Explain hidden terminal problem; compare WiFi (CSMA/CA) to Ethernet (CSMA/CD)
-
-### Day 25 (Oct 31, Fri)
-- **Watch:** Kurose Ch7 continued (mobility, cellular, Bluetooth, 5G overview)
-- **Hands-on:** Notes + quiz. Gap-fill for syllabus topics Kurose covers lightly
-- **Outcome:** Brief notes on Bluetooth, 5G, mobility management
-
-### Day 26 (Nov 1, Sat)
-- **Review day + Mini-project:** Create a Docker bridge network. Run 2 containers, ping between them, inspect MAC addresses with `docker network inspect`
-
----
-
-## Week 5: Security + Socket Programming (Nov 2–8, ~8 hrs)
-
-**Kurose:** Chapter 8 (Security — note: official videos may be incomplete, supplement with AI)
-**Lectures:** https://gaia.cs.umass.edu/kurose_ross/lectures.php (Ch8 link when available)
-
-**Syllabus topics covered:**
-- Socket programming with TCP and UDP
-- SNMP
-- Security issues in computer networks
-- Principles of cryptography
-- Symmetric key cryptography, DES, IDEA
-- Public key encryption, RSA
-- MD5
-- SSH
-- Message integrity and digital signatures
-- End-point authentication
-- Diffie-Hellman key exchange algorithm
-- Access-control list
-- Gateway
-- Firewalls
-- Intrusion detection systems
-- Blockchain
-
-### Day 27 (Nov 2, Sun)
-- **Watch:** Kurose Ch8 sections 8.1–8.3 (Security principles, symmetric crypto, public key crypto)
-- **Hands-on:** Hash a file: `certutil -hashfile yourfile.txt MD5`, change 1 byte, re-hash. See avalanche effect
-- **Outcome:** Distinguish symmetric vs asymmetric encryption; explain DES, AES, RSA at a high level
-
-### Day 28 (Nov 3, Mon)
-- **Watch:** Kurose Ch8 sections 8.4–8.5 (Message integrity, digital signatures, key distribution)
-- **Hands-on:** Inspect an HTTPS certificate in browser (click padlock → certificate → details)
-- **Outcome:** Explain hash functions, MACs, digital signatures, and certificate chains
-
-### Day 29 (Nov 4, Tue)
-- **Watch:** Kurose Ch8 sections 8.6–8.8 (TLS, IPsec, firewalls, IDS)
-- **Hands-on:** **Wireshark TLS lab** + `curl -v https://google.com` — annotate the TLS handshake steps
-- **Lab PDF:** https://www-net.cs.umass.edu/wireshark-labs/Wireshark_TLS_v9.pdf
-- **Outcome:** Trace a TLS 1.3 handshake; explain why HTTPS needs both asymmetric and symmetric crypto
-
-### Day 30 (Nov 5, Wed)
-- **Study with AI:** SSH internals, Diffie-Hellman key exchange, ACLs, gateways, IDEA, MD5 details, Blockchain basics
-- **Hands-on:** If SSH available: run `ssh -v` and read the handshake output
-- **Outcome:** Exam-ready notes on all Module 6 topics
-
-### Day 31 (Nov 6, Thu)
-- **Watch:** Kurose Ch2.7 revisited (Socket programming)
-- **Hands-on:** Build a TCP chat server + client in Python or Node.js
-- **Outcome:** Working client-server program; understand bind, listen, accept, connect
-
-### Day 32 (Nov 7, Fri)
-- **Build:** UDP echo server. Compare the code to the TCP version
-- **Hands-on:** Capture your own TCP/UDP program's traffic in Wireshark
-- **Outcome:** See your own SYN-ACK handshake and data packets
-
----
-
-## Week 6: Review, Integration, and Exam Prep (Nov 9–15, ~8 hrs)
-
-**No new lectures.** Pure consolidation, practice, and the capstone project.
-
-### Day 33 (Nov 9, Sun)
-- **End-to-end trace:** Open Wireshark, visit a website, annotate every packet layer by layer
-- **Write:** A complete narrative of "what happens when I type a URL and press Enter"
-
-### Day 34 (Nov 10, Mon)
-- **Review:** Module 1 + Module 5 (Introduction + Application Layer)
-- **Do:** Kurose knowledge checks for Ch1 + Ch2 at https://gaia.cs.umass.edu/kurose_ross/knowledgechecks/
-- **Quiz with AI** on HTTP, DNS, SMTP, FTP, socket programming
-
-### Day 35 (Nov 11, Tue)
-- **Review:** Module 4 + Module 3 (Transport + Network Layer)
-- **Drills:** Subnetting speed drills, routing algorithm practice, TCP state diagram from memory
-- **Quiz with AI** on TCP, UDP, IP, DHCP, NAT, routing algorithms
-
-### Day 36 (Nov 12, Wed)
-- **Review:** Module 2 + Module 6 (Link Layer + Security)
-- **Create:** Protocol comparison tables, security concept maps
-- **Quiz with AI** on ARP, Ethernet, CSMA, TLS, RSA, firewalls
-
-### Day 37 (Nov 13, Thu) — CAPSTONE
-- **Build:** Docker Compose project: 2 backend containers + Nginx reverse proxy + self-signed HTTPS
-- **Trace:** Use `curl -v` and Wireshark to trace one request end-to-end through the system
-- **Document:** Which layer handles what in your Docker setup
-
-### Day 38 (Nov 14, Fri)
-- **Mock exam:** Ask AI for a 30-question timed mixed-topic exam
-- **Fix:** Weak spots identified in mock exam
-
-### Day 39 (Nov 15, Sat) — BUFFER
-- **Final review:** Focus on weak areas only
-- **Create:** One-page personal revision cheat sheet
-
----
-
-## Wireshark Lab Quick Reference
-
-All labs are standalone PDFs with step-by-step instructions. Download trace files: https://www-net.cs.umass.edu/wireshark-labs/wireshark-traces-9e.zip
-
-| Lab | When | PDF Link |
+| Milestone | Act | What you build |
 |---|---|---|
-| Getting Started | Week 1, Day 3 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_Intro_v9.0.pdf |
-| HTTP | Week 1, Day 3 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_HTTP_v9.0.pdf |
-| DNS | Week 1, Day 4 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_DNS_v9.pdf |
-| UDP | Week 2, Day 7 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_UDP_v9.pdf |
-| TCP | Week 2, Day 9 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_TCP_v9.pdf |
-| IP | Week 3, Day 14 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_IP_v9.pdf |
-| NAT | Week 3, Day 14 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_NAT_v9.pdf |
-| DHCP | Week 3, Day 15 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_DHCP_v9.pdf |
-| ICMP | Week 3, Day 18 | (v8.0 available) |
-| Ethernet & ARP | Week 4, Day 22 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_Ethernet_ARP_v9.pdf |
-| 802.11 WiFi | Week 4, Day 24 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_802.11_v9.pdf |
-| TLS | Week 5, Day 29 | https://www-net.cs.umass.edu/wireshark-labs/Wireshark_TLS_v9.pdf |
+| A1 | 1 | Send a raw HTTP request by typing the text yourself over a socket |
+| A2 | 1 | *(stretch)* Hand-build a DNS query as bytes over UDP and parse the reply |
+| A3 | 2 | `is_local(my_ip, mask, target)` and a CIDR calculator using bit operations |
+| A4 | 3 | Read your ARP table; *(stretch)* send an ARP request with `scapy` |
+| A5 | 4 | TCP echo server and client → then a tiny HTTP/1.1 server serving `/profile` JSON |
+| A6 | 5 | *(stretch)* A mini `traceroute` using TTL |
+| A7 | 6 | Wrap your server in TLS with a self-signed certificate |
+| A8 | 7 | Compare HTTP/1.1 and HTTP/2 on the same page; enable HTTP/2 on Nginx |
+| A9 | 8 | Docker Compose: Nginx reverse proxy + 2 backends + TLS |
+| ★ | 9 | Trace one request through all of it, in Wireshark, layer by layer |
+
+### Tools used (the AI will guide installs and usage)
+
+Terminal (`curl`, `ipconfig`, `route print`, `arp`, `tracert`, `nslookup`, `netstat`), **Wireshark**, browser **DevTools → Network**, Python (`socket`, `ssl`, optionally `scapy`), `openssl`, **Docker**, and optionally **Cisco Packet Tracer** to visualize switches, subnets and routing in a simulated network. The AI can also build small interactive visualizer pages (subnet calculator, TCP handshake stepper, routing-algorithm stepper) when a picture would help.
+
+---
+
+## Act 0: The Trigger ✅ *(done)*
+
+**Story step:** The `fetch()` call, the Internet as packets.
+**Done:** C1, C2 · notes [01 Internet Basics](../notes/00-foundations/01-internet-basics.md), [02 Request Lifecycle](../notes/00-foundations/02-request-lifecycle.md) (rewritten as the anchor)
+**Premise only:** the Internet moves data as independent packets (this is why every packet carries addresses). The deep treatment of packet vs. circuit switching waits for Act 5.1, where routers appear.
+**Optional reinforcement (🔵):** K1.1–K1.2 (what the Internet is, the edge).
+
+---
+
+## Act 1: Name → Address (steps 1, 2) · ~3 sessions
+
+*Question: What exactly do I send, how do I find where to send it, and what is the number I get back?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **1.1 HTTP, the text protocol** | C29, C31 · K2.2 part 1 (optional) · 🟢 request line, headers, body, status codes, methods · 🟡 `Host` header, keep-alive · 🔵 HTTP evolution (waits for Act 7) | `curl -v`, DevTools Network tab · ⭐ **A1** raw HTTP over a socket |
+| **1.2 DNS, the phone book** | C26, C27, C28 · K2.4 · 🟢 resolver → root → TLD → authoritative, caching, record types (A, AAAA, CNAME, MX, TXT, NS) · 🟡 TTL, why DNS uses UDP · 🔵 DNSSEC, DoH | `nslookup`, `nslookup -type=MX`, `ipconfig /displaydns`; Wireshark DNS capture · ⭐ **A2** (stretch) |
+| **1.3 The number DNS gave us** ✅ *learned, note to adapt* | C3, C4 · 🟢 what an IP address is, octets and binary, network part vs. host part, CIDR (`/24`), private vs. public | `ipconfig` (your own IP and prefix) · note [IP & CIDR](../notes/02-network-layer/01-ip-and-cidr.md) *(rework to follow DNS: add Keywords block and zoom banner, open with "DNS just handed us 203.0.113.10")* |
+
+**Notes:** `04-application-layer/` HTTP basics (new) · rewrite DNS note into handbook format.
+
+---
+
+## Act 2: Local or Remote? (step 4) · ~3 sessions
+
+*Question: Is that IP in my room or outside it? Who is my way out?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **2.0 The subnet mask** ✅ *learned, note to adapt* | C5 · bitwise AND, how the OS decides local vs. remote | `ipconfig` done · note [Subnet Masks & Switches](../notes/02-network-layer/02-subnet-masks-and-switches.md) *(rework: Keywords block, zoom banner, open from "we have a destination IP; is it ours?")* |
+| **2.1 The Gateway** | C6, C7 · 🟢 default gateway, the routing table, `0.0.0.0/0` · 🟡 the gateway is also a router + NAT box at home · 🔵 static routes | `route print`, `ipconfig`, `tracert 8.8.8.8` (hop 1 = gateway) · ⭐ **A3** `is_local()` + CIDR calculator |
+| **2.2 Who gave me these numbers? (DHCP)** | AI + K4.3 (DHCP section) · 🟢 DORA: Discover, Offer, Request, Acknowledge; IP, mask, gateway, DNS from one lease | `ipconfig /all` (lease fields); Wireshark DHCP (`ipconfig /release` then `/renew`) |
+
+**Notes:** `02-network-layer/` Default Gateway (new), DHCP (new).
+
+---
+
+## Act 3: The Next Physical Hop (step 5) · ~2 sessions
+
+*Question: A gateway has an IP. How does my Wi-Fi card reach it physically?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **3.1 MAC and ARP** | C8, C9, C10 · K6.1 · 🟢 MAC vs IP (scope), ARP request/reply/cache, why the frame carries the gateway MAC · 🟡 ARP spoofing as a security idea · 🔵 RARP | `getmac`, `arp -a`, `arp -d` then ping gateway; Wireshark ARP · ⭐ **A4** |
+| **3.2 Switch, hub, Ethernet** | AI (Kurose 6.4 has no video) · 🟢 Ethernet frame fields, switch MAC table, hub vs switch vs router · 🟡 broadcast domains, VLANs in cloud (VPC subnets) · 🔵 STP, token ring | Packet Tracer: 3 PCs + a switch, watch the MAC table fill |
+
+**Notes:** `01-data-link/` MAC & ARP, Ethernet & Switches.
+
+---
+
+## Act 4: The Reliable Pipe (step 3) · ~6 sessions
+
+*Question: Which program gets this, and what if packets are lost, reordered, or too many?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **4.1 Ports and UDP** | C14, C15, C16 · K3.1, K3.2, K3.3 · 🟢 ports, sockets, mux/demux, UDP header, when UDP wins (DNS, games, streaming) | `netstat -ano` (find your dev server's port); Wireshark UDP · **Protocol landscape exercise:** place DNS, SSH, SMTP, WebRTC/RTP, NTP, Postgres, game traffic: TCP or UDP? which port? why? |
+| **4.2 TCP: the connection** | C17, C18, C19 · K3.5-1 · 🟢 3-way handshake, 4-way teardown, why connections have states · 🟡 TIME_WAIT, port exhaustion | `netstat -ano` states; Wireshark SYN/SYN-ACK/ACK |
+| **4.3 TCP: bytes and numbers** | C20, C21 · 🟢 sequence/ack numbers, segment anatomy, retransmission | Wireshark TCP follow-stream; read real seq/ack |
+| **4.4 Why TCP is built this way** | K3.4-1, K3.4-2 · C22 · 🟢 stop-and-wait → pipelining → sliding window (the "invent TCP" story), MTU/MSS/PMTUD · 🔵 Go-Back-N vs Selective Repeat internals | `ping -f -l 1472 8.8.8.8` to find your MTU |
+| **4.5 Flow and congestion control** | C23, C24 · K3.5-2, K3.6, K3.7 · 🟢 receive window, slow start, congestion avoidance, why a new connection is slow · 🔵 CUBIC/BBR details | Wireshark TCP window graph or DevTools throttling |
+| **4.6 Sockets: build it** | C25 · K2.7 · 🟢 `bind/listen/accept/connect` | ⭐ **A5** echo server → HTTP/1.1 server serving `/profile` |
+
+**Notes:** `03-transport-layer/` Ports & UDP, TCP Handshake & Teardown, Sequence Numbers, MTU/MSS, Flow & Congestion Control, Sockets.
+
+---
+
+## Act 5: Across the Planet (step 6) · ~4 sessions
+
+*Question: How do routers carry this across oceans, and how does the reply find me?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **5.1 The IP packet and the network core** | C48, C49 · K1.3 · K4.3 · K1.4 · 🟢 packet switching vs. circuit switching (store-and-forward, statistical multiplexing; a TCP connection is **not** a circuit), IPv4 header (TTL, protocol, fragmentation), delay/latency/throughput · 🔵 FDM/TDM details, IPv6 detail | Wireshark: read an IPv4 header; `ping -n`, observe TTL |
+| **5.2 Routing and ICMP** | C12, C13 · K4.1, K4.2 (light), K5.1, K5.6 · 🟢 forwarding vs routing, longest-prefix match, how `ping`/`traceroute` work via ICMP/TTL | `tracert` to 3 sites, annotate hops · ⭐ **A6** (stretch) |
+| **5.3 How routers learn routes** | K5.2 (link state), K5.2-2 (distance vector), K5.3 OSPF, K5.4 BGP · 🟢 concept of each, why the Internet uses hierarchy (inside an ISP vs between ISPs) · 🟡 BGP leaks/outages as real incidents · 🔵 algorithm math | Packet Tracer: static route then RIP/OSPF between two routers |
+| **5.4 NAT** | C47 · K4.3 · 🟢 private↔public, port mapping table, why servers behind NAT are unreachable · 🟡 port forwarding, CGNAT | Compare `ipconfig` IP vs "what is my IP" site |
+
+**Notes:** `02-network-layer/` IP Packet & TTL, Routing Basics, ICMP, NAT.
+
+---
+
+## Act 6: Make It Private (step 7) · ~4 sessions
+
+*Question: How can two strangers agree on a secret on a public wire?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **6.1 Crypto toolbox** | AI + K1.6 · 🟢 symmetric vs asymmetric, hashing, MACs, digital signatures · 🔵 DES/IDEA internals | `certutil -hashfile` and change one byte (avalanche effect) |
+| **6.2 TLS overview and certificates** | C41, C43 · 🟢 what TLS guarantees (confidentiality, integrity, identity), certificate chains, CAs | Browser padlock → inspect the chain; `openssl s_client -connect` |
+| **6.3 The handshake** | C45 (TLS 1.2), C46 (TLS 1.3), C44 (Diffie-Hellman) · 🟢 key exchange idea, forward secrecy · 🟡 1.3 is 1 round trip · 🔵 RSA math (C42) | Wireshark TLS handshake; `curl -v` annotated |
+| **6.4 TLS in your server** | AI · 🟢 `ssl` module, cert files, SNI | ⭐ **A7** TLS around your A5 server |
+
+**Notes:** `05-security/` Crypto Toolbox, TLS & Certificates, TLS Handshake.
+
+---
+
+## Act 7: The Conversation Evolves (step 8) · ~3 sessions
+
+*Question: Why was HTTP rewritten twice?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **7.1 HTTP/1.1 limits** | C30, C32, C33 · K2.2 part 2 (caching, conditional GET) · 🟢 persistent connections, head-of-line blocking, why browsers open 6 connections | DevTools waterfall on a many-asset page |
+| **7.2 HTTP/2** | C34, C35, C36, C37, C38 · 🟢 streams, multiplexing, binary frames, HPACK idea · 🟡 TCP-level HOL blocking remains · 🔵 frame byte layouts | DevTools protocol column = `h2`; `curl --http2 -v` |
+| **7.3 QUIC and HTTP/3** | C39, C40, K3.8 · 🟢 why UDP again, per-stream loss recovery, 0-RTT · 🔵 QUIC packet internals | `curl --http3` (if supported); DevTools `h3` · ⭐ **A8** |
+
+**Notes:** `04-application-layer/` HTTP/1.1 Limits, HTTP/2, QUIC & HTTP/3.
+
+---
+
+## Act 8: What Sits on the Path in Real Systems · ~5 sessions
+
+*Question: Between your code and a production server, what else is there?*
+
+| Session | Learn | Hands-on / Build |
+|---|---|---|
+| **8.1 Proxies and reverse proxies** | AI · 🟢 forward vs reverse, `X-Forwarded-For`, TLS termination | Nginx in Docker; inspect added headers |
+| **8.2 Load balancers and CDNs** | K2.6, K4.5 · AI · 🟢 L4 vs L7, health checks, edge caching, `cache-control` | `curl -I` on a CDN-backed site (`cf-cache-status`) |
+| **8.3 Firewalls, VPNs, SSH** | AI · 🟢 stateful firewall, ACLs, tunnels, how SSH authenticates · 🔵 IDS internals | `ssh -v`; Windows firewall rule |
+| **8.4 Real-time and email** | AI · K2.3 · 🟢 WebSockets and SSE vs polling; SMTP/IMAP at a glance | DevTools → WS frames on a live chat site |
+| **8.5 LAN and wireless depth** | K6.2, K6.3 · AI · 🟢 error detection idea (CRC), why shared media needs rules (CSMA), Wi-Fi vs Ethernet · 🔵 Bluetooth, 5G, legacy tech (see appendix) | Wireshark 802.11 *(only if hardware allows)* |
+
+**Project ⭐ A9:** Docker Compose with Nginx reverse proxy, 2 backends, TLS.
+**Notes:** `05-security/` Firewalls & VPNs; `04-application-layer/` Proxies, Load Balancers & CDN, WebSockets; `01-data-link/` Error Detection & Multiple Access.
+
+---
+
+## Act 9: Close the Circle · ~2 sessions
+
+*Question: Can you now explain every step, from memory, and prove it with a capture?*
+
+* **File the story into the layer models:** C11 (OSI vs TCP/IP), K1.5 (layering, encapsulation). You have lived every layer by now, so the models stop being abstract and become a filing cabinet for what you already know.
+* Wireshark capture of one request to your A9 stack. Annotate every layer.
+* Re-write the lifecycle story **in your own words**, one paragraph per step, then compare with the anchor note.
+* Fill the Revisit Log. Close all ⏳ in the "You Are Here" map.
+* Ask the AI for a "break it" challenge: it describes a failure (timeout, 502, slow TLS, cert error) and you diagnose which step failed.
+
+---
+
+## Epilogue: Other Roads (curiosity, after the journey)
+
+*Question: HTTP was one language on the shared road. What do the others look like?*
+
+Every protocol below uses the same IP, routing and link layers you learned. Only the top layer (what the messages mean) and the TCP-or-UDP choice differ. For each one, ask: **what language does it speak, TCP or UDP, which port, and why?** One short note or AI explanation each, picked in any order, whenever curiosity strikes.
+
+| Road | Rides on | Why it isn't HTTP |
+|---|---|---|
+| Voice and video calls (WebRTC, RTP/SRTP) | UDP | Late audio is useless, so drop it instead of resending |
+| Online games | UDP (custom binary) | Dozens of position updates per second; freshness beats completeness |
+| SSH | TCP 22 | Interactive remote shell and tunnels *(basics in Act 8.3)* |
+| Email (SMTP, IMAP, POP3) | TCP 25/587, 993, 995 | Store-and-forward mail between servers *(basics in Act 8.4)* |
+| Database wire protocols (Postgres, MySQL, Redis RESP) | TCP | Compact binary messages on long-lived connections |
+| Message streaming (Kafka, AMQP) | TCP | High-throughput event pipes between servers |
+| NTP (clock sync) | UDP 123 | Tiny, frequent, and stale replies are worthless |
+| BitTorrent (P2P) | TCP/UDP | Many peers share pieces; no central server |
+| gRPC | HTTP/2 | Still HTTP underneath, a nice twist after Act 7 |
+| DHCP, ICMP, BGP, OSPF | UDP / IP / TCP | The Internet's own plumbing *(covered in Acts 2 and 5)* |
+
+---
+
+## Appendix: Syllabus Coverage Map (for completeness, not driving)
+
+The course syllabus is [syllabus.md](syllabus.md). Where each module lives in this plan:
+
+| Syllabus module | Covered in |
+|---|---|
+| 1. Introduction (Internet, models, switching) | Act 0, Act 5.1, Act 8 |
+| 2. Link layer (error detection, multiple access, ARP, Ethernet, switches, Wi-Fi) | Acts 3, 8.5 |
+| 3. Network layer (IP, subnetting, ICMP, DHCP, NAT, routing) | Acts 2, 5 |
+| 4. Transport layer | Act 4 |
+| 5. Application layer (HTTP, DNS, email, sockets) | Acts 1, 4.6, 7, 8.4 |
+| 6. Security (crypto, TLS, firewalls, SSH) | Acts 6, 8.3 |
+| Legacy items (ATM, Frame Relay, Token Ring, FDDI, HDLC, PPP, MPLS, Mobile IP, Blockchain, IDEA) | Not in the main path. Brief AI notes on request. |
+| By-hand numericals (subnetting, VLSM, CRC, Hamming, ALOHA, Dijkstra, Bellman-Ford) | Practiced inside their acts as understanding tools. A dedicated drill block can be added later if you want one. |

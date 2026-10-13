@@ -1,17 +1,16 @@
 ---
 name: start-session
 description: >
-  Start a CN study session. Reads progress from the tracker, determines
-  what day/week the student is on, and presents today's plan: which chai aur code's computer network
-  lecture to watch, which Wireshark lab to do, and what hands-on practice
-  to complete. Use at the beginning of every session in this workspace.
+  Start a Computer Networks study session. Reads progress from the tracker,
+  finds the current act and session, anchors it in the lifecycle story, fetches
+  transcripts for the session's videos, and presents a pre-flight briefing with
+  a hands-on task. Use at the beginning of every session in this workspace.
 ---
 
 # Start Session Skill
 
 ## When to Activate
 
-Activate this skill when:
 - The student opens this workspace and starts a conversation
 - The student says "start session", "what should I study today", "continue", or similar
 - The student uses `/start-session`
@@ -21,88 +20,85 @@ Activate this skill when:
 
 ### Step 1: Read Progress State
 
-Read these files in order:
-1. `course-memory/tracker.md` — current week, day, and completion status
-2. `course-memory/roadmap.md` — the 6-week plan with daily breakdowns
+Read in order:
+1. `course-memory/tracker.md`: current act and session, completion status
+2. `course-memory/roadmap.md`: the session's sources, hands-on and project milestone
+3. `notes/00-foundations/02-request-lifecycle.md`: the anchor note (for the "You Are Here" map and Revisit Log)
 
 ### Step 2: Determine Today's Position
 
-1. Check the `Current Position` section in `tracker.md` for the current week and day.
-2. Look at the completion checkboxes for that day. If all items are checked, advance to the next day.
-3. If the student is between days (e.g., finished yesterday, hasn't started today), suggest the next day's plan.
+1. Read `Current Position` in the tracker (act + session).
+2. If all of that session's items are checked, advance to the next session.
+3. If the student's request differs from the plan (curiosity detour, a doubt), answer it, locate it in the story, then offer to return.
 
-### Step 2.5: Auto-Fetch Transcripts for Today's Videos
+### Step 2.5: Fetch Transcripts
 
-For each video assigned to today in `tracker.md`:
-1. Look up the video title and URL in `course-memory/video_index.md`.
-2. Automatically run `python scripts/get_transcript.py "<VIDEO_URL>"` in the background to retrieve the English transcript.
-3. Synthesize the transcript into a high-yield pre-flight breakdown.
+For each video tagged in the session (`C##` Chai, `K#.#` Kurose):
+1. Look up the URL in `course-memory/video_index.md`.
+2. Run `python scripts/get_transcript.py "<URL>"` to get the English transcript.
+3. Synthesize into a high-yield pre-flight breakdown.
+4. If a topic has no video (tag **AI**), prepare the explanation yourself.
 
-### Step 3: Present the Session Briefing & Pre-Flight Explanations
-
-Output a concise briefing in this format:
+### Step 3: Present the Session Briefing
 
 ```
-## 📍 Session Briefing — Week X, Day Y
+## 📍 Session Briefing: Act X · Session X.Y
+**Progress:** N of 33 sessions · Act X: <name>
 
-**Status:** [X of 29 days completed] | [X of 5 weeks done]
+### 🗺️ Where we are in the story
+Lifecycle step N: "<the question this step answers>"
+Last time: <where we ended>. Today: <what we zoom into>. Next: <what follows>.
 
----
+### 🔑 Keywords we meet today
+Each new word with a one-line plain meaning. Introduce words here, just before they are needed; do not explain terms from later acts.
 
-### Today's Topic: [Topic Title]
+### 🎬 Today's sources
+- C## <title> <link> | K#.# <title> <link> | AI-explained: <topic>
 
-For each assigned video:
+### 🟢 Core concepts
+Mental model + mechanics for today, tied to the story.
+### 🟡 Nuance & simplifications
+What the videos simplify vs how production actually works.
+### 🔵 Deferred
+Buzzwords to recognize and park.
 
-#### 🎬 Video [N]: [Video Title]
-- **Direct Link:** [YouTube URL]
-- 🟢 **Core Concepts:** High-yield mental model and technical mechanics.
-- 🟡 **Nuance & Simplification Alert:** What Hitesh simplified vs production / CUET syllabus.
-- 🔵 **Deferred Concepts:** Terms mentioned in passing to ignore for now (saving time).
-
----
-
-### 🔬 Hands-on Practice
-[What terminal command or Wireshark inspection to run today]
-
----
+### ⭐ Hands-on & Build
+Terminal / Wireshark / DevTools task (what to run, what to look for).
+Project milestone for this act (A#), if scheduled.
 
 ### Next Steps
-1. Read the breakdown above. If anything is unclear, watch the video (or target specific timestamps).
-2. Ask any doubts.
-3. Say "create note about [topic]" to generate notes.
-4. Say "quiz me" for active recall.
-5. Say "done for today" to mark progress in tracker.md.
+1. Read the briefing; watch targeted sections only if something is unclear.
+2. Do the hands-on task.
+3. Ask doubts. Say "create note about <topic>" for notes, "quiz me" for recall.
+4. Say "done for today" to update progress.
 ```
 
-### Step 4: Check for Overdue Items
+Then write the full lesson into `playground.md` following the **Lesson Writing Standard** in `.agents/AGENTS.md` (reference: `.agents/examples/lesson-1.1-http.md`). Put any scripts in `hands-on-lab/` (`act<N>-<session>-<name>`), run every command and script before including it, and complete the **self-review checklist** before telling the student the lesson is ready.
 
-If the student is behind schedule (current date is ahead of where they are in the plan):
-- Do NOT panic or guilt-trip. Simply note it calmly:
-  > "You're on Week X Day Y, which is [N days] behind the original schedule. No worries — the plan is flexible. Want to adjust the pace or catch up this week?"
-- Offer to compress or skip lower-priority topics if needed.
+### Step 4: Check Pace Calmly
+
+The plan has no deadline. If the student is slow or has been away, do not guilt-trip. Offer to resume, shorten sessions (trim BUILD or NOTE, never RECALL, ANCHOR or HANDS-ON), or re-run a quick recall of the last session.
 
 ### Step 5: Handle "Done for Today"
 
-When the student says "done for today", "mark today complete", or similar:
-1. Check the tracker for today's items
-2. Mark completed items with `[x]`
-3. Advance the current position to the next day
-4. Show a quick progress bar:
-   ```
-   Week 1: ██████░░░░ 3/6 days
-   Overall: █░░░░░░░░░ 3/36 days
-   ```
+1. Mark completed items `[x]` in the tracker; advance Current Position.
+1b. Archive the lesson: move `playground.md` to `lessons/act<N>-<session>-<name>.md` (fix relative links), reset `playground.md` to a placeholder for the next session (see "Lesson files and versions" in AGENTS.md).
+2. Ensure the anchor note has a **Revisit Log** entry for any note finished today and the "You Are Here" status is current.
+3. Show progress, e.g. `Act 4: ██░░░░ 2/6 · Overall: 9/33`.
 
-### Step 6: Handle Catch-up and Skipping
+   When recapping "last time", use the **act and session names exactly as written in the tracker** and only what the tracker marks done. Never merge sessions from different acts into one recap.
+4. Log any workflow breakthroughs or friction points in `course-memory/learning_blueprint.md`.
 
-If the student asks to skip a topic or compress multiple days:
-- Topics from the CUET syllabus that Kurose covers lightly (ATM, Frame Relay, Token Ring, FDDI, Blockchain) can be compressed into brief note-taking sessions
-- Core topics (TCP, IP, DNS, HTTP, subnetting, routing, ARP, TLS) should NOT be skipped
-- Adjust the tracker accordingly
+### Step 6: Handle Skipping and Detours
+
+- Core developer topics (DNS, HTTP, TCP/UDP, IP and subnets, ARP, routing basics, NAT, TLS, HTTP/2/3, proxies/load balancers) should not be skipped.
+- Legacy or niche items (ATM, Frame Relay, Token Ring, FDDI, HDLC, PPP, MPLS, Mobile IP, Blockchain) are on request only: brief AI notes.
+- Adjust the tracker accordingly.
 
 ## Important Rules
 
-- Deliver the pre-flight tiered breakdown for today's assigned videos so the student grasps the big picture before or alongside watching.
-- Your role is: synthesizer, doubt-resolver, note-taker, developer-angle explainer, quiz-giver.
-- If the student asks a question about a topic, answer it deeply with developer context — but keep them focused without lecturing too far ahead of today's scope.
-- Always check if Wireshark is installed before assigning a Wireshark lab for the first time.
+- Always anchor to the story at the start and close the loop (Revisit Log) at the end.
+- Pre-flight first, video second. The student should know what matters before spending time.
+- Always give a hands-on task; verify tools (Wireshark, Docker, Python) are installed before first use.
+- Answer doubts deeply with a developer angle, but do not lecture far ahead of today's scope.
+- No LaTeX in any output.

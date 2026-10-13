@@ -1,5 +1,7 @@
 # Chai aur Computer Network — Video Index
 
+Tag format `C<number>` (e.g. C26 = video 26). Kurose lectures (`K#.#`) are catalogued below. Sources are mapped to acts in [roadmap.md](roadmap.md).
+
 | # | Title | URL |
 |---|---|---|
 | 01 | Introduction to Computer Network Series | https://www.youtube.com/watch?v=CltcZTyF5nM |
@@ -51,3 +53,52 @@
 | 47 | NAT explained | https://www.youtube.com/watch?v=VdfL9H2vEkU |
 | 48 | IP packet anatomy | https://www.youtube.com/watch?v=UzWpKcMlaMg |
 | 49 | ip4 wireshark | https://www.youtube.com/watch?v=QlKwKssPYWI |
+
+---
+
+# Kurose & Ross Lectures (official, fetched 2026-10-11)
+
+Tag format `K<chapter>.<section>`. Playlist pages: https://gaia.cs.umass.edu/kurose_ross/videos/N. No official videos were found for Ch7 (Wireless) or Ch8 (Security); the AI covers those from the book and slides. Section 6.4 (Switched LANs / Ethernet / ARP) also has no video.
+
+| Tag | Title | Length | URL |
+|---|---|---|---|
+| K1.1 | Introduction: What is the Internet | 13:36 | https://youtu.be/74sEFYBBRAY |
+| K1.2 | The network edge | 15:57 | https://youtu.be/k8NmM-hImBU |
+| K1.3 | The network core | 19:04 | https://youtu.be/f1nUcCdQJ8Y |
+| K1.4 | Performance | 13:55 | https://youtu.be/hm1y4LsphQQ |
+| K1.5 | Layering, encapsulation | 10:50 | https://youtu.be/IZ_PnVXtMeY |
+| K1.6 | Networks under attack | 6:31 | https://youtu.be/yukwBqSwAkg |
+| K1.7 | History of networking, Ch1 wrap-up | 12:32 | https://youtu.be/l4q8iuqbuiQ |
+| K2.1 | Principles of the application layer | 24:28 | https://youtu.be/abeupgK5z48 |
+| K2.2a | The Web and HTTP (part 1) | 18:19 | https://youtu.be/S9GEPaQ1lFs |
+| K2.2b | The Web and HTTP (part 2) | 13:44 | https://youtu.be/4M39gEPWPYs |
+| K2.3 | Email | 10:29 | https://youtu.be/D3GMrOMR2dk |
+| K2.4 | The Domain Name System (DNS) | 19:08 | https://youtu.be/6lRcMh5Yphg |
+| K2.6 | Video streaming and CDNs | 16:40 | https://youtu.be/ak5bbb-xHLI |
+| K2.7 | Socket programming | 21:11 | https://youtu.be/_iHMMo7SDfQ |
+| K3.1 | Transport-layer services | 9:00 | https://youtu.be/lAvhH0XJLNE |
+| K3.2 | Multiplexing and demultiplexing | 14:19 | https://youtu.be/CekW6ipRrGA |
+| K3.3 | Connectionless transport: UDP | 12:19 | https://youtu.be/VjBDgcNno-Q |
+| K3.4-1 | Principles of reliable data transfer (1) | 24:03 | https://youtu.be/nyUHUtmxWg0 |
+| K3.4-2 | Principles of reliable data transfer (2) | 20:51 | https://youtu.be/vxgH6r-II2Q |
+| K3.5-1 | TCP reliability, flow control, connection management | 14:19 | https://youtu.be/UYJP-6mhF6E |
+| K3.5-2 | TCP reliability, flow control, congestion (2/2) | 11:46 | https://youtu.be/E4I6t0mI_is |
+| K3.6 | Principles of congestion control | 15:00 | https://youtu.be/Fm92xvIp6JY |
+| K3.7 | TCP congestion control | 22:27 | https://youtu.be/cIHiSR4j3g4 |
+| K3.8 | Evolution of transport-layer functionality | 6:19 | https://youtu.be/oRUIEmpzk0Y |
+| K4.1 | Introduction to the network layer | 15:44 | https://youtu.be/olbr3WZwrdU |
+| K4.2a | What's inside a router? (1) | 14:37 | https://youtu.be/NfHR94JAO-s |
+| K4.2b | What's inside a router? (2) | 21:54 | https://youtu.be/zfzzz9KQOog |
+| K4.3a | The Internet Protocol (1) | 30:13 | https://youtu.be/sdIpLuIR1ZY |
+| K4.3b | The Internet Protocol (2) | 20:49 | https://youtu.be/H9DivCEFuUg |
+| K4.4 | Generalized forwarding | 11:06 | https://youtu.be/HIPVDxTrHqI |
+| K4.5 | Middleboxes, Internet architecture | 11:59 | https://youtu.be/kKZlPeyef0k |
+| K5.1 | Intro to the network-layer control plane | 6:33 | https://youtu.be/Aeb80Q_mJp4 |
+| K5.2 | Routing algorithms: link state | 20:18 | https://youtu.be/bdh2kfgxVuw |
+| K5.2-2 | Bellman-Ford distance vector routing | 21:55 | https://youtu.be/jJU2AVX6gpU |
+| K5.3 | OSPF | 10:45 | https://youtu.be/iUQmn3nNjaI |
+| K5.4 | BGP | 18:06 | https://youtu.be/2rV4tJkP-CQ |
+| K5.6 | ICMP | 4:53 | https://youtu.be/EHV0Q0R--Ns |
+| K6.1 | Introduction to the link layer | 11:13 | https://youtu.be/lMGWJZLTulY |
+| K6.2 | Error detection and correction | 8:48 | https://youtu.be/x-rQ3RiI7I0 |
+| K6.3 | Multiple access links and protocols | 28:06 | https://youtu.be/X2cLpzFRMT4 |

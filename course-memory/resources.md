@@ -1,33 +1,31 @@
-# Computer Networks Resources (Locked In)
+# Computer Networks Resources
 
-## Rule: Do NOT Add New Resources
+## Principle
 
-This course is locked in with **Chai aur Computer Network** for developer-focused understanding. Do not browse for alternatives. If a sub-topic doesn't click, ask the AI tutor or watch ONE short video on that exact sub-topic, then return.
+Choose the **best source per topic**, not one fixed playlist. No resource-browsing during sessions: if a sub-topic does not click, the AI explains it, or points to ONE short targeted source, then you return to the act.
 
-## Primary Video Spine
+## Video Sources (catalog in [video_index.md](video_index.md))
 
-**Chai aur Computer Network (Chai aur Code — Hitesh Choudhary)**
-- Platform: YouTube (49 bite-sized videos, ~17 hrs 49 mins total)
-- Official Channel: https://www.youtube.com/@chaiaurcode
-- Playlist Link: https://youtube.com/playlist?list=PLd1s-PEC5Pio&si=R6xQAoPXt29Fm_Ji
-- Automated Transcription: Built-in via `scripts/get_transcript.py` (powered by local `yt-dlp`)
-- Companion Platform: https://chaicode.com/
+* **Chai aur Computer Network** (Chai aur Code), 49 videos, tag `C##`. Strength: developer angle, Wireshark demos, HTTP/2/3, TLS, NAT, IP anatomy.
+  * Playlist: https://youtube.com/playlist?list=PLd1s-PEC5Pio&si=R6xQAoPXt29Fm_Ji
+* **Kurose & Ross official lectures**, Ch1–6, tag `K#.#`. Strength: structure, principles, routing, link layer.
+  * Pages: https://gaia.cs.umass.edu/kurose_ross/videos/1 (through /6). No official videos found for Ch7 (Wireless) or Ch8 (Security).
+* **Transcripts:** `python scripts/get_transcript.py "<URL>"` (uses local `yt-dlp`; works on both sources).
 
-## Hands-on & Wireshark Labs
+## Hands-On & Visualization
 
-**Wireshark Labs (Kurose & Ross Lab Sheets):**
-- Lab PDFs: https://gaia.cs.umass.edu/kurose_ross/wireshark.php
-- Trace Files: https://www-net.cs.umass.edu/wireshark-labs/wireshark-traces-9e.zip
+* **Terminal:** `curl -v`, `ipconfig /all`, `route print`, `arp -a`, `tracert`, `nslookup`, `netstat -ano`, `ping`
+* **Wireshark:** packet capture and analysis. Kurose lab sheets: https://gaia.cs.umass.edu/kurose_ross/wireshark.php · Trace files: https://www-net.cs.umass.edu/wireshark-labs/wireshark-traces-9e.zip
+* **Browser DevTools → Network:** protocol column (`http/1.1`, `h2`, `h3`), waterfall, timing, headers
+* **Python:** `socket`, `ssl` (and optionally `scapy`) for the project thread
+* **OpenSSL:** `openssl s_client -connect host:443`, self-signed certificates
+* **Docker / Docker Compose:** network labs and the A9 reverse-proxy project
+* **Cisco Packet Tracer** (optional, free): simulate switches, subnets and routing visually
+* **Interactive visualizers:** small HTML pages the AI builds on request (subnet calculator, TCP handshake stepper, routing-algorithm stepper)
+* **Kurose animations:** https://gaia.cs.umass.edu/kurose_ross/animations.php
+* **How DNS Works (interactive):** https://howdns.works/
 
-## Terminal & Developer Tools
+## Reference Only
 
-- `curl -v` — Inspect HTTP requests, headers, and TLS handshake
-- `nslookup` / `dig` — DNS resolution queries
-- `ping` / `tracert` — Reachability, latency, and router hops (ICMP)
-- `netstat -ano` / `ss` — Active sockets, ports, and TCP connection states
-- `ipconfig` — Local IP, MAC (Physical Address), Default Gateway, Subnet mask
-- Wireshark — Deep packet inspection and protocol header analysis
-
-## Exam Gap-Fill (During Exam / Deadline Cram)
-
-- Mathematical numericals (CRC, ALOHA, Subnetting math, Distance Vector/Link State algorithms) will be reviewed directly with the AI tutor.
+* [syllabus.md](syllabus.md): university syllabus, used as a coverage checklist (see roadmap appendix).
+* **Kurose & Ross, *Computer Networking: A Top-Down Approach*:** book and slides, for depth where videos are missing.

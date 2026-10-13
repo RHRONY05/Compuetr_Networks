@@ -1,146 +1,172 @@
-# Internet Basics & Network Models
+# Internet Basics: What Is "The Internet", Really?
 
-> **Prerequisites:** None (Start of the Handbook!)  
-> **Estimated Reading Time:** 8 minutes  
-> **Key Goal:** Understand what the Internet actually is, how Packet Switching powers global communication, and how Client-Server and Peer-to-Peer models function in modern software.
+> **Zooming into:** Step 0 of the [lifecycle](02-request-lifecycle.md) · Act 0 (the only prerequisite for everything else)
+> **Prerequisites:** None. This is where the handbook starts.
+> **Key Goal:** Be able to say what the Internet, the Web and Wi-Fi each are, roughly how the Internet is shaped, and what a "protocol" and a "packet" mean, so the rest of the course has solid ground.
+
+---
+
+## 🔑 Keywords in This Lesson
+
+| Word | Plain meaning |
+|---|---|
+| **Internet** | The global network of connected networks |
+| **Web** | One application (websites, APIs) that runs on top of the Internet |
+| **Wi-Fi** | A short-range radio link from your device to a nearby box, not the Internet itself |
+| **ISP** | Internet Service Provider: the company that connects you to the rest of the Internet |
+| **Client / Server** | The side that asks / the side that answers |
+| **Protocol** | A set of rules two machines agree on so they can understand each other |
+| **Packet** | A small chunk of data with an address label on it |
+| **Header / Payload** | The label (who, where, how) / the actual data inside |
+| **Peer-to-peer (P2P)** | Every machine is both client and server |
+| **Latency** | The time a message takes to get there (and back) |
+| **Ping** | A small test tool that sends a message and times the reply (used to measure latency) |
 
 ---
 
 ## 1. The Story Starts Here
 
-When you write code that connects to a database, calls a third-party payment gateway like Stripe, or serves a frontend bundle to a user's browser, you are relying on the largest distributed machine ever built: **The Internet**.
+When you call Stripe, load a React bundle, or query a managed database, you rely on the largest distributed machine ever built. Most developers treat it as a black box: `fetch()` goes in, JSON comes out.
 
-Most developers treat the network as an invisible black box: you call `fetch()` and JSON comes back. But when an API times out, a deployment fails with `ECONNRESET`, or latency spikes by 400 milliseconds across regions, treating the network as magic leaves you helpless.
-
-In this introductory chapter, we strip away the abstraction and look at the physical and conceptual foundation of computer networks.
+That works until an API times out, a deploy fails with `ECONNRESET`, or latency to another region jumps by 300 ms. Then "the network" stops being magic and becomes the thing you must reason about. This chapter lays the ground to do that.
 
 ---
 
-## 2. The Real-World Mystery: The Web vs. The Internet
+## 2. The Internet, the Web, and Wi-Fi Are Three Different Things
 
-One of the most pervasive misconceptions—even among junior software engineers—is confusing the **Web** with the **Internet**, or thinking that **Wi-Fi** *is* the Internet:
+| | What it is | Developer example |
+|---|---|---|
+| **Internet** | The global **network of networks**: cables, fiber under the oceans, routers and switches, owned by thousands of organizations | The wire path between your laptop and an AWS data center |
+| **Web** | **One application** on the Internet, using HTTP(S) | A browser loading a page, a JSON API |
+| **Wi-Fi** | A **short-range radio link** between your device and a local box | Full Wi-Fi bars but no Internet is entirely possible |
 
-* **The Internet:** The physical and logical **network of networks**—the global infrastructure of copper cables, fiber optics under the oceans, satellite links, switches, and routers connecting billions of computing devices worldwide.
-* **The Web (World Wide Web):** Just **one application** running *on top* of the Internet. The Web uses HTTP/HTTPS to share web pages, JSON APIs, images, and videos.
-* **Wi-Fi:** Merely a short-range **radio technology** (Layer 1/2) that connects your laptop to the nearest local router. You can have full Wi-Fi signal in a room with zero Internet access!
-
-Other applications run on the Internet without using the Web at all: email (SMTP/IMAP), file sharing (BitTorrent), gaming backends (raw UDP sockets), and voice calls (VoIP/SIP).
+Plenty of things use the Internet without the Web: email, SSH, online games, video calls, BitTorrent, database connections.
 
 ---
 
-## 3. The Mental Model: Packet Switching vs. Circuit Switching
+## 3. How the Internet Is Shaped
 
-How do millions of people stream Netflix, scroll feeds, and send messages simultaneously across the same fiber optic cables without the lines getting permanently blocked?
-
-There are two fundamental ways to build a telecommunications network:
+No single company owns it. It is a **network of networks** stitched together by agreement:
 
 ```text
-CIRCUIT SWITCHING (The Old Landline Telephone Network):
-[Caller A] ══════════════ Dedicated Physical Wire ══════════════> [Caller B]
-(If Caller A pauses and stays silent for 10 minutes, the entire wire sits idle!
- Nobody else can use that capacity.)
-
-PACKET SWITCHING (The Modern Internet):
-[Data Stream] ──> Sliced into independent "Packets" [P1] [P2] [P3]
-Packets travel through shared routers alongside millions of other packets.
-They interleave dynamically and get reassembled at the destination!
+ YOUR HOME                 YOUR ISP                 THE BACKBONE             THEIR ISP         THE SERVER
+┌──────────────┐        ┌──────────────┐        ┌────────────────┐       ┌────────────┐     ┌──────────┐
+│ laptop       │  Wi-Fi │ local ISP    │  fiber │ big carriers   │       │ cloud /    │     │ api.     │
+│ phone        ├────────┤ network      ├────────┤ crossing       ├───────┤ data-center├─────┤ example  │
+│ router (box) │        │ (regional)   │        │ countries,     │       │ network    │     │ .com     │
+└──────────────┘        └──────────────┘        │ oceans         │       └────────────┘     └──────────┘
+   the edge          access network                 the core                            the edge
 ```
 
-* **Circuit Switching (Legacy):** Reserves a dedicated physical channel for the entire duration of a session. If no data is sent, bandwidth is completely wasted.
-* **Packet Switching (The Internet Standard):** Data is broken into small, standardized chunks called **Packets**. Each packet contains its own destination header. Thousands of different conversations travel over the exact same physical fiber lines simultaneously, like cars merging onto a highway.
+* **The edge:** end devices, your laptop and the server.
+* **The access network:** how an edge device reaches the Internet (home Wi-Fi to router to ISP).
+* **ISPs:** companies that connect to each other so a customer of one can reach a customer of another. Big ones connect directly with each other across the **backbone**.
+
+**Why a developer cares:** data travels through glass at about 200,000 km/s. A server roughly 13,000 km away costs at least 65 ms one way, so more than 130 ms round trip, before any server work or router delay. That is **latency**, and it is why region choice and CDNs matter. You cannot fix physics with faster code.
+
+> In practice, big services such as Google keep copies of their servers close to users, so the nearest one answers. The example above is the worst case, a single faraway server.
 
 ---
 
-## 4. Deep Dive & Technical Mechanics
+## 4. What Is a Protocol?
 
-### 4.1 Anatomy of a Network Packet
-In a packet-switched network, every message is broken into smaller chunks:
-```text
-+-------------------------+-----------------------------------------+
-|      PACKET HEADER      |                 PAYLOAD                 |
-| (Source IP, Dest IP,    | (The actual data chunk: text, bytes,    |
-|  Protocol, Checksum)    |  part of an image or JSON payload)      |
-+-------------------------+-----------------------------------------+
-```
-* **Header:** The shipping label containing metadata (where it came from, where it is going, and how to assemble it).
-* **Payload:** The actual cargo being transported.
+Two machines that have never met must still understand each other. They do it by following a **protocol**: an agreed set of rules for
+1. the **format** of messages,
+2. the **order** in which they are exchanged,
+3. what to do when something goes **wrong**.
+
+You already use protocols constantly. HTTP is a protocol: *"send `GET /profile HTTP/1.1` plus headers, and I'll reply with a status line, headers and a body; if the path is unknown I'll say `404`."* Your own JSON API contract is a small protocol too.
+
+The Internet is a **stack of protocols**, each solving one problem. The rest of this course opens them one at a time.
 
 ---
 
-### 4.2 Network Architectures: Client-Server vs. Peer-to-Peer (P2P)
+## 5. Packets: The Premise
 
-How do distributed applications organize themselves across the Internet?
-
-#### 1. The Client-Server Model (Centralized)
-* **The Structure:** A dedicated machine (Server) listens for requests. Other machines (Clients) initiate connections to request data or services.
-* **Examples:** A React application (Client) calling a Node.js / Express backend (Server), or querying a PostgreSQL database.
-* **Pros:** Centralized authorization, single source of truth, easy to update business logic.
-* **Cons:** Single point of failure; requires load balancers and auto-scaling to avoid crashing under heavy traffic.
-
-#### 2. The Peer-to-Peer (P2P) Model (Decentralized)
-* **The Structure:** There is no central server. Every participating device (called a **Peer** or Node) acts as **both a client and a server** simultaneously.
-* **Examples:** BitTorrent, WebRTC direct mesh communication, blockchain networks (Bitcoin/Ethereum).
-* **Pros:** Highly resilient; network capacity increases as more peers join.
-* **Cons:** Complex discovery protocols, difficult data consistency, and vulnerability to malicious peer churn.
+The Internet does not send a message as one block. It slices data into small chunks called **packets**, and each packet carries its own label:
 
 ```text
-CLIENT-SERVER:                       PEER-TO-PEER (P2P):
-   [Client 1] ──┐                        [Peer A] ◄──────► [Peer B]
-   [Client 2] ──┼──> [CENTRAL SERVER]        ▲                ▲
-   [Client 3] ──┘                            │                │
-                                             ▼                ▼
-                                         [Peer C] ◄──────► [Peer D]
+┌──────────────────────────┬───────────────────────────────────────────┐
+│ HEADER                   │ PAYLOAD                                   │
+│ who sent it, who is it   │ the actual data: part of a JSON body,     │
+│ for, how to reassemble   │ an image, a video chunk                   │
+└──────────────────────────┴───────────────────────────────────────────┘
 ```
+
+Because every packet carries its own address, thousands of conversations can share the same cables, and a lost packet can be resent without redoing everything. The older alternative, **circuit switching** (the traditional phone network), reserves a private path for a whole call. The Internet chose packets.
+
+> *This is only the premise.* How routers actually handle packets, and why packets beat circuits, comes in **Act 5**, when we reach routers. For now: **data travels as small, individually labeled packets.**
 
 ---
 
-## 5. Under the Hood: Hardware & Developer Lab
+## 6. Who Talks to Whom: Client-Server vs. Peer-to-Peer
 
-### Hands-on Terminal Check: Probing the Internet
-Open your terminal and run `curl` to fetch raw data from a public test server:
-
-```bash
-curl -I https://httpbin.org/get
-```
-
-Notice what you see in the terminal:
 ```text
-HTTP/2 200
-date: Sat, 10 Oct 2026 ...
-content-type: application/json
+CLIENT-SERVER                              PEER-TO-PEER
+ [Client 1] ──┐                              [Peer A] ◄────► [Peer B]
+ [Client 2] ──┼──► [SERVER]                     ▲              ▲
+ [Client 3] ──┘                                  ▼              ▼
+                                              [Peer C] ◄────► [Peer D]
 ```
-Your computer split your HTTP command into binary packets, routed them through your home router across the Internet to AWS servers, and received the HTTP response back as interleaved packets—all in under 150 milliseconds!
+
+* **Client-server:** a server that is always on waits; clients start every conversation. Examples: a React app calling an Express API, an app calling Postgres. Simple to control and secure, but the server is a bottleneck and a single point of failure, so you add load balancers and scaling.
+* **Peer-to-peer:** every node is both. Examples: BitTorrent, some video-call media paths, blockchain networks. Capacity grows with the number of peers, but finding peers and keeping data consistent is hard.
+
+> **Reality check:** most "P2P" systems still need a central helper. WebRTC calls use a signaling server to introduce the peers, and NAT (Act 5) often blocks direct connections. Real systems are usually mixed.
+
+Almost everything you build as a web developer is client-server, and so is the journey we follow next.
 
 ---
 
-## 6. Common Pitfalls, Video Simplifications & Exam Traps
+## 7. Hands-On: Measure Latency
 
-* **"Wi-Fi is down":** When non-technical users say "Wi-Fi is down," 95% of the time the local Wi-Fi radio connection to the router is working fine, but the router's connection to the ISP (the WAN) has failed.
-* **Circuit vs. Packet Efficiency:** An exam question might ask: *"Why did the Internet choose Packet Switching over Circuit Switching?"* The answer is **statistical multiplexing**: packet switching allows millions of unpredictable, bursty data streams to share the same physical cable without wasting idle capacity.
+`ping` is a tiny test tool: it sends a small message to another machine and tells you how long the reply took. That time is **latency**, the word from this lesson. Open a terminal and run:
+
+```powershell
+ping localhost            # "localhost" = your own machine
+ping google.com           # a server on the Internet
+```
+
+Look at the `time=` value on each reply line.
+
+* `localhost` should be about 0 to 1 ms. The message never leaves your computer.
+* `google.com` takes noticeably longer. This is the cost of crossing real networks.
+* Try one more site you expect to be far away, then compare. The result may surprise you, because large companies place servers close to users and the nearest copy answers.
+
+You don't need to know how `ping` works yet. Just notice that **distance and the networks in between cost time, and you can measure it.**
 
 ---
 
-## 7. Active Recall & Self-Check
+## 8. Pitfalls & Production Reality
 
-1. **What is the difference between the World Wide Web and the Internet?**
-2. **Why is Packet Switching more efficient for web traffic than Circuit Switching?**
-3. **In a Peer-to-Peer (P2P) network, why is a node considered both a client and a server?**
+* **"The Wi-Fi is down" is often not Wi-Fi.** The radio link to the router can be fine while the router's connection to the ISP is broken. Local things work, but nothing beyond the router does.
+* **"The cloud" is not a different network.** It is other people's servers reached through the same Internet.
+* **The Web is not the Internet.** A service can be reachable by SSH or database protocol and have no website at all.
+* **Latency vs. bandwidth:** bandwidth is how much you can move per second; latency is how long one trip takes. A fat pipe does not fix a long trip.
+
+---
+
+## 9. Active Recall
+
+1. What is the difference between the Web and the Internet? Name one thing that uses the Internet but not the Web.
+2. Why does a server 13,000 km away have a minimum response time, whatever hardware it runs?
+3. Why do packets each carry their own address?
 
 <details>
-<summary><b>Click to reveal answers & explanations</b></summary>
+<summary><b>Answers</b></summary>
 
-1. **Answer:** The Internet is the global physical and logical hardware infrastructure of connected networks. The Web is merely one application protocol (HTTP/HTTPS) running on top of the Internet to share web pages and API services.
-2. **Answer:** Web traffic is bursty (rapid requests followed by long reading pauses). Circuit switching reserves a dedicated channel that sits completely wasted during pauses. Packet switching breaks messages into small packets that interleave dynamically over shared wires.
-3. **Answer:** Because any node can request data from other nodes (acting as a client) while simultaneously uploading data to other nodes in the swarm (acting as a server).
+1. The Internet is the global network of networks; the Web is one application on top of it (HTTP). Email, SSH, online games or database connections use the Internet without the Web.
+2. Signals travel at a finite speed (about 200,000 km/s in fiber). The round trip alone costs well over 100 ms, no matter how fast the server is.
+3. So each packet can be routed independently and shared cables can carry many conversations at once, and a lost packet can be resent alone.
 
 </details>
 
 ---
 
-## 8. What's Next? (The Bridge Forward)
+## 10. Close the Loop & What's Next
 
-Now that we know the Internet is a packet-switched network connecting clients and servers, let's zoom in on a developer's machine:
+**Revisit Log line:** [2026-10-10] | Internet Basics | The path is packets over a chain of real networks, not one wire. Each packet is routed on its own label.
 
-When you write a single line of frontend code like `fetch("https://api.example.com/users")`, **how does that text message actually get converted into binary packets, addressed, and physically delivered to a remote server?**
+We now know what the Internet is. Next: what actually happens, from your code, when you call `fetch()`?
 
-* **Next Chapter:** [Chapter 02: Request Lifecycle & Encapsulation](02-request-lifecycle.md)
+* **Next Chapter:** [The Request Lifecycle: Master Map](02-request-lifecycle.md)
