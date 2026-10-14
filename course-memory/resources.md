@@ -10,7 +10,7 @@ Choose the **best source per topic**, not one fixed playlist. No resource-browsi
   * Playlist: https://youtube.com/playlist?list=PLd1s-PEC5Pio&si=R6xQAoPXt29Fm_Ji
 * **Kurose & Ross official lectures**, Ch1–6, tag `K#.#`. Strength: structure, principles, routing, link layer.
   * Pages: https://gaia.cs.umass.edu/kurose_ross/videos/1 (through /6). No official videos found for Ch7 (Wireless) or Ch8 (Security).
-* **Transcripts:** `python scripts/get_transcript.py "<URL>"` (uses local `yt-dlp`; works on both sources).
+* **Transcripts:** `python scripts/get_transcript.py "<URL>"` downloads the video's existing YouTube captions (any length) with local `yt-dlp` and saves them to `.agents/transcripts/<video id>.md`, split into 30-minute parts for reading. Works on both sources. Not tracked by git.
 
 ## Hands-On & Visualization
 

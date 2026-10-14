@@ -35,7 +35,7 @@ Read in order:
 
 For each video tagged in the session (`C##` Chai, `K#.#` Kurose):
 1. Look up the URL in `course-memory/video_index.md`.
-2. Run `python scripts/get_transcript.py "<URL>"` to get the English transcript.
+2. Run `python scripts/get_transcript.py "<URL>"`. The full transcript is saved to `.agents/transcripts/<video id>.md` in 30-minute parts; read **all** parts of the file (use `--part-minutes N` to change the size).
 3. Synthesize into a high-yield pre-flight breakdown.
 4. If a topic has no video (tag **AI**), prepare the explanation yourself.
 

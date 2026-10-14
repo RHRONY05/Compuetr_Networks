@@ -93,7 +93,7 @@ Read top to bottom. Each chapter zooms into one step of the journey. ✅ written
 | [`.agents/skills/start-session/`](.agents/skills/start-session/SKILL.md) | What the tutor does when you say "start session" |
 | [`.agents/examples/`](.agents/examples/) | The reference lesson every new lesson must match |
 | [`course-memory/`](course-memory/) | Video index, resources, syllabus, and `learning_blueprint.md` (how this learning method evolved) |
-| [`scripts/`](scripts/) | `get_transcript.py`: fetches full video transcripts for the tutor |
+| [`scripts/`](scripts/) | `get_transcript.py`: saves a video's full transcript to `.agents/transcripts/`, split into 30-minute parts |
 
 ---
 

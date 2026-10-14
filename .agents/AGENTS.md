@@ -98,7 +98,7 @@ The student is a **beginner in networking but an experienced developer**. Write 
 
 ### Before writing: think first (do not skip)
 1. Read the tracker, the roadmap row for the session, and the anchor note's step for it.
-2. Fetch the **full** transcripts of the session's videos (`scripts/get_transcript.py` prints everything) and read them. Note which sentences refer to topics from later acts (playlists use a different order than our story).
+2. Fetch the transcripts: `python scripts/get_transcript.py "<URL>"`. It saves the **whole** transcript to `.agents/transcripts/<video id>.md`, split into 30-minute parts (`## Part N (start-end)`), and prints a short summary. **Read every part of the file**, part by part, never only the beginning. The time ranges let the watch guide point to sections ("skip 12:00–18:00"). If it fails with a rate-limit message, wait a few minutes and retry. Note which sentences refer to topics from later acts (playlists use a different order than our story).
 3. List the **new words** this lesson must introduce. Everything else from later acts becomes a 🔵 Later box, never a full explanation.
 4. Decide the **problem** that opens each part: what breaks or is impossible without this idea?
 5. Plan the labs; then run every command/script and capture real output.
