@@ -10,6 +10,7 @@ Learning computer networks from a **software developer's** perspective, by follo
 |---|---|---|
 | [`playground.md`](playground.md) | **Today's lesson**, live. Open in Markdown Preview (`Ctrl+K V`) | During a session |
 | [`notes/`](notes/README.md) | **The handbook**: one chapter per topic, in reading order. Start at [the Request Lifecycle](notes/00-foundations/02-request-lifecycle.md), the map of the whole course | To review or revise |
+| [`notes/RECALL.md`](notes/RECALL.md) | **Think-through questions** for every chapter, answers folded | To test yourself after reading |
 | [`notes/GLOSSARY.md`](notes/GLOSSARY.md) | Every term → one line → the chapter that introduces it | When a word is unfamiliar |
 | [`lessons/`](lessons/) | **Archive of finished lessons**, with the full labs (and earlier versions in collapsed blocks) | To redo a lab or re-read a full lesson |
 | [`hands-on-lab/`](hands-on-lab/) | **Scripts you run** for labs and the "Build the Stack" project, named `act<N>-<session>-<name>` | When a lesson says "run..." |
@@ -27,7 +28,7 @@ Read top to bottom. Each chapter zooms into one step of the journey. ✅ written
 **Act 1: Name → Address** *(steps 1–2)*
 
 3. ✅ [HTTP Basics](notes/04-application-layer/02-http-basics.md) · full lesson: [lessons/act1-1.1-http.md](lessons/act1-1.1-http.md)
-4. 🔧 [DNS Resolution](notes/04-application-layer/01-dns-resolution.md)
+4. ✅ [DNS Resolution](notes/04-application-layer/01-dns-resolution.md) · full lesson: [playground.md](playground.md) *(archived at session end)*
 5. 🔧 [IP Addressing & CIDR](notes/02-network-layer/01-ip-and-cidr.md)
 
 **Act 2: Local or Remote?** *(step 4)*

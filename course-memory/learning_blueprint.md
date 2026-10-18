@@ -91,6 +91,22 @@
 * **Problem 10 (Losing versions and clutter):** Rewrites overwrote earlier lessons; scripts were pasted into lessons.
   * *Solution:* Old versions go into collapsed `<details>` blocks; finished lessons are archived to `lessons/`; scripts live in `hands-on-lab/act<N>-<session>-<name>`.
 
+### Day 4 to 6 (2026-10-14 to 10-18): Session 1.2 DNS, and the first GUI tool
+* **Problem 11 (Abstract analogy + vague deployment story):** Part 4 said "your domain needs a website address and email and proof for Google", and the student couldn't tell why Google appeared. Their own bought domain (`rhrony05.me`) was an unexplained black box.
+  * *Solution:* Ran the DNS script against **the student's own domain** and rebuilt the explanation on it (registrar vs DNS host vs web host, their real MX and TXT records). Examples from the student's own machine and own output land much better than invented ones.
+* **Problem 12 (Byte-level before picture):** Part 6 (DNS message format) began with bytes and used UDP/TCP before giving any picture.
+  * *Solution:* Rewrote it with two pictures (a form with a ticket ID; a postcard vs a phone call) and moved the byte counting into a collapsed `<details>`.
+* **Problem 13 (Parking Lot too late):** The student wanted to know what belongs to later acts *before* reading. Moved the 🔵 Parking Lot to right after Keywords and made that the standard (AGENTS.md item 5).
+* **Problem 14 (Wireshark: a GUI tool taught as a block of instructions):** Lab F listed 7 steps at once and assumed the student knew the tool. They could not find where to "run a DNS lookup" (Wireshark can't; it only records), and the first single step ("compare these two rows' ticket numbers") gave no action, so it was unclear what to do and why. They said it became boring enough to make them leave the lesson.
+  * *What failed:* (1) a pile of instructions with no order; (2) never saying what the tool IS and what it can't do; (3) an observation task instead of an action; (4) naming screen areas the student could not locate.
+  * *Solution (rule for every new GUI/CLI tool):* give ONE experiment at a time in the form **"1. In window A, do exactly this. 2. In window B, look at exactly this place. 3. You should see exactly this."**, state which window does what before the first step, point at the real rows/columns from the student's own screenshot, and wait for the reply before the next step. Only write the full lab into the lesson after it has been walked through successfully once.
+* **Problem 15 (Note shorter than the lesson):** The DNS note was written as a dense digest: diagrams dropped (the name tree, the walk picture), explanations cut to one line. The student found the lesson clearer than the note, which defeats the purpose of a handbook.
+  * *Cause:* copying the compact style of the HTTP note, and a rule that warned "note-writing is the main time sink".
+  * *Solution:* a full chapter keeps every explanation, diagram and real example from the lesson, plus the session's Q&A; only session scaffolding is dropped. Rule added to AGENTS.md (Note Rules). The DNS note was rewritten on that basis.
+* **Process note:** the Anthropic-side memory is not where the study approach lives. Every approach change that works or fails gets logged HERE (the start-session skill's "Done for today" step also says so).
+
+* **Decision (2026-10-18): notes vs recall, and when notes are written.** Notes are tutorial chapters written **after** a finished session, when the student asks, built from the lesson **and** the session's questions/confusions/answers, merged (not appended). Recall moved out of notes into one file, `notes/RECALL.md` (5–8 think-through questions per chapter), updated in the same step, so the student never has to ask for it. The Compact note type was dropped. AGENTS.md was rewritten (≈200 → 123 lines) to remove duplication with the start-session skill.
+
 ### Upcoming Challenges & Roadmaps
 * **Day 6 (Visual Wireshark Labs without Screen Access):** Transcripts cannot capture Wireshark packet bytes on screen. 
   * *Anticipated Solution:* Pre-load Kurose & Ross sample trace files (`.pcap`) and analyze them with terminal inspection tools (`tshark` or python `scapy`) alongside Wireshark walkthroughs.

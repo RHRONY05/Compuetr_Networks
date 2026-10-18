@@ -1,82 +1,46 @@
-# Note Templates
+# Note Template
 
-Two sizes. Use **Full** for core topics a developer must truly understand. Use **Compact** for supporting topics. No LaTeX (`$...$`); use Unicode and code blocks.
-
----
-
-# FULL CHAPTER TEMPLATE
+One kind of note: a **tutorial chapter**, written after a session from the lesson **and** the session's questions (see "Note Rules" in [AGENTS.md](../AGENTS.md)). Its length follows the topic: a small topic gives a short chapter, never a digest. No LaTeX; use Unicode and code blocks. Recall questions go in [RECALL.md](RECALL.md), not in the note.
 
 ```markdown
 # [Topic Title]
 
 > **Zooming into:** Step [N] of the [lifecycle](../00-foundations/02-request-lifecycle.md) · Act [X]
 > **Prerequisites:** [previous chapter]
-> **Key Goal:** [One sentence: what you can do/explain after this]
+> **Key Goal:** [one sentence: what you can do or explain after this]
+> **Lesson:** [lessons/act<N>-<session>-<name>.md] · **Script:** [hands-on-lab/...] · **Recall:** [RECALL.md#section]
 
 ## 🔑 Keywords in This Lesson
-Introduce every new word **here, at the top**, in plain language. A word is defined in the lesson that first needs it, never earlier. Add each word to [GLOSSARY.md](../GLOSSARY.md).
-
 | Word | Plain meaning |
 |---|---|
-| [term] | [one-line meaning] |
+| [term] | [one line, plain language; also add to GLOSSARY.md] |
 
 ---
 
 ## 1. The Story So Far
-Where did the journey leave off, and why is this the next step? One short paragraph.
+Where the journey left off, and why this is the next step.
 
 ## 2. The Real-World Problem
-The everyday problem, before any jargon. What breaks without this mechanism?
+What breaks or is impossible without this idea, before any jargon.
 
 ## 3. The Mental Model
-A rich analogy (post office, apartment building, roads) that anchors the concept.
+An analogy that anchors the whole chapter.
 
 ## 4. Deep Dive & Mechanics
-Step-by-step flow, ASCII diagrams, bit/packet-level detail, worked example.
+As many subsections as the topic needs. Each: problem → real worked example (student's own data where possible)
+→ the name and the rule → developer connection. Keep every diagram and table from the lesson.
+Answer the student's session questions where they arise. Byte-level detail in a collapsed <details>.
+🟡 reality checks inline.
 
 ## 5. Hands-On & Developer Lab
-* A concrete command or tool task (terminal, Wireshark, DevTools, code) and **what to look for** in the output.
-* Developer impact: APIs, DB connections, Docker, cloud VPCs, performance, security.
-* Project milestone link (A#), if any.
+What each tool shows and what to look for (a table works well); the build script and its run command;
+developer impact (deployments, debugging, Docker, cloud).
 
 ## 6. Pitfalls & Production Reality
-* What videos simplified vs. reality.
-* How this shows up as bugs/errors (`ECONNREFUSED`, `ETIMEDOUT`, 502, cert errors).
+Common errors this step causes (`ENOTFOUND`, `ECONNREFUSED`...), what videos simplify.
+🔵 Later: one line listing later-act topics and their acts.
 
-## 7. Active Recall
-3–4 questions that test understanding, not memory. Answers in a collapsible `<details>` block.
-
-## 8. Close the Loop
-* **Revisit Log line** (also paste into the anchor note): "[date] | [this chapter] | what step N now means."
-* **Bridge Forward:** what question this leaves open, and the next chapter link.
-```
-
----
-
-# COMPACT NOTE TEMPLATE
-
-```markdown
-# [Topic Title]
-
-> **Zooming into:** Step [N] · Act [X] · [Back to anchor](../00-foundations/02-request-lifecycle.md)
-
-**🔑 Keywords:** [term] = [meaning]; [term] = [meaning] *(add to GLOSSARY.md)*
-
-## Big Idea
-Two or three sentences.
-
-## Where It Sits in the Story
-What step it serves, what comes before and after.
-
-## How It Works
-Key mechanics, a small diagram, key terms in a table.
-
-## Try It
-One command or tiny code snippet, and what to look for.
-
-## Recall
-3 short questions (answers in `<details>`).
-
-## Revisit Log line
-"[date] | [this note] | what step N now means."
+## 7. Close the Loop
+* **Revisit Log line** (also added to the anchor): "[date] | [chapter] | what step N now means."
+* **Bridge forward:** the open question, and the next chapter's link.
 ```

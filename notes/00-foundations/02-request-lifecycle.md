@@ -66,7 +66,7 @@ One detail differs from the way most people picture it: **the HTTP message is cr
 |---|---|---|---|---|
 | 0 | What is the Internet? | [01 Internet Basics](01-internet-basics.md) | 0 | ✅ |
 | 1 | What exactly are we sending? | [HTTP Basics](../04-application-layer/02-http-basics.md) | 1 | ✅ |
-| 2 | Where is `api.example.com`, and what is the number we get back? | [DNS Resolution](../04-application-layer/01-dns-resolution.md) *(needs rewrite)*, then [IP & CIDR](../02-network-layer/01-ip-and-cidr.md) *(learned, to adapt)* | 1 | ⏳ |
+| 2 | Where is `api.example.com`, and what is the number we get back? | [DNS Resolution](../04-application-layer/01-dns-resolution.md) ✅, then [IP & CIDR](../02-network-layer/01-ip-and-cidr.md) *(learned, to adapt)* | 1 | 🟡 DNS ✅, IP to adapt |
 | 3 | How do two programs agree to talk, reliably? | Ports, UDP, TCP | 4 | ⏳ |
 | 4 | Is that address in my room or outside it? | [Subnet Masks](../02-network-layer/02-subnet-masks-and-switches.md) *(learned, to adapt)*, Default Gateway, DHCP | 2 | 🟡 gateway pending |
 | 5 | Which physical card gets the frame next? | MAC & ARP | 3 | ⏳ |
@@ -278,6 +278,7 @@ After each chapter, add a few lines here: what that step now means with what you
 | 2026-10-11 | IP & CIDR | The Dst IP in step 4 has a network part and a host part; /24 means 24 bits identify the network. |
 | 2026-10-11 | Subnet Masks | Step 4's decision is literally IP AND mask compared against my network. |
 | 2026-10-13 | HTTP Basics | Step 1's message is text: request line, headers, empty line, body, turned into bytes. Proof of identity rides in every message (Cookie / Authorization) because HTTP remembers nothing. |
+| 2026-10-18 | DNS Resolution | Step 2 is a separate, earlier conversation: one small UDP question to my resolver, which answers from cache or walks root → TLD → authoritative, following referrals. Every answer carries a TTL, so "propagation" is just caches expiring. |
 
 ---
 

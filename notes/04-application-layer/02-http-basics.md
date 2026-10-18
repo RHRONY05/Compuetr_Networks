@@ -4,6 +4,7 @@
 > **Prerequisites:** [Internet Basics](../00-foundations/01-internet-basics.md), [The Request Lifecycle](../00-foundations/02-request-lifecycle.md)
 > **Key Goal:** Read any HTTP request and response line by line, explain how the text becomes bytes, and explain how a protocol with no memory still keeps you logged in.
 > **Full lesson with labs:** [lessons/act1-1.1-http.md](../../lessons/act1-1.1-http.md) · **Script:** [hands-on-lab/act1-1.1-raw-http.py](../../hands-on-lab/act1-1.1-raw-http.py)
+> **Recall:** [Think it through](../RECALL.md#act-1--step-1-http-basics)
 
 ## 🔑 Keywords in This Lesson
 
@@ -156,24 +157,7 @@ HTTPS is the **same message inside TLS**. It adds privacy (nobody on the path ca
 
 🔵 **Later:** TCP (Act 4) · TLS and `Secure` cookies (Act 6) · keep-alive, HTTP/2/3, caching with `ETag`/`304` (Act 7) · CORS, `SameSite`, proxies, third-party cookies and tracking (Act 8).
 
-## 7. Active Recall
-
-1. Write the request for `fetch("https://shop.com/cart?page=2")`: the request line and the required header.
-2. Why can `Content-Length` be larger than the number of characters in the body?
-3. Show, with header lines, how you stay logged in across requests (a) with cookies, (b) with a bearer token.
-4. Your backend uses cookie auth. The web app works but the mobile app gets `401`. Why?
-
-<details>
-<summary><b>Answers</b></summary>
-
-1. `GET /cart?page=2 HTTP/1.1`, `Host: shop.com`, then an empty line.
-2. It counts bytes; non-English characters take several bytes in UTF-8 (Bengali: 3 each).
-3. (a) `Set-Cookie: session=...` in the login response, then the browser adds `Cookie: session=...` to every request. (b) Your code adds `Authorization: Bearer <token>` to every request.
-4. No browser is attaching the cookie; the app must store and send proof itself (usually a bearer token).
-
-</details>
-
-## 8. Close the Loop
+## 7. Close the Loop
 
 **Revisit Log:** `2026-10-13 | HTTP Basics | Step 1's message is text: request line, headers, empty line, body, turned into bytes. Proof of identity rides in every message (Cookie / Authorization) because HTTP remembers nothing.`
 

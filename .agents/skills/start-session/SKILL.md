@@ -69,25 +69,26 @@ Project milestone for this act (A#), if scheduled.
 ### Next Steps
 1. Read the briefing; watch targeted sections only if something is unclear.
 2. Do the hands-on task.
-3. Ask doubts. Say "create note about <topic>" for notes, "quiz me" for recall.
-4. Say "done for today" to update progress.
+3. Ask doubts while reading. "quiz me" for recall.
+4. Say "done for today" to finish (or "pause" to stop mid-session); ask for the note once the session is finished.
 ```
 
-Then write the full lesson into `playground.md` following the **Lesson Writing Standard** in `.agents/AGENTS.md` (reference: `.agents/examples/lesson-1.1-http.md`). Put any scripts in `hands-on-lab/` (`act<N>-<session>-<name>`), run every command and script before including it, and complete the **self-review checklist** before telling the student the lesson is ready.
+Then write the full lesson into `playground.md` following the **Lesson Writing Standard** in `AGENTS.md` (repo root) (reference: `.agents/examples/lesson-1.1-http.md`). Put any scripts in `hands-on-lab/` (`act<N>-<session>-<name>`), run every command and script before including it, and complete the **self-review checklist** before telling the student the lesson is ready.
 
 ### Step 4: Check Pace Calmly
 
 The plan has no deadline. If the student is slow or has been away, do not guilt-trip. Offer to resume, shorten sessions (trim BUILD or NOTE, never RECALL, ANCHOR or HANDS-ON), or re-run a quick recall of the last session.
 
-### Step 5: Handle "Done for Today"
+### Step 5: Handle "Done for Today" (or a pause)
 
+**Pause (session not finished):** leave the lesson in `playground.md`; write the exact resume point (next experiment, next part) in the tracker's Current Position.
+
+**Done (session finished):**
 1. Mark completed items `[x]` in the tracker; advance Current Position.
-1b. Archive the lesson: move `playground.md` to `lessons/act<N>-<session>-<name>.md` (fix relative links), reset `playground.md` to a placeholder for the next session (see "Lesson files and versions" in AGENTS.md).
-2. Ensure the anchor note has a **Revisit Log** entry for any note finished today and the "You Are Here" status is current.
-3. Show progress, e.g. `Act 4: ██░░░░ 2/6 · Overall: 9/33`.
-
-   When recapping "last time", use the **act and session names exactly as written in the tracker** and only what the tracker marks done. Never merge sessions from different acts into one recap.
-4. Log any workflow breakthroughs or friction points in `course-memory/learning_blueprint.md`.
+2. **Note, when the student asks:** follow "Note Rules" in `AGENTS.md`. Build the chapter from the lesson **and** the whole session conversation (questions, confusions, shared outputs, the explanations that worked), merged into one tutorial. In the same step, add the chapter's section to `notes/RECALL.md`, update `notes/GLOSSARY.md`, both indexes, and the anchor's Revisit Log and "You Are Here".
+3. Archive the lesson: move `playground.md` to `lessons/act<N>-<session>-<name>.md`, fix relative links, repoint the note and script header to it, reset `playground.md` to a placeholder.
+4. Show progress, e.g. `Act 4: ██░░░░ 2/6 · Overall: 9/33`. When recapping, use act and session names exactly as in the tracker.
+5. Log what worked or failed in how we studied in `course-memory/learning_blueprint.md`.
 
 ### Step 6: Handle Skipping and Detours
 

@@ -146,12 +146,16 @@ def walk(name, qtype):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print(__doc__ or "usage: python hands-on-lab/act1-1.2-dns-query.py NAME [TYPE] [--walk]")
-        sys.exit(1)
-    target = sys.argv[1]
-    qtype = TYPES[sys.argv[2].upper()] if len(sys.argv) > 2 and not sys.argv[2].startswith("--") else 1
-    if "--walk" in sys.argv:
+    args = sys.argv[1:]
+    if not args:   # started with no arguments (e.g. the editor's Run button): ask instead
+        print("usage: python hands-on-lab/act1-1.2-dns-query.py NAME [TYPE] [--walk]")
+        print("examples: github.com | gmail.com MX | github.com A --walk")
+        args = input("What should I look up? ").split()
+        if not args:
+            sys.exit(0)
+    target = args[0]
+    qtype = TYPES[args[1].upper()] if len(args) > 1 and not args[1].startswith("--") else 1
+    if "--walk" in args:
         walk(target, qtype)
     else:
         print(f"Question: {target} {TYPE_NAMES[qtype]}?")

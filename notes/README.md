@@ -4,6 +4,8 @@ A story-based handbook for **software developers**. Every chapter is a zoom-in o
 
 **Look up a word:** [Glossary](GLOSSARY.md). Each term is introduced at the top of the lesson that needs it.
 
+**Test yourself:** [Recall](RECALL.md): think-through questions for every chapter.
+
 **Start here:** [The Request Lifecycle: Master Map](00-foundations/02-request-lifecycle.md). It holds the "You Are Here" map and the Revisit Log. Study plan: [roadmap](../course-memory/roadmap.md). Progress: [tracker](../course-memory/tracker.md).
 
 Legend: ✅ written · 🔧 exists but needs rewrite · ⏳ not written yet
@@ -16,7 +18,7 @@ Legend: ✅ written · 🔧 exists but needs rewrite · ⏳ not written yet
 
 ## Act 1: Name → Address *(steps 1, 2)*
 * ✅ [HTTP Basics](04-application-layer/02-http-basics.md)
-* 🔧 [DNS Resolution](04-application-layer/01-dns-resolution.md)
+* ✅ [DNS Resolution](04-application-layer/01-dns-resolution.md)
 * 🔧 [IP Addressing & CIDR](02-network-layer/01-ip-and-cidr.md) *(learned; adapt to follow DNS: "what is the number we got?")*
 
 ## Act 2: Local or Remote? *(step 4)*
@@ -68,10 +70,10 @@ Legend: ✅ written · 🔧 exists but needs rewrite · ⏳ not written yet
 ---
 
 ## Style Guidelines
-Every chapter follows [NOTE_TEMPLATE.md](NOTE_TEMPLATE.md) (Full or Compact):
+Every chapter follows [NOTE_TEMPLATE.md](NOTE_TEMPLATE.md), a full tutorial written after the session from the lesson and its questions:
 1. A **zoom-in banner** pointing to its lifecycle step.
 2. Start from a real-world problem; **no prior assumptions**.
 3. ASCII diagrams for packets and flows.
 4. **Developer-grounded**: hands-on commands and how it fails in production.
 5. **No LaTeX**; plain Unicode and code blocks so any Markdown viewer renders it.
-6. Close with a Revisit Log line added to the anchor note.
+6. Close with a Revisit Log line added to the anchor note; recall questions go in [RECALL.md](RECALL.md).

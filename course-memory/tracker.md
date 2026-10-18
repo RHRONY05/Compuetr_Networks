@@ -1,13 +1,16 @@
 # Computer Networks Progress Tracker
 
-Last updated: 2026-10-13 (Session 1.1 HTTP done) · Plan: [roadmap.md](roadmap.md) (story-based, 9 acts, no end date)
+Last updated: 2026-10-18 (Session 1.2 DNS paused, about 80% done) · Plan: [roadmap.md](roadmap.md) (story-based, 9 acts, no end date)
 
 ## Current Position
 
 - **Act:** 1: Name → Address (lifecycle steps 1, 2)
-- **Session:** 1.2: DNS, the phone book
-- **Last session:** 1.1 HTTP (2026-10-13). Lesson in `lessons/act1-1.1-http.md`, note `notes/04-application-layer/02-http-basics.md`. Covered: request/response format, text → bytes, headers, statelessness with cookies vs bearer tokens, HTTP vs HTTPS. **Start 1.2 with the 1.1 recall questions as the warm-up.**
-- **Next action:** Start session 1.2. Write the lesson into `playground.md` (Lesson Writing Standard) and rewrite the DNS note.
+- **Session:** 1.2: DNS, the phone book (**paused, not finished**)
+- **Last session:** 1.1 HTTP (2026-10-13), archived in `lessons/act1-1.1-http.md`.
+- **Where we stopped (2026-10-18):** lesson written in `playground.md` (kept there on purpose, because the session isn't finished and gets archived only when it is). DNS note written and indexed. Student read up to Part 5 and did the `nslookup`, `ipconfig /displaydns` and `curl -v` labs. In **Wireshark** (installed, capturing on Wi-Fi) they completed **Experiment 1** (found query/response pairs, matching ticket ID `0x0002`) and **Experiment 2** (expanded the DNS section: TTL 77, lookup time 7.5 ms).
+- **Next action:** resume with **Wireshark Experiment 3** (type `curl.exe -s -o NUL http://wikipedia.org` twice; the first run shows DNS rows, the second shows none: the OS cache). Then Experiment 4: `python hands-on-lab/act1-1.2-dns-query.py github.com A --walk` and see 3 questions to 3 servers. Then the 1.2 recall questions, then "done for today" (archive `playground.md` to `lessons/act1-1.2-dns.md`, repoint the DNS note and README links).
+- **How to run Wireshark with this student (important):** they had never used it. Give **one experiment at a time**: *"1. In PowerShell run X. 2. In Wireshark look at Y. 3. Reply with Z."* Say what each window does first (PowerShell asks, Wireshark only records). The student gets bored and leaves the lesson when given a block of instructions. Their Wi-Fi capture is `*Wi-Fi` with filter `dns`; laptop IP `192.168.0.102`, resolver/router `192.168.0.1`.
+- **Open question to settle later:** Cloudflare `1.1.1.1` returned TTL 77 and 161 for a record whose owners say 60. Lesson and note say "TTL is a request, not a guarantee"; the exact rule is unconfirmed.
 - **Already learned, waiting in its slot (not lost):** IP address & CIDR (videos 3, 4) → Session **1.3**; subnet mask (video 5) → Session **2.0**. Their notes exist and get reworked into the new format when we reach them. Default Gateway videos 6 & 7 → Session 2.1.
 
 > Status values: `Not Started` · `In Progress` · `Completed`. Mark an **act** Completed only with the student's explicit approval.
@@ -33,10 +36,11 @@ Last updated: 2026-10-13 (Session 1.1 HTTP done) · Plan: [roadmap.md](roadmap.m
 - [x] Note: `02-http-basics.md` · [x] Revisit Log · [ ] Recall check *(warm-up of 1.2)*
 
 ### Session 1.2: DNS, the phone book
-- [ ] Pre-flight briefing + C26, C27, C28, K2.4
-- [ ] Hands-on: `nslookup`, record types, Wireshark DNS
-- [ ] ⭐ A2 *(stretch)*: hand-built DNS query
-- [ ] Note: rewrite `04-application-layer/01-dns-resolution.md` into handbook format · [ ] Revisit Log · [ ] Recall check
+- [x] Pre-flight briefing · [ ] Videos C26, C27 (first ~28 min), C28, K2.4 *(optional, any time)*
+- [ ] Hands-on: [x] `nslookup`, record types, `displaydns`, `curl -v` · [ ] Wireshark DNS (installed 2026-10-18; experiments 1 and 2 done, 3 and 4 pending)
+- [ ] ⭐ A2 *(stretch)*: hand-built DNS query (`hands-on-lab/act1-1.2-dns-query.py`, tested; student has not yet run it with `--walk`)
+- [x] Note: rewrite `04-application-layer/01-dns-resolution.md` into handbook format (2026-10-18) · [x] Revisit Log · [ ] Recall check
+  *(At archive: point the note's "Full lesson" link and README entry 4 at `lessons/act1-1.2-dns.md`.)*
 
 ### Session 1.3: The number DNS gave us (IP address & CIDR) — *videos already watched*
 - [x] Watched C3, C4 *(earlier)* · [x] `ipconfig`: IP and prefix *(earlier)*

@@ -1,2 +1,5 @@
 # Downloaded video transcripts (regenerate with scripts/get_transcript.py)
 .agents/transcripts/
+
+# Wireshark captures contain your real network traffic: keep them local
+hands-on-lab/captures/
