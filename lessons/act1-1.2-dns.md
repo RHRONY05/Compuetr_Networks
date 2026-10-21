@@ -1,6 +1,6 @@
 # Session 1.2: DNS, the Phone Book of the Internet
 
-> **Act 1 · Step 2 of the journey** · [Back to the map](notes/00-foundations/02-request-lifecycle.md)
+> **Act 1 · Step 2 of the journey** · [Back to the map](../notes/00-foundations/02-request-lifecycle.md)
 > **Time:** about 2.5–3 hours (reading ~50 min, videos ~45 min, labs and build ~60 min)
 > **By the end you can:** explain how `api.example.com` becomes a number, step by step and server by server; read and pick the right DNS record (A, AAAA, CNAME, MX, NS, TXT) for a real deployment; explain why a DNS change "takes time to spread" (TTL and caches); and send a DNS question by hand.
 
@@ -90,7 +90,7 @@ Read this once now. When a word in the lesson or a video isn't explained, look i
 
 ## Part 1: The Problem DNS Solves
 
-Your message says `Host: api.example.com`. But in [Internet Basics](notes/00-foundations/01-internet-basics.md) we saw that data travels in packets addressed to **numbers**, and every machine on the path only understands numbers. A name like `api.example.com` means nothing to them.
+Your message says `Host: api.example.com`. But in [Internet Basics](../notes/00-foundations/01-internet-basics.md) we saw that data travels in packets addressed to **numbers**, and every machine on the path only understands numbers. A name like `api.example.com` means nothing to them.
 
 So *something* has to turn the name into a number before anything can be sent. Why not just skip names and type numbers?
 
@@ -577,7 +577,7 @@ You should see a few lines in the top pane:
 | `Standard query response 0x.... A github.com A 20.205.243.166` | **the answer** |
 | `... AAAA github.com` (query and response) | nslookup also asks for IPv6 |
 
-Click the **A query**. In the middle pane, the message is shown as nested layers, the "nesting dolls" from the [anchor note](notes/00-foundations/02-request-lifecycle.md):
+Click the **A query**. In the middle pane, the message is shown as nested layers, the "nesting dolls" from the [anchor note](../notes/00-foundations/02-request-lifecycle.md):
 
 ```text
 Frame ...                          🔵 skip
@@ -632,7 +632,7 @@ The response's Info says **No such name**. Inside: **Reply code: No such name (3
 
 Like in Session 1.1, we drop the library and build the message by hand.
 
-**The script:** [hands-on-lab/act1-1.2-dns-query.py](hands-on-lab/act1-1.2-dns-query.py). Read its comments first. In plain words:
+**The script:** [hands-on-lab/act1-1.2-dns-query.py](../hands-on-lab/act1-1.2-dns-query.py). Read its comments first. In plain words:
 * `build_query` writes the 28-byte question from Part 6: header, the name as labels (`6github3com0`), type, class.
 * `ask` sends it to port 53 with UDP, retries if no answer comes in 3 s, and checks that the answer's **ID** matches.
 * `read_name` / `read_record` decode the answer's records. (Answers save space by writing a repeated name as a 2-byte "see earlier" pointer; that's the one tricky part.)
@@ -701,7 +701,7 @@ Read the lesson first. The videos confirm it and show it live.
 
 ## Close the Loop
 
-**Write the note:** rewrite [notes/04-application-layer/01-dns-resolution.md](notes/04-application-layer/01-dns-resolution.md) into the **Full** handbook format (Keywords block, zoom banner on Step 2, story so far from the HTTP note, this lesson's labs). Say "create note about DNS" and I'll draft it with you; the old note's glue-record and story sections can be reused.
+**Write the note:** rewrite [notes/04-application-layer/01-dns-resolution.md](../notes/04-application-layer/01-dns-resolution.md) into the **Full** handbook format (Keywords block, zoom banner on Step 2, story so far from the HTTP note, this lesson's labs). Say "create note about DNS" and I'll draft it with you; the old note's glue-record and story sections can be reused.
 
 **Revisit Log line** for the anchor:
 `2026-10-14 | DNS Resolution | Step 2 is a separate, earlier conversation: one small question to my resolver, which answers from cache or walks root → TLD → authoritative, following referrals. Every answer has a TTL, so "propagation" is just caches expiring.`

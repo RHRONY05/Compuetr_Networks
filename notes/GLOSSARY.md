@@ -40,6 +40,21 @@ Words are introduced properly at the **start of the lesson that needs them** (se
 | NXDOMAIN | DNS answer: this name does not exist (also cached) | [DNS Resolution](04-application-layer/01-dns-resolution.md) |
 | Registrar / DNS host / web host | Sells you the name / holds its records / serves the site | [DNS Resolution](04-application-layer/01-dns-resolution.md) |
 | Encapsulation | Wrapping data in a header per layer, like nested envelopes | [Request Lifecycle](00-foundations/02-request-lifecycle.md) |
-| IP address, CIDR | 32-bit address; prefix notation splitting network from host | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| IP address | The number that identifies a machine on a network (IPv4: 32 bits, IPv6: 128 bits) | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
 | Subnet mask | Bitmask that separates the network part of an address | [Subnet Masks](02-network-layer/02-subnet-masks-and-switches.md) |
 | Default gateway | The router that takes traffic leaving the local network | [Subnet Masks](02-network-layer/02-subnet-masks-and-switches.md) *(own chapter: Act 2)* |
+| Bit | A single 0 or 1; 8 bits make a byte | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| IPv4 address | 32-bit number naming a machine's connection to a network, e.g. `20.205.243.166` | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Octet | One of the four 8-bit parts of an IPv4 address (0–255) | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Dotted quad | Four octets in decimal with dots: the human way to write IPv4 | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Host | Any device that holds an IP address | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Network | A group of hosts that reach each other directly | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| LAN | Local area network: a network in one place (home, office) | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Network part / host part | Left bits = which network; right bits = which host in it | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Prefix (`/X`) | Number of left bits that form the network part | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| CIDR | `address/X` notation, with the network/host line at any bit | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Network address | First address of a block (host bits all 0); names the network | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Private address | From `10/8`, `172.16/12`, `192.168/16`: reused everywhere, not reachable from the Internet | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Public address | Unique on the whole Internet | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| Loopback | `127.0.0.1` / `localhost`: this same machine | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
+| IPv6 | 128-bit address format written in hex with colons | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) *(details: Act 5)* |

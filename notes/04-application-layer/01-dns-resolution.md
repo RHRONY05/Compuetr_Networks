@@ -3,7 +3,7 @@
 > **Zooming into:** Step 2 of the [lifecycle](../00-foundations/02-request-lifecycle.md) · Act 1
 > **Prerequisites:** [HTTP Basics](02-http-basics.md) (the message that needs an address)
 > **Key Goal:** Explain, server by server, how `api.example.com` becomes a number; read and choose DNS records for a real deployment; and predict how long a DNS change takes to reach everyone.
-> **Lesson with step-by-step labs:** [playground.md](../../playground.md) *(archived to `lessons/act1-1.2-dns.md` when the session ends)* · **Script:** [hands-on-lab/act1-1.2-dns-query.py](../../hands-on-lab/act1-1.2-dns-query.py)
+> **Lesson with step-by-step labs:** [lessons/act1-1.2-dns.md](../../lessons/act1-1.2-dns.md) · **Script:** [hands-on-lab/act1-1.2-dns-query.py](../../hands-on-lab/act1-1.2-dns-query.py)
 > **Recall:** [Think it through](../RECALL.md#act-1--step-2-dns-resolution)
 
 ## 🔑 Keywords in This Lesson

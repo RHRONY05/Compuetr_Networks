@@ -107,6 +107,12 @@
 
 * **Decision (2026-10-18): notes vs recall, and when notes are written.** Notes are tutorial chapters written **after** a finished session, when the student asks, built from the lesson **and** the session's questions/confusions/answers, merged (not appended). Recall moved out of notes into one file, `notes/RECALL.md` (5–8 think-through questions per chapter), updated in the same step, so the student never has to ask for it. The Compact note type was dropped. AGENTS.md was rewritten (≈200 → 123 lines) to remove duplication with the start-session skill.
 
+### Day 7–8 (2026-10-19 to 10-21): Session 1.3 IP & CIDR, Act 1 closed
+* **What worked:** building the lesson entirely from the student's own machine: Wi-Fi `192.168.0.102/24`, the WSL adapter `172.19.160.1/20` (a real non-octet prefix), `ping 3232235521` → `192.168.0.1` (proof that an IP is one number), and the "172 trap" using `example.com`'s address from the DNS session. The student's own question ("is WSL's IP assigned by Windows?") came straight out of that data and was answered with output from inside Ubuntu.
+* **Student preference:** when they feel a topic is clear and the remaining questions belong to later lessons, they move on rather than doing every lab step. Don't force each lab; keep the practice for a dedicated wrap-up (here: Wireshark lab + quiz at the end of the act).
+* **Problem 16 (tutor's test polluted the student's cache):** checking `curl wikipedia.org` before a cache experiment cached the name on the student's laptop (the tutor runs on the same machine), which would have spoiled the "first run shows DNS" step. *Solution:* never pre-run a name the student will use in a cache experiment; give a fresh name (`bn.wikipedia.org`).
+* **Process note:** a paused session's lesson was archived early (1.2 → `lessons/`) so the next lesson could use `playground.md`; its open items stay as checkboxes in the tracker.
+
 ### Upcoming Challenges & Roadmaps
 * **Day 6 (Visual Wireshark Labs without Screen Access):** Transcripts cannot capture Wireshark packet bytes on screen. 
   * *Anticipated Solution:* Pre-load Kurose & Ross sample trace files (`.pcap`) and analyze them with terminal inspection tools (`tshark` or python `scapy`) alongside Wireshark walkthroughs.

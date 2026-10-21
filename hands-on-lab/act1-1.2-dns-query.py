@@ -1,5 +1,5 @@
 # Act 1 · Session 1.2 (DNS, the phone book) · Part 8: Build A2, a DNS query by hand
-# Lesson: playground.md (archived later as lessons/act1-1.2-dns.md)
+# Lesson: lessons/act1-1.2-dns.md
 #
 # Run from the course folder:
 #   python hands-on-lab/act1-1.2-dns-query.py github.com              ask a resolver (1.1.1.1), type A

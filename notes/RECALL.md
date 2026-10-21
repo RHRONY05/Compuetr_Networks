@@ -57,3 +57,33 @@ Chapter: [DNS Resolution](04-application-layer/01-dns-resolution.md)
 8. Step 2 (DNS) found no number. Causes: a typo or a missing record (possibly a cached NXDOMAIN); the resolver is unreachable or dropping questions (like the phone hotspot); the domain's name servers are down or the registration expired.
 
 </details>
+
+
+---
+
+## Act 1 · Step 2: IP Addresses and CIDR
+
+Chapter: [IP Addresses and CIDR](02-network-layer/01-ip-and-cidr.md)
+
+1. A form lets users type an IPv4 address. Which two checks reject `10.0.300.1` and `10.0.1`, and why is the limit exactly 255?
+2. `ping 3232235521` reaches your router. Explain why that works, and how many IPv4 addresses can exist at all.
+3. Your Wi-Fi is `192.168.0.102/24`. Which part names the network, which the host, how many addresses does the network hold, which two are reserved and why, and how many devices can join?
+4. Your WSL adapter is `172.19.160.1/20`. Is `172.19.170.4` in the same network? Is `172.19.180.4`? Answer with the bits of the third octet, and give the block's first and last address.
+5. Who gave WSL its `172.19.x.x` address, and why should you never hard-code it in a config file?
+6. A teammate says, "The API server at `172.31.5.9` is public, I can call it from home." Right or wrong? What about `172.32.5.9`, and `172.66.147.243`?
+7. Your AWS VPC is `10.0.0.0/16`. How many addresses, why does a `/24` subnet inside it give 251 usable ones, and what goes wrong with a security group rule "port 5432 from `0.0.0.0/0`"?
+8. Why does it help routers that the network part sits on the **left** of every address? Use GitHub's `20.205.243.166` and its owner's block in your answer.
+
+<details>
+<summary><b>Answers</b></summary>
+
+1. Exactly 4 parts separated by dots, and each part a whole number from 0 to 255. Each part is one octet, 8 bits, and 8 bits stop at `11111111` = 255.
+2. The dotted quad is only a human way to write one 32-bit number; `3232235521` *is* `192.168.0.1`, and `ping` converts it back. 32 bits → 2^32 = 4,294,967,296 addresses (about 4.3 billion).
+3. `/24` → the first 24 bits (`192.168.0`) are the network, the last 8 (`102`) the host. 2^8 = 256 addresses, `192.168.0.0` to `.255`. `.0` (host bits all 0) names the network; `.255` (all 1) is the "everyone on this network" address. 254 devices, the router `.1` included.
+4. `/20` locks the first 4 bits of the third octet: `1010xxxx` = 160 to 175. 170 = `10101010` → starts `1010` → same network. 180 = `10110100` → starts `1011` → different network. Block: `172.19.160.0` to `172.19.175.255`, 4,096 addresses.
+5. Windows itself. When WSL 2 starts, Windows builds a virtual network inside the laptop, picks a free private block, keeps `.1` for its own side (`PrefixOrigin: Manual`) and gives Ubuntu another address in it (`172.19.165.5/20`, with `default via 172.19.160.1`). The router never sees it. Windows may pick a different block after a reboot, so the address changes.
+6. Wrong: `172.31.5.9` is inside `172.16.0.0/12` (172.16–172.31), so it's private and unreachable from the Internet. `172.32.5.9` and `172.66.147.243` are outside that block, so they're public.
+7. 2^16 = 65,536 addresses. A `/24` has 256; `.0` and `.255` are reserved, and AWS also reserves `.1`, `.2`, `.3` → 251. `0.0.0.0/0` matches every address, so the whole Internet can reach the database; scanners find it fast. Use your own `/32`.
+8. A router far away only reads the left bits to choose a direction, like `+880` for Bangladesh. It stores one line per *network* ("`20.192.0.0` – `20.255.255.255` → toward Microsoft") instead of one per machine.
+
+</details>

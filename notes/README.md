@@ -19,7 +19,7 @@ Legend: ✅ written · 🔧 exists but needs rewrite · ⏳ not written yet
 ## Act 1: Name → Address *(steps 1, 2)*
 * ✅ [HTTP Basics](04-application-layer/02-http-basics.md)
 * ✅ [DNS Resolution](04-application-layer/01-dns-resolution.md)
-* 🔧 [IP Addressing & CIDR](02-network-layer/01-ip-and-cidr.md) *(learned; adapt to follow DNS: "what is the number we got?")*
+* ✅ [IP Addresses & CIDR](02-network-layer/01-ip-and-cidr.md)
 
 ## Act 2: Local or Remote? *(step 4)*
 * 🔧 [Subnet Masks & Switches](02-network-layer/02-subnet-masks-and-switches.md) *(learned; adapt to open from the decision step)*

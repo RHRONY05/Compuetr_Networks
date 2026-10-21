@@ -28,8 +28,8 @@ Read top to bottom. Each chapter zooms into one step of the journey. ✅ written
 **Act 1: Name → Address** *(steps 1–2)*
 
 3. ✅ [HTTP Basics](notes/04-application-layer/02-http-basics.md) · full lesson: [lessons/act1-1.1-http.md](lessons/act1-1.1-http.md)
-4. ✅ [DNS Resolution](notes/04-application-layer/01-dns-resolution.md) · full lesson: [playground.md](playground.md) *(archived at session end)*
-5. 🔧 [IP Addressing & CIDR](notes/02-network-layer/01-ip-and-cidr.md)
+4. ✅ [DNS Resolution](notes/04-application-layer/01-dns-resolution.md) · full lesson: [lessons/act1-1.2-dns.md](lessons/act1-1.2-dns.md)
+5. ✅ [IP Addresses & CIDR](notes/02-network-layer/01-ip-and-cidr.md) · full lesson: [lessons/act1-1.3-ip-address.md](lessons/act1-1.3-ip-address.md)
 
 **Act 2: Local or Remote?** *(step 4)*
 
