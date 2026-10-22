@@ -87,3 +87,42 @@ Chapter: [IP Addresses and CIDR](02-network-layer/01-ip-and-cidr.md)
 8. A router far away only reads the left bits to choose a direction, like `+880` for Bangladesh. It stores one line per *network* ("`20.192.0.0` – `20.255.255.255` → toward Microsoft") instead of one per machine.
 
 </details>
+
+---
+
+## Act 2 · Step 4: Local or Remote? (Subnet Masks, Default Gateway & DHCP)
+
+Chapters:
+- [Subnet Masks & The Decision Step](02-network-layer/02-subnet-masks.md)
+- [The Default Gateway & The Routing Table](02-network-layer/03-default-gateway.md)
+- [DHCP: Who Gave Me These Numbers?](02-network-layer/04-dhcp.md)
+
+1. Your laptop has IP `192.168.0.102/24`. You make a request to `192.168.0.50` (local printer) and `140.82.112.4` (GitHub). Show the exact bitwise AND calculation your OS runs for both, and state the classification (On-link vs Off-link).
+2. Look at a routing table row with `Network Destination: 0.0.0.0` and `Netmask: 0.0.0.0`. Why does this rule match *every single IPv4 address on Earth*? What is it called, and why does an On-link `/24` route win over it when talking to a local IP?
+3. When your laptop hands a packet destined for GitHub (`140.82.112.4`) to your Default Gateway (`192.168.0.1`), what address is written in the packet's `Destination IP` field? Why would rewriting it to the gateway's IP break communication?
+4. A newly booted laptop has no IP address. How does it ask for an IP over the network without having an address? Name the four steps of the DORA handshake, and specify which steps are sent as broadcasts and why.
+5. You turn off your laptop and go out of town for two days. When you return home and reconnect to Wi-Fi, you get the exact same IP (`192.168.0.102`). Explain the two mechanisms that made this happen, and describe a situation where you would be given a different IP.
+6. Your laptop is halfway through its 3-hour lease (at 1.5 hours). Does it shout across the room with a broadcast to renew? What happens at T1 vs T2?
+7. You plug an Ethernet cable into an office wall jack, and Windows reports "No Internet, Secured" with IP `169.254.89.23`. What does this address mean, who assigned it, and what was the root cause?
+8. Does your browser send data directly into the network, or does it pass through physical hardware? Name the chain from your `fetch()` call down to the airwaves, and state the one IP destination where physical hardware is completely bypassed.
+
+<details>
+<summary><b>Answers</b></summary>
+
+1. My network ID: `192.168.0.102 & 255.255.255.0 = 192.168.0.0`.  
+   - For printer: `192.168.0.50 & 255.255.255.0 = 192.168.0.0`. Matches my network ID (`192.168.0.0 == 192.168.0.0`) → **On-link** (delivered directly over local link).  
+   - For GitHub: `140.82.112.4 & 255.255.255.0 = 140.82.112.0`. Does not match my network ID (`140.82.112.0 != 192.168.0.0`) → **Off-link** (must be handed to Default Gateway `192.168.0.1`).
+2. Bitwise AND with `0.0.0.0` zeroes out all 32 bits, requiring 0 matching bits. Thus, every IPv4 address matches it. It is the **Default Route** (catch-all). An on-link `/24` route wins over it because of **Longest Prefix Match (LPM)**: the kernel always chooses the most specific matching rule with the longest netmask prefix (24 bits > 0 bits).
+3. **`140.82.112.4`**. The destination IP is **never** rewritten to the gateway's IP. The destination IP must identify the final destination (GitHub) across the global Internet. If you wrote `192.168.0.1`, the router would think the packet was for itself and would never forward it outside. Only the local physical delivery envelope targets the gateway.
+4. It uses **DHCP** and broadcasts to `255.255.255.255` ("everyone on this local wire/radio").  
+   - **D**iscover: Client broadcasts (has no IP, knows no server IP).  
+   - **O**ffer: Server offers IP, mask, gateway, DNS.  
+   - **R**equest: Client broadcasts naming chosen server (informs other servers to release their reserved offers).  
+   - **A**cknowledge: Server confirms the lease.
+5. (a) **Router MAC binding table:** The router stores `MAC -> IP` in memory and reassigns the same IP to recognized MACs if still free. (b) **Client requested IP (Option 50):** Windows stores the last IP in registry and explicitly requests `192.168.0.102`. You get a different IP if the router ran out of addresses and leased `.102` to another guest device while you were away, or if the router was rebooted/reset.
+6. **No.** At 50% lease time (T1), it quietly sends a direct **unicast** DHCP Request to the known router (`192.168.0.1`). It only switches to room-wide **broadcast** if the router fails to reply and the timer hits 87.5% (T2).
+7. It is an **APIPA** (Automatic Private IP Addressing) address (`169.254.0.0/16`). Your OS self-assigned it because it broadcast DHCP Discover requests and received zero responses. Root cause: no DHCP server is running or reachable on that network link.
+8. It must pass through physical hardware: Browser (user-space) → OS Kernel (TCP segments & IP packets) → Network Device Driver → Physical NIC (Wi-Fi chip) → Radio waves in the air. The only exception is **`127.0.0.1` (`localhost`)**, which the kernel handles purely inside RAM on the virtual loopback adapter without touching the physical NIC.
+
+</details>
+

@@ -33,9 +33,11 @@ Read top to bottom. Each chapter zooms into one step of the journey. ✅ written
 
 **Act 2: Local or Remote?** *(step 4)*
 
-6. 🔧 [Subnet Masks & Switches](notes/02-network-layer/02-subnet-masks-and-switches.md)
-7. ⏳ Default Gateway
-8. ⏳ DHCP
+6. ✅ [Subnet Masks & The Decision Step](notes/02-network-layer/02-subnet-masks.md)
+7. ✅ [The Default Gateway & The Routing Table](notes/02-network-layer/03-default-gateway.md)
+8. ✅ [DHCP: Who Gave Me These Numbers?](notes/02-network-layer/04-dhcp.md)
+   *(Full master lesson: [lessons/act2-local-or-remote.md](lessons/act2-local-or-remote.md))*
+
 
 **Act 3: The Next Physical Hop** *(step 5)*
 

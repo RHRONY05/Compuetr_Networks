@@ -41,8 +41,8 @@ Words are introduced properly at the **start of the lesson that needs them** (se
 | Registrar / DNS host / web host | Sells you the name / holds its records / serves the site | [DNS Resolution](04-application-layer/01-dns-resolution.md) |
 | Encapsulation | Wrapping data in a header per layer, like nested envelopes | [Request Lifecycle](00-foundations/02-request-lifecycle.md) |
 | IP address | The number that identifies a machine on a network (IPv4: 32 bits, IPv6: 128 bits) | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
-| Subnet mask | Bitmask that separates the network part of an address | [Subnet Masks](02-network-layer/02-subnet-masks-and-switches.md) |
-| Default gateway | The router that takes traffic leaving the local network | [Subnet Masks](02-network-layer/02-subnet-masks-and-switches.md) *(own chapter: Act 2)* |
+| Subnet mask | Bitmask of 1s then 0s that separates an IP's network part from host part | [Subnet Masks](02-network-layer/02-subnet-masks.md) |
+| Default gateway | The local router that serves as the exit door for packets leaving the subnet | [Default Gateway](02-network-layer/03-default-gateway.md) |
 | Bit | A single 0 or 1; 8 bits make a byte | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
 | IPv4 address | 32-bit number naming a machine's connection to a network, e.g. `20.205.243.166` | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
 | Octet | One of the four 8-bit parts of an IPv4 address (0–255) | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
@@ -58,3 +58,14 @@ Words are introduced properly at the **start of the lesson that needs them** (se
 | Public address | Unique on the whole Internet | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
 | Loopback | `127.0.0.1` / `localhost`: this same machine | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) |
 | IPv6 | 128-bit address format written in hex with colons | [IP & CIDR](02-network-layer/01-ip-and-cidr.md) *(details: Act 5)* |
+| On-link / Off-link | Reachable directly on the local link / requires forwarding via a router | [Subnet Masks](02-network-layer/02-subnet-masks.md) |
+| Routing table | In-memory kernel table mapping destination prefixes to next hops | [Default Gateway](02-network-layer/03-default-gateway.md) |
+| Default route (`0.0.0.0/0`) | Universal wildcard rule matching every IPv4 address on Earth | [Default Gateway](02-network-layer/03-default-gateway.md) |
+| Longest prefix match (LPM) | Routing rule: most specific (longest) netmask prefix always wins | [Default Gateway](02-network-layer/03-default-gateway.md) |
+| Hop | One leg of a packet's journey between routers; gateway is Hop 1 | [Default Gateway](02-network-layer/03-default-gateway.md) |
+| DHCP | Protocol that automatically leases IP, mask, gateway, and DNS to a device | [DHCP](02-network-layer/04-dhcp.md) |
+| DORA | 4-step DHCP exchange: Discover, Offer, Request, Acknowledge | [DHCP](02-network-layer/04-dhcp.md) |
+| Lease time | Duration an IP address is rented to a machine by DHCP | [DHCP](02-network-layer/04-dhcp.md) |
+| Broadcast address (`255.255.255.255`) | Deliver to every machine on the local physical network | [DHCP](02-network-layer/04-dhcp.md) |
+| APIPA (`169.254.x.x`) | Automatic private IP self-assigned when DHCP fails | [DHCP](02-network-layer/04-dhcp.md) |
+

@@ -68,7 +68,7 @@ One detail differs from the way most people picture it: **the HTTP message is cr
 | 1 | What exactly are we sending? | [HTTP Basics](../04-application-layer/02-http-basics.md) | 1 | ✅ |
 | 2 | Where is `api.example.com`, and what is the number we get back? | [DNS Resolution](../04-application-layer/01-dns-resolution.md), then [IP & CIDR](../02-network-layer/01-ip-and-cidr.md) | 1 | ✅ |
 | 3 | How do two programs agree to talk, reliably? | Ports, UDP, TCP | 4 | ⏳ |
-| 4 | Is that address in my room or outside it? | [Subnet Masks](../02-network-layer/02-subnet-masks-and-switches.md) *(learned, to adapt)*, Default Gateway, DHCP | 2 | 🟡 gateway pending |
+| 4 | Is that address in my room or outside it? | [Subnet Masks](../02-network-layer/02-subnet-masks.md), [Default Gateway](../02-network-layer/03-default-gateway.md), [DHCP](../02-network-layer/04-dhcp.md) | 2 | ✅ |
 | 5 | Which physical card gets the frame next? | MAC & ARP | 3 | ⏳ |
 | 6 | How do routers carry it across the planet? | IP packet, routing, ICMP, NAT | 5 | ⏳ |
 | 7 | Why can't anyone read or alter it? | TLS | 6 | ⏳ |
@@ -280,6 +280,7 @@ After each chapter, add a few lines here: what that step now means with what you
 | 2026-10-13 | HTTP Basics | Step 1's message is text: request line, headers, empty line, body, turned into bytes. Proof of identity rides in every message (Cookie / Authorization) because HTTP remembers nothing. |
 | 2026-10-18 | DNS Resolution | Step 2 is a separate, earlier conversation: one small UDP question to my resolver, which answers from cache or walks root → TLD → authoritative, following referrals. Every answer carries a TTL, so "propagation" is just caches expiring. |
 | 2026-10-21 | IP & CIDR (reworked) | The number DNS returns in step 2 is one 32-bit value written as four octets. Its left X bits (/X) name a network, the rest name a host in it, so routers can work with whole networks. 10.x, 172.16–31.x and 192.168.x are private: reused in every home, never seen on the Internet. |
+| 2026-10-22 | Act 2: Local or Remote? | Step 4 isolates the network ID via bitwise AND (IP & mask). If off-link, the kernel routing table uses 0.0.0.0/0 to select the Default Gateway (192.168.0.1) as the exit door; the destination IP remains the remote server. All 4 parameters (IP, mask, gateway, DNS) were dynamically leased at boot via DHCP's 4-way DORA handshake. |
 
 ---
 

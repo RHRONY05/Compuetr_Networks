@@ -22,9 +22,10 @@ Legend: ✅ written · 🔧 exists but needs rewrite · ⏳ not written yet
 * ✅ [IP Addresses & CIDR](02-network-layer/01-ip-and-cidr.md)
 
 ## Act 2: Local or Remote? *(step 4)*
-* 🔧 [Subnet Masks & Switches](02-network-layer/02-subnet-masks-and-switches.md) *(learned; adapt to open from the decision step)*
-* ⏳ Default Gateway
-* ⏳ DHCP
+* ✅ [Subnet Masks & The Decision Step](02-network-layer/02-subnet-masks.md)
+* ✅ [The Default Gateway & The Routing Table](02-network-layer/03-default-gateway.md)
+* ✅ [DHCP: Who Gave Me These Numbers?](02-network-layer/04-dhcp.md)
+
 
 ## Act 3: The Next Physical Hop *(step 5)*
 * ⏳ MAC Addresses & ARP

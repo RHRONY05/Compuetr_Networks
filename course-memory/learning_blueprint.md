@@ -113,9 +113,19 @@
 * **Problem 16 (tutor's test polluted the student's cache):** checking `curl wikipedia.org` before a cache experiment cached the name on the student's laptop (the tutor runs on the same machine), which would have spoiled the "first run shows DNS" step. *Solution:* never pre-run a name the student will use in a cache experiment; give a fresh name (`bn.wikipedia.org`).
 * **Process note:** a paused session's lesson was archived early (1.2 → `lessons/`) so the next lesson could use `playground.md`; its open items stay as checkboxes in the tracker.
 
+### Day 9 (2026-10-22): Act 2 (Local or Remote?) Complete Master Session & Notes
+* **What worked:** Unifying Sessions 2.0, 2.1, and 2.2 into a continuous master lesson in `playground.md` upon the student's realization that they are tightly coupled. The boundary (Subnet Mask), the exit door (Default Gateway & Routing Table), and the bootstrap (DHCP DORA) make vastly more sense when viewed together as Step 4 of the journey.
+* **High-yield student questions addressed & baked into notes:**
+  1. *Does data pass through hardware?* Explained the path from user-space browser down to the MediaTek NIC and antenna radio oscillations (with `localhost` as the RAM-only exception).
+  2. *Who builds and slices packets?* Clarified that the OS kernel TCP layer slices the stream into segments based on MSS (1460 bytes) and wraps them in IP headers.
+  3. *Routing table mechanics:* Cleared the confusion that it stores website history; showed how it runs bitwise AND against row netmasks and selects using Longest Prefix Match (LPM).
+  4. *DHCP persistence:* Explained router MAC binding tables and Windows Option 50, plus the 5 roles bundled inside the living-room router box.
+* **Handbook chapters created:** `02-subnet-masks.md`, `03-default-gateway.md`, `04-dhcp.md`, plus Milestone A3 script `hands-on-lab/act2-2.1-is-local.py`.
+
 ### Upcoming Challenges & Roadmaps
 * **Day 6 (Visual Wireshark Labs without Screen Access):** Transcripts cannot capture Wireshark packet bytes on screen. 
   * *Anticipated Solution:* Pre-load Kurose & Ross sample trace files (`.pcap`) and analyze them with terminal inspection tools (`tshark` or python `scapy`) alongside Wireshark walkthroughs.
+
 
 ---
 

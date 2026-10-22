@@ -4,13 +4,10 @@ Last updated: 2026-10-21 (Act 1 completed; Wireshark wrap-up lab + quiz pending)
 
 ## Current Position
 
-- **Act 1: Completed** (student approved 2026-10-21), with one open item: the **Wireshark DNS practice lab + Act 1 quiz** (below).
-- **Next session:** Act 1 wrap-up lab, then **Act 2 · Session 2.0: The subnet mask**.
-- **Wrap-up lab plan:** Wireshark on `*Wi-Fi`, filter `dns`, one experiment at a time. Experiment 3: `curl.exe -s -o NUL http://bn.wikipedia.org` twice (1st run shows DNS rows, 2nd shows none: the OS cache). Experiment 4: `python hands-on-lab/act1-1.2-dns-query.py github.com A --walk` (3 questions to 3 servers). Then the 1.2 recall, then an Act 1 quiz mixing HTTP, DNS and IP/CIDR (`notes/RECALL.md`).
-- **How to run Wireshark with this student (important):** they had never used it. Give **one experiment at a time**: *"1. In PowerShell run X. 2. In Wireshark look at Y. 3. Reply with Z."* Say what each window does first (PowerShell asks, Wireshark only records). The student gets bored and leaves the lesson when given a block of instructions. Laptop IP `192.168.0.102/24`, resolver/router `192.168.0.1`.
-- **Tutor's shell can't read the DNS cache** (`ipconfig /displaydns`, `/flushdns` need elevation there). Don't pre-test a name the student will use for a cache experiment: it pollutes their cache.
-- **Open question to settle later:** Cloudflare `1.1.1.1` returned TTL 77 and 161 for a record whose owners say 60. Lesson and note say "TTL is a request, not a guarantee"; the exact rule is unconfirmed.
-- **Waiting in its slot:** subnet mask (video 5, watched) → Session 2.0. Default Gateway videos 6 & 7 → Session 2.1.
+- **Act 2: Completed** (2026-10-22). Master lesson archived in `lessons/act2-local-or-remote.md`. Notes written: `02-subnet-masks.md`, `03-default-gateway.md`, `04-dhcp.md`. Milestone A3 `is_local()` built and tested in `hands-on-lab/act2-2.1-is-local.py`.
+- **Act 1:** Completed (with open Wireshark DNS practice lab: Experiments 3–4 + quiz).
+- **Next session:** **Act 3 · Session 3.1: MAC and ARP** (Step 5 of the journey: "A gateway has an IP; how does my Wi-Fi card reach it physically?"), OR Act 1 wrap-up lab.
+
 
 > Status values: `Not Started` · `In Progress` · `Completed`. Mark an **act** Completed only with the student's explicit approval.
 > Session checkboxes: `[x]` done, `[ ]` pending. Each session = Learn · Hands-on · Build/Note · Recall check.
@@ -52,21 +49,22 @@ Last updated: 2026-10-21 (Act 1 completed; Wireshark wrap-up lab + quiz pending)
 
 ---
 
-## Act 2: Local or Remote? (step 4) — Not Started
+## Act 2: Local or Remote? (step 4) — Completed ✅
 
-### Session 2.0: The subnet mask — *video already watched*
+### Session 2.0: The subnet mask — Completed 2026-10-22
 - [x] Watched C5 *(earlier)*
-- [ ] Re-read with the story: we have a destination IP, is it ours?
-- [ ] Adapt note `02-network-layer/02-subnet-masks-and-switches.md` (Keywords block, zoom banner, open from the decision step)
-- [ ] Revisit Log · [ ] Recall check
+- [x] Re-read with the story: we have a destination IP, is it ours?
+- [x] Adapt note `02-network-layer/02-subnet-masks.md` (Keywords block, zoom banner, open from the decision step)
+- [x] Revisit Log · [x] Recall check
 
-### Session 2.1: The Default Gateway
-- [ ] C6, C7 · [ ] `route print`, `tracert 8.8.8.8` · [ ] ⭐ A3 `is_local()` + CIDR calculator
-- [ ] Note: Default Gateway · [ ] Revisit Log · [ ] Recall check
+### Session 2.1: The Default Gateway — Completed 2026-10-22
+- [x] C6, C7 · [x] `route print`, `tracert 8.8.8.8` · [x] ⭐ A3 `is_local()` + CIDR calculator (`hands-on-lab/act2-2.1-is-local.py`)
+- [x] Note: `03-default-gateway.md` · [x] Revisit Log · [x] Recall check
 
-### Session 2.2: DHCP, who gave me these numbers?
-- [ ] AI + K4.3 · [ ] `ipconfig /all`, Wireshark DHCP
-- [ ] Note: DHCP · [ ] Revisit Log · [ ] Recall check
+### Session 2.2: DHCP, who gave me these numbers? — Completed 2026-10-22
+- [x] AI + K4.3 · [x] `ipconfig /all`
+- [x] Note: `04-dhcp.md` · [x] Revisit Log · [x] Recall check
+
 
 ---
 
@@ -152,7 +150,7 @@ Pick any, in any order, after the journey (see roadmap): WebRTC/RTP, game UDP, S
 |---|---|---|
 | 0 The Trigger | Completed | 1 / 1 |
 | 1 Name → Address | Completed | 3 / 3 *(Wireshark wrap-up lab + quiz pending)* |
-| 2 Local or Remote? | Not Started | 0 / 3 *(2.0 video already watched, note to adapt)* |
+| 2 Local or Remote? | Completed | 3 / 3 |
 | 3 Next Physical Hop | Not Started | 0 / 2 |
 | 4 The Reliable Pipe | Not Started | 0 / 6 |
 | 5 Across the Planet | Not Started | 0 / 4 |
@@ -160,4 +158,5 @@ Pick any, in any order, after the journey (see roadmap): WebRTC/RTP, game UDP, S
 | 7 Conversation Evolves | Not Started | 0 / 3 |
 | 8 What Sits on the Path | Not Started | 0 / 5 |
 | 9 Close the Circle | Not Started | 0 / 2 |
-| **Total** | | **4 / 33** |
+| **Total** | | **7 / 33** |
+
