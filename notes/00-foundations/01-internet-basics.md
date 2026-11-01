@@ -146,6 +146,37 @@ You don't need to know how `ping` works yet. Just notice that **distance and the
 
 ---
 
+## 🧠 The Moral of the Story (One-Look Mindmap)
+
+> **The Core Question:**
+> *When your code calls `fetch()`, what is "The Internet" that carries it, and why can't one wire connect everyone?*
+
+```text
+                        THE 30-SECOND MENTAL WALKTHROUGH
+
+ 1. THE DISTINCTION:  • Wi-Fi:    A short-range radio link to your home router.
+                      • Web:      One application (HTTP APIs, pages) on top of the network.
+                      • Internet: The global mesh of independent networks bound by protocol.
+                                           │
+                                           ▼
+ 2. THE PROBLEM:      You cannot run a private dedicated copper wire from your laptop
+                      to every server on Earth. Wires must be shared.
+                                           │
+                                           ▼
+ 3. THE SOLUTION:     Data is chopped into small, independent PACKETS. Each packet
+                      carries its own header (address label) and payload (data).
+                                           │
+                                           ▼
+ 4. INDEPENDENCE:     Routers along the way read only the address label and forward
+                      packets hop-by-hop. If one link fails or congests, packets take another.
+                                           │
+                                           ▼
+ 5. THE REALITY:      Distance is physical. Signals travel through fiber at ~200,000 km/s.
+                      Bandwidth (pipe width) cannot erase speed-of-light latency across oceans.
+```
+
+---
+
 ## 9. Active Recall
 
 1. What is the difference between the Web and the Internet? Name one thing that uses the Internet but not the Web.

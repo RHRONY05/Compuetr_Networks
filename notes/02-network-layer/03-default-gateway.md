@@ -213,6 +213,38 @@ Tracing route to 8.8.8.8 over a maximum of 3 hops
 
 ---
 
+## 🧠 The Moral of the Story (One-Look Mindmap)
+
+> **The Core Question:**
+> *Target `203.0.113.10` is off-link. How does the kernel routing table select `192.168.0.1`, and why does Dst IP stay unchanged?*
+
+```text
+                        THE 30-SECOND MENTAL WALKTHROUGH
+
+ 1. THE ROUTING TABLE: An in-memory decision table consulted for EVERY outgoing packet.
+                                           │
+                                           ▼
+ 2. THE CATCH-ALL:    Row `Destination: 0.0.0.0, Netmask: 0.0.0.0` matches EVERY IPv4
+                      address on Earth because zero matching bits are required.
+                      Next Hop = Default Gateway (`192.168.0.1`).
+                                           │
+                                           ▼
+ 3. LONGEST PREFIX:   Longest Prefix Match (LPM) rule: If a specific local `/24` route
+                      matches, it always beats the general `/0` default route (24 > 0).
+                                           │
+                                           ▼
+ 4. THE GOLDEN RULE:  The packet leaves with:
+                      • Source IP:      192.168.0.108  (You)
+                      • Destination IP: 203.0.113.10   (Google/Server - NEVER rewritten to gateway!)
+                      The gateway's IP is ONLY used to find who receives the local frame.
+                                           │
+                                           ▼
+ 5. THE CLIFFHANGER:  We have our IP, mask, and gateway. Who gave our computer these numbers
+                      at boot, and how did we ask without having an address?
+```
+
+---
+
 ## 7. Close the Loop
 
 * **Revisit Log line:**

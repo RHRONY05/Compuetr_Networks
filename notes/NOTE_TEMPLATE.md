@@ -40,7 +40,13 @@ developer impact (deployments, debugging, Docker, cloud).
 Common errors this step causes (`ENOTFOUND`, `ECONNREFUSED`...), what videos simplify.
 🔵 Later: one line listing later-act topics and their acts.
 
-## 7. Close the Loop
+## 7. The Moral of the Story (One-Look Mindmap)
+A 30-second visual ASCII mindmap/flow that sits at the end of the chapter to consolidate everything into memory:
+- **The Core Question:** The exact physical/architectural mystery this chapter solved.
+- **The Step-by-Step Flow:** The 4-6 sequential steps of the mechanism.
+- **The Golden Rule:** The one durable takeaway.
+
+## 8. Close the Loop
 * **Revisit Log line** (also added to the anchor): "[date] | [chapter] | what step N now means."
 * **Bridge forward:** the open question, and the next chapter's link.
 ```

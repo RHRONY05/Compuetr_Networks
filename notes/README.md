@@ -28,7 +28,7 @@ Legend: ✅ written · 🔧 exists but needs rewrite · ⏳ not written yet
 
 
 ## Act 3: The Next Physical Hop *(step 5)*
-* ⏳ MAC Addresses & ARP
+* ✅ [MAC Addresses & ARP](01-data-link/01-mac-and-arp.md)
 * ⏳ Ethernet & Switches
 
 ## Act 4: The Reliable Pipe *(step 3)*

@@ -4,6 +4,8 @@ Last updated: 2026-10-21 (Act 1 completed; Wireshark wrap-up lab + quiz pending)
 
 ## Current Position
 
+- **Act 3: In Progress** (Session 3.1 completed 2026-11-01). Lesson archived in `lessons/act3-3.1-mac-and-arp.md`. Note written: `01-data-link/01-mac-and-arp.md`. Milestone A4 built in `hands-on-lab/act3-3.1-arp-explorer.py`.
+- **Next session:** **Act 3 · Session 3.2: Switch, hub, Ethernet** (Step 5 continued: how switches forward frames on the local wire).
 - **Act 2: Completed** (2026-10-22). Master lesson archived in `lessons/act2-local-or-remote.md`. Notes written: `02-subnet-masks.md`, `03-default-gateway.md`, `04-dhcp.md`. Milestone A3 `is_local()` built and tested in `hands-on-lab/act2-2.1-is-local.py`.
 - **Act 1:** Completed (with open Wireshark DNS practice lab: Experiments 3–4 + quiz).
 - **Next session:** **Act 3 · Session 3.1: MAC and ARP** (Step 5 of the journey: "A gateway has an IP; how does my Wi-Fi card reach it physically?"), OR Act 1 wrap-up lab.
@@ -68,11 +70,11 @@ Last updated: 2026-10-21 (Act 1 completed; Wireshark wrap-up lab + quiz pending)
 
 ---
 
-## Act 3: The Next Physical Hop (step 5) — Not Started
+## Act 3: The Next Physical Hop (step 5) — In Progress
 
 ### Session 3.1: MAC and ARP
-- [ ] C8, C9, C10, K6.1 · [ ] `getmac`, `arp -a`, Wireshark ARP · [ ] ⭐ A4
-- [ ] Note: MAC & ARP · [ ] Revisit Log · [ ] Recall check
+- [x] C8, C9, C10, K6.1 · [x] `getmac`, `arp -a` · [x] ⭐ A4 (`hands-on-lab/act3-3.1-arp-explorer.py`)
+- [x] Note: `01-data-link/01-mac-and-arp.md` · [x] Revisit Log · [x] Recall check
 
 ### Session 3.2: Switch, hub, Ethernet
 - [ ] AI explanation · [ ] Packet Tracer: switch MAC table
@@ -151,12 +153,12 @@ Pick any, in any order, after the journey (see roadmap): WebRTC/RTP, game UDP, S
 | 0 The Trigger | Completed | 1 / 1 |
 | 1 Name → Address | Completed | 3 / 3 *(Wireshark wrap-up lab + quiz pending)* |
 | 2 Local or Remote? | Completed | 3 / 3 |
-| 3 Next Physical Hop | Not Started | 0 / 2 |
+| 3 Next Physical Hop | In Progress | 1 / 2 |
 | 4 The Reliable Pipe | Not Started | 0 / 6 |
 | 5 Across the Planet | Not Started | 0 / 4 |
 | 6 Make It Private | Not Started | 0 / 4 |
 | 7 Conversation Evolves | Not Started | 0 / 3 |
 | 8 What Sits on the Path | Not Started | 0 / 5 |
 | 9 Close the Circle | Not Started | 0 / 2 |
-| **Total** | | **7 / 33** |
+| **Total** | | **8 / 33** |
 

@@ -170,6 +170,38 @@ python hands-on-lab/act2-2.1-is-local.py 192.168.0.102/24 140.82.112.4
 
 ---
 
+## 🧠 The Moral of the Story (One-Look Mindmap)
+
+> **The Core Question:**
+> *We have Destination IP `203.0.113.10`. How does the OS decide in a single CPU cycle whether to deliver it locally or hand it to an exit door?*
+
+```text
+                        THE 30-SECOND MENTAL WALKTHROUGH
+
+ 1. THE FILTER:       A Subnet Mask is a continuous row of 1s followed by 0s
+                      (`/24` = `255.255.255.0` = 24 ones, 8 zeros).
+                                           │
+                                           ▼
+ 2. BITWISE AND:      The CPU runs a lightning-fast bitwise AND (`&`) operation:
+                      `IP & Subnet Mask = Network ID`
+                      (1 & 1 = 1; anything & 0 = 0).
+                                           │
+                                           ▼
+ 3. THE COMPARISON:   • My Network ID:     192.168.0.108 & 255.255.255.0 = 192.168.0.0
+                      • Target Network ID: 203.0.113.10  & 255.255.255.0 = 203.0.113.0
+                                           │
+                                           ▼
+ 4. THE VERDICT:      `192.168.0.0 != 203.0.113.0` -> OFF-LINK!
+                      • If MATCH:    On-link (deliver directly over local Wi-Fi/switch).
+                      • If NO MATCH: Off-link (must be handed to the Default Gateway!).
+                                           │
+                                           ▼
+ 5. THE CLIFFHANGER:  The destination is Off-link. How does the OS kernel select the gateway,
+                      and how does the routing table prioritize routes?
+```
+
+---
+
 ## 7. Close the Loop
 
 * **Revisit Log line:**

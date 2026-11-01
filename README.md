@@ -41,7 +41,7 @@ Read top to bottom. Each chapter zooms into one step of the journey. ✅ written
 
 **Act 3: The Next Physical Hop** *(step 5)*
 
-9. ⏳ MAC Addresses & ARP
+9. ✅ [MAC Addresses & ARP](notes/01-data-link/01-mac-and-arp.md) · full lesson: [lessons/act3-3.1-mac-and-arp.md](lessons/act3-3.1-mac-and-arp.md)
 10. ⏳ Ethernet & Switches
 
 **Act 4: The Reliable Pipe** *(step 3)*

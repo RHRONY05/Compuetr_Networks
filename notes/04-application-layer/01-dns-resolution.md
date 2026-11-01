@@ -513,6 +513,37 @@ python hands-on-lab/act1-1.2-dns-query.py github.com A --walk
 
 🔵 **Later:** UDP, TCP, ports (Act 4) · what the IP address means inside (next chapter) · DNSSEC, DoH/DoT, `https://` and certificates (Act 6) · GeoDNS, CDNs, proxies such as Cloudflare's "orange cloud", traffic managers in CNAME chains (Act 8) · SPF, DKIM, PTR, SMTP (Epilogue: email).
 
+## 🧠 The Moral of the Story (One-Look Mindmap)
+
+> **The Core Question:**
+> *Your HTTP message is addressed to `api.example.com`. How does your machine discover which 32-bit IP number that name actually belongs to?*
+
+```text
+                        THE 30-SECOND MENTAL WALKTHROUGH
+
+ 1. CACHE CHECK:      Browser Cache → OS Cache → Hosts File. If found, stop immediately.
+                                           │ (Miss)
+                                           ▼
+ 2. RECURSIVE ASK:    Laptop sends a 28-byte UDP "postcard" to local Resolver (192.168.0.1):
+                      "Please find the IP for api.example.com for me."
+                                           │
+                                           ▼
+ 3. ITERATIVE WALK:   Resolver walks the hierarchical tree following referrals:
+                      • Root Server (`.`):     "I don't know, ask the `.com` TLD servers."
+                      • TLD Server (`.com`):   "I don't know, ask `example.com` Name Servers."
+                      • Authoritative Server:  "Here is the final A record: 203.0.113.10!"
+                                           │
+                                           ▼
+ 4. CACHE & RETURN:   Resolver caches the answer for its TTL (e.g. 300s) and hands it back
+                      to your laptop. "Propagation delay" is simply caches waiting to expire.
+                                           │
+                                           ▼
+ 5. THE CLIFFHANGER:  DNS handed us `203.0.113.10`. What does this number actually mean,
+                      and how does it split into network vs host?
+```
+
+---
+
 ## 7. Close the Loop
 
 **Revisit Log:** `2026-10-18 | DNS Resolution | Step 2 is a separate, earlier conversation: one small UDP question to my resolver, which answers from cache or walks root → TLD → authoritative, following referrals. Every answer carries a TTL, so "propagation" is just caches expiring.`

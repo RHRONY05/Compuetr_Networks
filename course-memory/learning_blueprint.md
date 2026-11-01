@@ -122,6 +122,15 @@
   4. *DHCP persistence:* Explained router MAC binding tables and Windows Option 50, plus the 5 roles bundled inside the living-room router box.
 * **Handbook chapters created:** `02-subnet-masks.md`, `03-default-gateway.md`, `04-dhcp.md`, plus Milestone A3 script `hands-on-lab/act2-2.1-is-local.py`.
 
+### Day 7 (2026-11-01): Act 3 Session 3.1 (MAC & ARP) & Centralized Terminal Reference
+* **Student Breakthroughs & Questions Answered:**
+  1. *ARP message structure vs. IP:* Clarified that ARP requests are NOT wrapped in IP packets (EtherType `0x0806`, directly inside the Ethernet Frame).
+  2. *Hardware packet filtering & sleeping mobile devices:* Explained NIC silicon MAC filtering (dropping unicast frames in silicon without interrupting CPU) and ARP Offloading on phone Wi-Fi chips.
+  3. *Physical NICs vs Virtual Adapters:* Deconstructed the student's real machine settings showing 2 physical chips (Realtek Ethernet + MediaTek Wi-Fi/Bluetooth) vs software virtual adapters (WSL vEthernet with Microsoft `00-15-5D` OUI, Wi-Fi Direct with bit-altered local MACs).
+  4. *Bluetooth PAN vs Peripheral Profiles:* Resolved the confusion of Bluetooth showing 'Not operational' despite connected headphones (A2DP audio vs PAN network tethering).
+* **Friction Solved (Scattered Commands):** Created `hands-on-lab/COMMANDS.md`—a single centralized reference indexing all terminal and PowerShell network inspection commands grouped by layer and use case.
+* **Handbook Chapter Written:** `notes/01-data-link/01-mac-and-arp.md`.
+
 ### Upcoming Challenges & Roadmaps
 * **Day 6 (Visual Wireshark Labs without Screen Access):** Transcripts cannot capture Wireshark packet bytes on screen. 
   * *Anticipated Solution:* Pre-load Kurose & Ross sample trace files (`.pcap`) and analyze them with terminal inspection tools (`tshark` or python `scapy`) alongside Wireshark walkthroughs.

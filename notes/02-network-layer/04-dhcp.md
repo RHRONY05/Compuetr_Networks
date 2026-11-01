@@ -204,6 +204,38 @@ Notice that **`DHCP Server: 192.168.0.1`** is the exact same IP address as your 
 
 ---
 
+## 🧠 The Moral of the Story (One-Look Mindmap)
+
+> **The Core Question:**
+> *A computer boots with NO IP address. How does it bootstrap its entire network identity without an address to communicate?*
+
+```text
+                        THE 30-SECOND MENTAL WALKTHROUGH
+
+ 1. THE CHICKEN & EGG: You need an IP to send packets, but need to send packets to get an IP.
+                       Solution: UDP Broadcast to `255.255.255.255` ("everyone on link").
+                                           │
+                                           ▼
+ 2. THE DORA DANCE:    • Discover:    Client shouts "I need an IP! My MAC is 94-BB-43-..."
+                       • Offer:       Router offers IP 192.168.0.108 + mask + gateway + DNS.
+                       • Request:     Client broadcasts "I accept router 192.168.0.1's offer!"
+                       • Acknowledge: Router confirms lease and starts the timer.
+                                           │
+                                           ▼
+ 3. LEASE RENEWAL:     • At 50% time (T1): Quiet direct unicast request to the router.
+                       • At 87.5% time (T2): Desperate room-wide broadcast if T1 failed.
+                                           │
+                                           ▼
+ 4. THE FAILSAFE:      If zero DHCP servers answer, the OS self-assigns an APIPA
+                       address (`169.254.x.x/16`) allowing local link comms only.
+                                           │
+                                           ▼
+ 5. THE CLIFFHANGER:   Step 4 is complete! The kernel selected exit door `192.168.0.1`.
+                       How does our Wi-Fi card reach `192.168.0.1` physically through the air?
+```
+
+---
+
 ## 7. Close the Loop
 
 * **Revisit Log line:**

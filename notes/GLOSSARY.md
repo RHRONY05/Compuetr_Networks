@@ -69,3 +69,13 @@ Words are introduced properly at the **start of the lesson that needs them** (se
 | Broadcast address (`255.255.255.255`) | Deliver to every machine on the local physical network | [DHCP](02-network-layer/04-dhcp.md) |
 | APIPA (`169.254.x.x`) | Automatic private IP self-assigned when DHCP fails | [DHCP](02-network-layer/04-dhcp.md) |
 
+| NIC | Physical hardware chip/card that sends and receives electrical/radio signals | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| MAC address | 48-bit (6-byte) permanent hardware identifier burned onto a network card | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| OUI | Organizationally Unique Identifier: first 3 bytes of a MAC identifying the manufacturer | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| Link layer (Layer 2) | Moves data across a single physical hop between directly connected cards | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| Ethernet frame | Layer 2 envelope wrapping an IP packet (or ARP) with Source & Destination MACs | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| ARP | Address Resolution Protocol: discovers the physical MAC matching a local IP | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| ARP cache | In-memory kernel table storing recent IP -> MAC resolutions | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| Broadcast MAC | `FF-FF-FF-FF-FF-FF`: delivers to every network card on the local link | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| Unicast | Transmission addressed directly to one specific hardware card | [MAC and ARP](01-data-link/01-mac-and-arp.md) |
+| EtherType | 2-byte frame field indicating the payload protocol (`0x0800` IPv4, `0x0806` ARP) | [MAC and ARP](01-data-link/01-mac-and-arp.md) |

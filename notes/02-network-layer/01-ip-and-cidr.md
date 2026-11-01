@@ -322,6 +322,38 @@ Try `192.168.1.256` (refused: "8 bits stop at 255"), `10.0.0.5/8` (private, 16,7
 
 🔵 **Later:** subnet mask and the local-or-remote decision (Session 2.0), default gateway (2.1), DHCP and `169.254.x.x` (2.2), broadcast and MAC addresses (Act 3), routers forwarding by prefix (Act 5), NAT (5.4), IPv6 details (5.1).
 
+## 🧠 The Moral of the Story (One-Look Mindmap)
+
+> **The Core Question:**
+> *DNS gave us `203.0.113.10`. Why isn't an IP address just a random serial number, and how does it encode location?*
+
+```text
+                        THE 30-SECOND MENTAL WALKTHROUGH
+
+ 1. THE HIERARCHY:    Like a country code and phone number (`+880 2 ...`), an IP address
+                      is split into two halves: Network Part (left) and Host Part (right).
+                                           │
+                                           ▼
+ 2. 32 BITS:          An IPv4 address is one 32-bit integer, written as four 8-bit octets
+                      (0–255) separated by dots purely for human readability.
+                                           │
+                                           ▼
+ 3. CIDR PREFIX (/X): The `/X` specifies how many bits from the left belong to the Network:
+                      • `/24`: 24 network bits, 8 host bits (2^8 = 256 addresses).
+                      • Larger `/X` = MORE network bits, FEWER host addresses!
+                                           │
+                                           ▼
+ 4. SPECIAL BLOCKS:   • Loopback: `127.0.0.1` (stays inside your own RAM; skips physical NIC).
+                      • Private:  `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16` (reused in homes/VPCs).
+                      • Public:   Globally unique numbers routed across the open Internet.
+                                           │
+                                           ▼
+ 5. THE CLIFFHANGER:  You hold `192.168.0.108/24` and destination `203.0.113.10`.
+                      How does your OS mathematically decide if the target is in your room?
+```
+
+---
+
 ## 7. Close the Loop
 
 * **Revisit Log line** (added to the anchor): `2026-10-21 | IP & CIDR | The number DNS returns in step 2 is one 32-bit value written as four octets. Its left X bits (/X) name a network, the rest name a host in it, so routers can work with whole networks. 10.x, 172.16–31.x and 192.168.x are private: reused in every home, never seen on the Internet.`

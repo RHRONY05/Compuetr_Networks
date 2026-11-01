@@ -157,6 +157,41 @@ HTTPS is the **same message inside TLS**. It adds privacy (nobody on the path ca
 
 🔵 **Later:** TCP (Act 4) · TLS and `Secure` cookies (Act 6) · keep-alive, HTTP/2/3, caching with `ETag`/`304` (Act 7) · CORS, `SameSite`, proxies, third-party cookies and tracking (Act 8).
 
+## 🧠 The Moral of the Story (One-Look Mindmap)
+
+> **The Core Question:**
+> *How do two strangers written in different programming languages by different teams agree to exchange data without confusion?*
+
+```text
+                        THE 30-SECOND MENTAL WALKTHROUGH
+
+ 1. THE AGREEMENT:    HTTP is a strict plain-text grammar fixing who speaks first (client asks,
+                      server answers), what requests look like, and how errors are reported.
+                                           │
+                                           ▼
+ 2. THE ANATOMY:      Four parts in every request:
+                      ① Request Line:  `GET /profile HTTP/1.1` (verb + path + version)
+                      ② Headers:       `Host: api.example.com` (key-value metadata)
+                      ③ Empty Line:    `\r\n` (headers are over; body begins)
+                      ④ Body:          Optional payload (JSON, form data, bytes)
+                                           │
+                                           ▼
+ 3. TEXT TO BYTES:    Characters become numbers (UTF-8 bytes 0–255). Networks only move bytes.
+                      `Content-Length` counts the bytes, not the letters!
+                                           │
+                                           ▼
+ 4. STATELESSNESS:    The server forgets you the millisecond the response leaves.
+                      To stay logged in, identity proof must ride in EVERY single message:
+                      • Cookie: Added automatically by the browser (`Cookie: session=...`)
+                      • Bearer Token: Attached manually by your frontend code (`Authorization: Bearer ...`)
+                                           │
+                                           ▼
+ 5. THE CLIFFHANGER:  The message is ready, but it only says `Host: api.example.com`.
+                      Networks deliver to NUMBERS, not names. We must find the IP!
+```
+
+---
+
 ## 7. Close the Loop
 
 **Revisit Log:** `2026-10-13 | HTTP Basics | Step 1's message is text: request line, headers, empty line, body, turned into bytes. Proof of identity rides in every message (Cookie / Authorization) because HTTP remembers nothing.`

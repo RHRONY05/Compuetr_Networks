@@ -126,3 +126,38 @@ Chapters:
 
 </details>
 
+
+
+---
+
+## Act 3 · Step 5: The Next Physical Hop (MAC & ARP)
+
+Chapter: [MAC Addresses and ARP](01-data-link/01-mac-and-arp.md)
+
+1. Your laptop (`192.168.0.108`) sends an HTTP request to `203.0.113.10` via default gateway `192.168.0.1`. What are the Source IP, Destination IP, Source MAC, and Destination MAC in the frame as it leaves your Wi-Fi antenna?
+2. Is an ARP request wrapped inside an IP packet? Explain the exact protocol structure and why an outer IP header is unnecessary.
+3. Your Wi-Fi router rebooted and was replaced with a new model having a different MAC address. What prevents your laptop from sending frames to the old MAC forever?
+4. When your laptop broadcasts an ARP request for `192.168.0.1`, a sleeping phone on the same Wi-Fi does not light up its screen. Explain the hardware filtering process and how modern phone Wi-Fi chips prevent battery drain.
+5. In Windows Network Settings, why does your Bluetooth adapter show as "Not operational / Disconnected" with a `169.254.x.x` IP address even when your Bluetooth headphones are actively playing music?
+6. You type `ping 192.168.0.222` (an unused IP on your local subnet) and receive `Destination Host Unreachable`. Did this error come from the remote machine or your own laptop? Walk through the exact Layer 2 failure.
+
+<details>
+<summary><b>Answers</b></summary>
+
+1. **Source IP:** `192.168.0.108`  
+   **Destination IP:** `203.0.113.10` (the remote server, unchanged across the Internet).  
+   **Source MAC:** `94-BB-43-74-E0-DD` (your laptop's Wi-Fi card).  
+   **Destination MAC:** `3C-84-6A-6C-8C-28` (your router's MAC, discovered via ARP).  
+   Notice: The default gateway's IP (`192.168.0.1`) appears *nowhere* in the IP packet!
+
+2. **No.** An ARP request is **not** an IP packet. It has no IP header. The ARP payload sits directly inside the Ethernet Frame with `EtherType = 0x0806` (ARP). Because ARP is strictly a local link protocol that never crosses routers, an outer IP header is unnecessary.
+
+3. The **Kernel ARP Cache timer**. Dynamic ARP cache entries expire within 15–45 seconds (Windows) or a few minutes (Linux). Once the entry expires, the OS sends a fresh ARP broadcast and learns the new router MAC.
+
+4. The phone's Wi-Fi chip silicon has a hardware comparator. When incoming frames have a unicast destination MAC that doesn't match the phone, the silicon discards the voltage without waking the CPU. For broadcast frames (`FF-FF-FF-FF-FF-FF`), modern phone Wi-Fi chips use **ARP Offloading**: the chip's firmware checks the Target IP directly on-chip. Since the requested IP does not match the phone's IP, the frame is dropped on-chip without waking the application processor or screen.
+
+5. Bluetooth uses specialized profiles. Audio streaming uses the **A2DP** profile, which talks directly to Windows Audio drivers and completely bypasses the TCP/IP network stack. The network adapter shown in Network Settings is the **Bluetooth PAN (Personal Area Network)** adapter, used exclusively for Internet tethering. Because you are not tethering IP packets over Bluetooth, the PAN adapter is disconnected and falls back to an APIPA address.
+
+6. It came from **your own laptop**. When your laptop determined that `192.168.0.222` is on-link, it broadcast an ARP request asking *"Who has 192.168.0.222?"*. Because no machine has that IP, no ARP reply arrived. Without a destination MAC address, your laptop could not construct the Layer 2 Ethernet frame. The packet never even left your computer, and the OS reported `Destination Host Unreachable`.
+
+</details>
